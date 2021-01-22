@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-8">
+        <app-therapy-list></app-therapy-list>
+    </div>
+    <div *ngIf="!loged && registered" class="col-md-4">
+        <app-ikaruna-login></app-ikaruna-login>
+    </div>
+    <div *ngIf="!loged && !registered" class="col-md-4">
+        <app-ikaruna-check-in></app-ikaruna-check-in>
+    </div>
+    <div *ngIf="loged && registered" class="col-md-4">
+        <app-ikaruna-take-a-turn></app-ikaruna-take-a-turn>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="accordion" id="accordionExample">
+    <div *ngFor="let therapy of therapies" class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" (click)="setSelected(therapy)">
+            {{therapy.name}}
+        </button>
+        </h2>
+        <div *ngIf="(selected) && (selected.id == therapy.id)" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                {{therapy.description}}<strong>{{therapy.therapist}}</strong>
+            </div>
+        </div>
+    </div>
+</div>

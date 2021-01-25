@@ -1,5 +1,8 @@
 # Ikaruna
 
+This project is the initial front end development of the page of a startup called Ikaru-Na, which offers holistic services.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Development server

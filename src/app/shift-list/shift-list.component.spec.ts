@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IkarunaTakeATurnComponent } from './ikaruna-take-a-turn.component';
+import { ShiftListComponent } from './shift-list.component';
 
-describe('IkarunaTakeATurnComponent', () => {
-  let component: IkarunaTakeATurnComponent;
-  let fixture: ComponentFixture<IkarunaTakeATurnComponent>;
+describe('ShiftListComponent', () => {
+  let component: ShiftListComponent;
+  let fixture: ComponentFixture<ShiftListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IkarunaTakeATurnComponent ]
+      declarations: [ ShiftListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IkarunaTakeATurnComponent);
+    fixture = TestBed.createComponent(ShiftListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,23 @@
+<h1>Talleres</h1>
+<div *ngFor="let ws of workshops" class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="" alt="">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ws.name}}</h5>
+                <p class="card-text">{{ws.caption}}</p>
+                <button type="button" class="btn btn-outline-primary" (click)="setSelected(ws)">Ver más...</button>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0" *ngIf="(selected) && (selected.id == ws.id)">
+        <div class="col-md-12">
+            <h6>Contenidos:</h6>
+            <p>{{ws.contents}}</p>
+            <h6>Modalidad:</h6>
+            <p>{{ws.way}}</p>
+        </div>
+    </div>
+</div>

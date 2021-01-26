@@ -7,7 +7,8 @@ import { IkarunaTherapiesComponent } from './ikaruna-therapies/ikaruna-therapies
 import { ShiftListComponent } from './shift-list/shift-list.component';
 import { TherapyListComponent } from './therapy-list/therapy-list.component';
 import { WorkshopListComponent } from "./workshop-list/workshop-list.component";
-
+import { IkarunaShiftsComponent } from "./ikaruna-shifts/ikaruna-shifts.component";
+import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
 
 const routes: Routes = [
   {
@@ -29,11 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'workshops',
-    component: WorkshopListComponent,
+    component: IkarunaWorkshopsComponent,
   },
   {
-    path: 'shift',
-    component: ShiftListComponent,
+    path: 'shifts',
+    component: IkarunaShiftsComponent,
   }
 ];
 

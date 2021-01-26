@@ -28,6 +28,9 @@ export class WorkshopListComponent implements OnInit {
 
   setSelected(ws: Workshop) {
     this.selected = ws;
-    console.log(ws);
+  }
+
+  deleteSelected() {
+    this.selected = null;
   }
 }

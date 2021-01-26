@@ -13,6 +13,8 @@ import { IkarunaContactComponent } from './ikaruna-contact/ikaruna-contact.compo
 import { IkarunaApplyShiftComponent } from './ikaruna-apply-shift/ikaruna-apply-shift.component';
 import { ShiftListComponent } from './shift-list/shift-list.component';
 import { WorkshopListComponent } from "./workshop-list/workshop-list.component";
+import { IkarunaShiftsComponent } from './ikaruna-shifts/ikaruna-shifts.component';
+import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { WorkshopListComponent } from "./workshop-list/workshop-list.component";
     IkarunaContactComponent,
     IkarunaApplyShiftComponent,
     ShiftListComponent,
-    WorkshopListComponent
+    WorkshopListComponent,
+    IkarunaShiftsComponent,
+    IkarunaWorkshopsComponent
   ],
   imports: [
     BrowserModule,

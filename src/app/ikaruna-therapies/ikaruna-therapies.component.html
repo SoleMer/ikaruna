@@ -1,4 +1,34 @@
 <div class="row">
+    <div class="col-md-12">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../../assets/img/cosas-lindas.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../assets/img/unite-taller-despertar.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../assets/img/ayudando.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-8">
         <app-therapy-list></app-therapy-list>
     </div>
@@ -9,6 +39,6 @@
         <app-ikaruna-check-in></app-ikaruna-check-in>
     </div>
     <div *ngIf="loged && registered" class="col-md-4">
-        <app-ikaruna-apply-shif></app-ikaruna-apply-shif>
+        <app-ikaruna-apply-shift></app-ikaruna-apply-shift>
     </div>
 </div>

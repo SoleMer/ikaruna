@@ -15,6 +15,12 @@ import { ShiftListComponent } from './shift-list/shift-list.component';
 import { WorkshopListComponent } from "./workshop-list/workshop-list.component";
 import { IkarunaShiftsComponent } from './ikaruna-shifts/ikaruna-shifts.component';
 import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
+import { QuestionListComponent } from './question-list/question-list.component';
+import { IkarunaNotificationsComponent } from './ikaruna-notifications/ikaruna-notifications.component';
+import { AddTherapyComponent } from './add-therapy/add-therapy.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserListComponent } from './user-list/user-list.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -30,11 +36,17 @@ import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops
     ShiftListComponent,
     WorkshopListComponent,
     IkarunaShiftsComponent,
-    IkarunaWorkshopsComponent
+    IkarunaWorkshopsComponent,
+    QuestionListComponent,
+    IkarunaNotificationsComponent,
+    AddTherapyComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

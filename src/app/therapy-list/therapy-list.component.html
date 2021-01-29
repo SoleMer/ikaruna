@@ -10,7 +10,8 @@
         </h2>
         <div *ngIf="(selected) && (selected.id == therapy.id)" class="accordion-collapse collapse show">
             <div class="accordion-body">
-                {{therapy.description}}<strong>{{therapy.therapist}}</strong>
+                <p>{{therapy.description}}</p>
+                <strong>Terapeuta/s: {{therapy.therapist_id}}</strong>
             </div>
         </div>
     </div>

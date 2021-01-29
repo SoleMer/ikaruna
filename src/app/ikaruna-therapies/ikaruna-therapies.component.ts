@@ -13,8 +13,8 @@ export class IkarunaTherapiesComponent implements OnInit {
   registered: boolean;
 
   ngOnInit(): void {
-    this.loged = true;
-    this.registered = true;
+    this.loged = false;
+    this.registered = false;
     console.log(this.loged);
     console.log(this.registered);
   }

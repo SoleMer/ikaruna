@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "http://localhost/ikaruna-backend",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

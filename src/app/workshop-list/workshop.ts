@@ -3,5 +3,5 @@ export interface Workshop {
     name: string;
     caption: string;
     contents: string;
-    way: string;
+    modality: string;
 }

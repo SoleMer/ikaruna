@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Workshop } from './workshop';
+import { WorkshopDataService } from '../workshop-data.service'
 
 
 @Component({
@@ -9,21 +10,16 @@ import { Workshop } from './workshop';
 })
 export class WorkshopListComponent implements OnInit {
 
-  workshops: Workshop[] = [
-    {
-      id: 1,
-      name: "Despertar",
-      caption: "blablabla",
-      contents: "sjaskjaskfnsnfsam",
-      way: "nadsfnskfnklakl"
-    }
-  ];
+  workshops: Workshop[] = [];
 
-  constructor() { }
+  constructor(private workshopsDataService: WorkshopDataService) { }
 
   selected: Workshop;
 
   ngOnInit(): void {
+    this.workshopsDataService.getAll()
+    .subscribe(workshops => this.workshops = workshops);
+    console.log(this.workshops);
   }
 
   setSelected(ws: Workshop) {

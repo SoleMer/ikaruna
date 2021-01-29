@@ -13,6 +13,9 @@
                 <button type="button" class="btn btn-outline-primary" (click)="deleteSelected()" *ngIf="selected; else dontSelected">Ver menos</button>
                 <ng-template #dontSelected>
                     <button type="button" class="btn btn-outline-primary" (click)="setSelected(ws)">Ver más...</button>
+
+                    <button type="button" class="btn btn-success" style="margin-left: 10px;">Quiero hacer este taller!</button>
+
                 </ng-template>
             </div>
         </div>
@@ -22,7 +25,7 @@
             <h6>Contenidos:</h6>
             <p>{{ws.contents}}</p>
             <h6>Modalidad:</h6>
-            <p>{{ws.way}}</p>
+            <p>{{ws.modality}}</p>
         </div>
         <div class="col-md-5 offset-md-7" style="margin-bottom: 10px;">
             <button type="button" class="btn btn-success">Quiero hacer este taller!</button>

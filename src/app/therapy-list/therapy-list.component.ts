@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TherapyDataService } from '../therapy-data.service';
 import { Therapy } from './therapy';
 
 @Component({
@@ -10,59 +11,10 @@ import { Therapy } from './therapy';
 
 export class TherapyListComponent implements OnInit {
 
-  therapies : Therapy[] = [
-    {
-      name: "Reiki presencial",
-      description: "...",
-      therapist: "Gri y Sole",
-      id: 1
-    },
-    {
-      name: "Reiki a distancia larga duracion",
-      description: "...",
-      therapist: "Gri",
-      id: 2
-    },
-    {
-      name: "Reiki a distancia corta duracion",
-      description: "...",
-      therapist: "Gri",
-      id: 3
-    },
-    {
-      name: "Masaje Venusiano",
-      description: "...",
-      therapist: "Sole",
-      id: 4
-    },
-    {
-      name: "Sanacion y Armonizacion Energetica",
-      description: "...",
-      therapist: "Sole",
-      id: 5
-    },
-    {
-      name: "Escudo Protector Energetico Celta",
-      description: "...",
-      therapist: "Sole",
-      id: 6
-    },
-    {
-      name: "Lectura de Tarot Terapeutico",
-      description: "...",
-      therapist: "Gri y Sole",
-      id: 7
-    },
-    {
-      name: "Lectura de Registro Akashicos",
-      description: "...",
-      therapist: "Sole",
-      id: 8
-    }
-  ]
+  therapies : Therapy[] = [] ;
   
   
-  constructor() { }
+  constructor(private therapiesDataService: TherapyDataService) { }
   
   selected: Therapy;
 
@@ -71,6 +23,8 @@ export class TherapyListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.therapiesDataService.getAll()
+    .subscribe(therapies => this.therapies = therapies);
   }
 
 }

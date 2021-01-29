@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { UserControlService } from '../user-control.service';
 import { UserResponse } from '../user-list/user';
 import { NewUser } from './newUser';

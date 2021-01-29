@@ -1,5 +1,7 @@
 import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { UserControlService } from '../user-control.service';
+import { UserLogin, UserResponse } from '../user-list/user';
 
 @Component({
   selector: 'app-ikaruna-login',
@@ -8,16 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IkarunaLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor( private userControlService: UserControlService) { }
 
   loged: boolean;
   registered:boolean;
 
+  user: UserLogin;
+  response: UserResponse;
+
   ngOnInit(): void {
+    this.user = {
+      email : '',
+      password : ''
+    }
   }
 
   login(){
-    this.loged = true;
+    console.log(this.user);
+    this.userControlService.login(this.user)
+    .subscribe(response => this.response = response);
+    
+    console.log(this.response);
   }
 
   notRegistered(){

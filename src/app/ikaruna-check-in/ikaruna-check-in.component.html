@@ -3,15 +3,15 @@
 <form>
     <div class="mb-3">
         <label for="inputName" class="form-label">Nombre completo</label>
-        <input type="text" class="form-control" id="inputName" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
+        <input type="text" class="form-control" id="inputName" placeholder="Nombre Apellido" [(ngModel)]='user.username' [ngModelOptions]="{standalone: true}">
     </div>
     <div class="mb-3">
         <label for="inputEmail1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
+        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="example@gmail.com" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
     </div>
     <div class="mb-3">
         <label for="inputTel" class="form-label">Teléfono</label>
-        <input type="text" class="form-control" id="inputTel" [(ngModel)]='user.phone' [ngModelOptions]="{standalone: true}">
+        <input type="text" class="form-control" id="inputTel" placeholder="2262345678" [(ngModel)]='user.phone' [ngModelOptions]="{standalone: true}">
     </div>
     <div class="mb-3">
         <label for="inputPassword1" class="form-label">Contraseña</label>

@@ -11,3 +11,8 @@ export interface UserResponse {
     status: string;
     msg: string;
 }
+
+export interface UserLogin {
+    email: string;
+    password:string;
+}

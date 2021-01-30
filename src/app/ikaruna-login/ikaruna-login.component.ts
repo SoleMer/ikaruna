@@ -28,10 +28,14 @@ export class IkarunaLoginComponent implements OnInit {
   login(){
     console.log(this.user);
     this.userControlService.login(this.user)
-    .subscribe(response => this.response = response);
-    
+    .subscribe(res => {
+      if(res){
+        this.response = res;
+      }
+    });
     console.log(this.response);
   }
+
 
   notRegistered(){
     this.registered = false;

@@ -10,6 +10,9 @@ export interface User {
 export interface UserResponse {
     status: string;
     msg: string;
+    token: string;
+    id_user: number;
+    isAdmin: number;
 }
 
 export interface UserLogin {

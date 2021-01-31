@@ -19,20 +19,23 @@ export class UserControlService {
     return this.http.post<UserResponse>(URL,user);
   }
 
-  public login(user: UserLogin): Observable<UserResponse | void>  {
+  public login(user: UserLogin): Observable<UserResponse>  {
     return this.http.post<UserResponse>(URL_LOGIN,user)
     .pipe(
       map((res:UserResponse)=> {
-        this.saveToken(res.token);
-      }),
-      catchError((err)=> this.handlerError(err)))
-    ;
+        return res;
+       // console.log('Res->',res);
+        //this.saveToken(res.token);
+
+      })
+    )
   }
 
   
   private saveToken(token:string):void {
     localStorage.setItem('token',token);
   }
+
 
   private handlerError(err): Observable<never> {
     let errorMsg ='';

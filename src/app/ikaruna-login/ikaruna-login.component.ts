@@ -1,5 +1,7 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { UserControlService } from '../user-control.service';
 import { UserLogin, UserResponse } from '../user-list/user';
 
@@ -10,7 +12,8 @@ import { UserLogin, UserResponse } from '../user-list/user';
 })
 export class IkarunaLoginComponent implements OnInit {
 
-  constructor( private userControlService: UserControlService) { }
+  constructor( private userControlService: UserControlService,
+    private cookieSvc: CookieService) { }
 
   loged: boolean;
   registered:boolean;
@@ -29,11 +32,15 @@ export class IkarunaLoginComponent implements OnInit {
     console.log(this.user);
     this.userControlService.login(this.user)
     .subscribe(res => {
-      if(res){
-        this.response = res;
-      }
+      this.response =res;
+      console.log(this.response);
+      let id = stringify(this.response.id_user);
+      let isAdmin = stringify(this.response.isAdmin);
+      let token = this.response.token;
+      this.cookieSvc.set("user_id", id);
+      this.cookieSvc.set("isAdmin", isAdmin);
+      this.cookieSvc.set("token", token);
     });
-    console.log(this.response);
   }
 
 

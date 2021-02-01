@@ -1,0 +1,11 @@
+<div *ngIf="status.status != 'ok'; else logged">
+    <app-log-and-check-in></app-log-and-check-in>
+</div>
+<ng-template #logged>
+    <div>
+        <app-ikaruna-apply-shift></app-ikaruna-apply-shift>
+    </div>
+    <div>
+        <app-ikaruna-questions></app-ikaruna-questions>
+    </div>
+</ng-template>

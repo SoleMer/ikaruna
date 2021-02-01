@@ -3,7 +3,7 @@ import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserControlService } from '../user-control.service';
-import { UserLogin, UserResponse } from '../user-list/user';
+import { UserLogin, UserStatus } from '../user-list/user';
 
 @Component({
   selector: 'app-ikaruna-login',
@@ -19,7 +19,7 @@ export class IkarunaLoginComponent implements OnInit {
   registered:boolean;
 
   user: UserLogin;
-  response: UserResponse;
+  response: UserStatus;
 
   ngOnInit(): void {
     this.user = {
@@ -33,7 +33,7 @@ export class IkarunaLoginComponent implements OnInit {
     this.userControlService.login(this.user)
     .subscribe(res => {
       this.response =res;
-      console.log(this.response);
+      //console.log(this.response);
       let id = stringify(this.response.id_user);
       let isAdmin = stringify(this.response.isAdmin);
       let token = this.response.token;

@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { FormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
+import { IkarunaSectionComponent } from './ikaruna-section/ikaruna-section.component';
+import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { CookieService } from 'ngx-cookie-service';
     IkarunaNotificationsComponent,
     AddTherapyComponent,
     UserListComponent,
+    IkarunaSectionComponent,
+    LogAndCheckInComponent,
   ],
   imports: [
     BrowserModule,

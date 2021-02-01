@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserControlService } from '../user-control.service';
-import { UserResponse } from '../user-list/user';
+import { UserStatus } from '../user-list/user';
 import { NewUser } from './newUser';
 
 @Component({
@@ -15,7 +15,7 @@ export class IkarunaCheckInComponent implements OnInit {
     private userControlService: UserControlService) { }
   
   user: NewUser;
-  response: UserResponse;
+  response: UserStatus;
   logged: boolean;
 
   ngOnInit(): void {

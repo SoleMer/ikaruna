@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'shifts',
     component: IkarunaShiftsComponent,
+  },
+  {
+    path: 'login',
+    component: IkarunaLoginComponent,
   }
 ];
 

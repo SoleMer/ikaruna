@@ -1,0 +1,14 @@
+<div *ngIf="registered; else checkIn">
+    <app-ikaruna-login></app-ikaruna-login>
+    <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-primary" (click)="toggleRegistered()">Aún no tengo cuenta</button>
+    </div>
+</div>
+<ng-template #checkIn>
+    <div>
+        <app-ikaruna-check-in></app-ikaruna-check-in>
+        <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary" (click)="toggleRegistered()">Ya tengo una cuenta</button>
+        </div>
+    </div>
+</ng-template>

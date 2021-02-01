@@ -7,7 +7,7 @@ export interface User {
     admin?:number;
 }
 
-export interface UserResponse {
+export interface UserStatus {
     status: string;
     msg: string;
     token: string;

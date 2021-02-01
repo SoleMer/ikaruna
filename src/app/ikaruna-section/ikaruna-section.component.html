@@ -2,10 +2,10 @@
     <app-log-and-check-in></app-log-and-check-in>
 </div>
 <ng-template #logged>
-    <div>
-        <app-ikaruna-apply-shift></app-ikaruna-apply-shift>
-    </div>
-    <div>
-        <app-ikaruna-questions></app-ikaruna-questions>
-    </div>
+    <app-ikaruna-apply-shift *ngIf="page == 'therapies' && status.isAdmin == 0"></app-ikaruna-apply-shift>
+    <app-add-therapy *ngIf="status.isAdmin == 1 && page == 'therapies'"></app-add-therapy>
+    <app-ikaruna-questions *ngIf="page == 'workshop' && status.isAdmin == 0"></app-ikaruna-questions>
+    <app-add-workshop *ngIf="page == 'workshop' && status.isAdmin == 1"></app-add-workshop>
+    <app-ikaruna-contact *ngIf="page == 'about'"></app-ikaruna-contact>
+    <app-ikaruna-apply-shift *ngIf="page =='shift'"></app-ikaruna-apply-shift>
 </ng-template>

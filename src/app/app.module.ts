@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
 import { IkarunaSectionComponent } from './ikaruna-section/ikaruna-section.component';
 import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
+import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.comp
     UserListComponent,
     IkarunaSectionComponent,
     LogAndCheckInComponent,
+    AddWorkshopComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserControlService } from '../user-control.service';
+import { UserStatus } from '../user-list/user';
 
 @Component({
   selector: 'app-ikaruna-apply-shift',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IkarunaApplyShiftComponent implements OnInit {
 
-  constructor() { }
+  status: UserStatus;
+
+  constructor(private userControlService: UserControlService) {
+    userControlService.logged.subscribe(s => this.status = s);
+   }
 
   ngOnInit(): void {
   }

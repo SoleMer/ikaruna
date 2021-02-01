@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-ikaruna-therapies',
@@ -7,7 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IkarunaTherapiesComponent implements OnInit {
 
-  constructor() { }
+  name: string;
+
+  constructor() {
+    this.name = 'therapies';
+   }
 
   ngOnInit(): void {
     

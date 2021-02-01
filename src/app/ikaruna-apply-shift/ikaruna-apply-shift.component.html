@@ -18,11 +18,13 @@
         <label for="inputTime" class="form-label">Hora: </label>
         <input type="time" id="inputTime">
     </div>
-
-    <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+    <div *ngIf="status.isAdmin == 0; else admin" class="div-margin-top d-grid gap-2 col-6 mx-auto">
         <button (click)="postTurn()" class="btn btn-primary">Solicitar turno</button>
         <span class="badge bg-warning text-dark">Sujeto a disponibilidad.</span>
     </div>
+    <ng-template #admin>
+        <!--implement select with users-->
+        <button (click)="postTurn()" class="btn btn-primary">Agregar turno</button>
+    </ng-template>
 </form>
-
 <app-ikaruna-contact></app-ikaruna-contact>

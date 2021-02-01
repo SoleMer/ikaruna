@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IkarunaWorkshopsComponent implements OnInit {
 
-  constructor() { }
+  name:string;
 
+  constructor() { 
+  }
+  
   ngOnInit(): void {
+    this.name = 'workshop';
   }
 
 }

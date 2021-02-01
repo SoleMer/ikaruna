@@ -9,6 +9,7 @@ import { TherapyListComponent } from './therapy-list/therapy-list.component';
 import { WorkshopListComponent } from "./workshop-list/workshop-list.component";
 import { IkarunaShiftsComponent } from "./ikaruna-shifts/ikaruna-shifts.component";
 import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
+import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: IkarunaLoginComponent,
+    component: LogAndCheckInComponent,
   }
 ];
 

@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IkarunaAboutComponent implements OnInit {
 
-  constructor() { }
+  name:string;
+
+  constructor() {
+    this.name="about";
+   }
 
   ngOnInit(): void {
   }

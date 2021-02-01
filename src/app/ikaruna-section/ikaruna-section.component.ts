@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserControlService } from '../user-control.service';
 import { UserStatus } from '../user-list/user';
 
@@ -15,10 +15,12 @@ export class IkarunaSectionComponent implements OnInit {
     userControlService.logged.subscribe(s => this.status = s);
    }
 
-  ngOnInit(): void {
-    
+   @Input()
+   page: string = '';
+
+  ngOnInit(): void {  
   }
 
   
 
-}
+} 

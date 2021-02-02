@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TherapyDataService } from '../therapy-data.service';
+import { UserControlService } from '../user-control.service';
+import { User } from '../user-list/user';
 import { Therapy } from './therapy';
 
 @Component({
@@ -12,9 +14,12 @@ import { Therapy } from './therapy';
 export class TherapyListComponent implements OnInit {
 
   therapies : Therapy[] = [] ;
+  admins : User[] =[] ;
   
-  
-  constructor(private therapiesDataService: TherapyDataService) { }
+  constructor(private therapiesDataService: TherapyDataService,
+    private userControlSvc: UserControlService) {
+      //userControlSvc.admins.subscribe(a => this.admins = a);
+     }
   
   selected: Therapy;
 
@@ -24,7 +29,32 @@ export class TherapyListComponent implements OnInit {
 
   ngOnInit(): void {
     this.therapiesDataService.getAll()
-    .subscribe(therapies => this.therapies = therapies);
+    .subscribe((res) => {
+      this.therapies = res;
+      this.setAdmins(res);
+    });
+    
+  }
+
+  setAdmins(therapies: Therapy[]) {
+    this.userControlSvc.getTherapist()
+    .subscribe(a => {
+      this.admins = a;
+      this.setTherapistName(therapies, a);
+    });
+  }
+
+  setTherapistName(trp:Therapy[], administrators:User[]) {
+    for (let i = 0; i < trp.length; i++) {
+      const t = trp[i];
+      for (let j = 0; j < administrators.length; j++) {
+        const admin = administrators[j];
+        if (t.therapist_id == admin.id) {
+          t.therapist_name = admin.username;
+        }
+      }
+      
+    }
   }
 
 }

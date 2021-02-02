@@ -16,7 +16,6 @@ export class IkarunaCheckInComponent implements OnInit {
   
   user: NewUser;
   response: UserStatus;
-  logged: boolean;
 
   ngOnInit(): void {
     this.user = {

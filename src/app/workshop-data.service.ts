@@ -16,4 +16,11 @@ export class WorkshopDataService {
   public getAll(): Observable<Workshop[]> {
     return this.http.get<Workshop[]>(URL);
   }
+
+  public add(workshop: Workshop) {
+    this.http.post(URL, workshop);
+  }
+
+  public edit(workshop: Workshop, id:number) {}
+  public delete(id:number) {}
 }

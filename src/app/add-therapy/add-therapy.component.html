@@ -5,19 +5,16 @@
 <form>
     <div class="mb-3">
         <label for="inputName" class="form-label">Nombre de la terapia</label>
-        <input type="text" class="form-control" id="inputName">
+        <input type="text" class="form-control" id="inputName" [(ngModel)]='trp.name' [ngModelOptions]="{standalone: true}">
     </div>
     <div class="mb-3">
         <label for="textarea" class="form-label">Descripción</label>
-        <textarea class="form-control" id="textarea" rows="3"></textarea>
+        <textarea class="form-control" id="textarea" rows="3" [(ngModel)]='trp.description' [ngModelOptions]="{standalone: true}"></textarea>
     </div>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Terapeuta</option>
-        <option value="0">Gri y Sole</option>
-        <option value="1">Gri</option>
-        <option value="2">Sole</option>
+    <select class="form-select" aria-label="Default select example" aria-placeholder="Terapeuta">
+        <option *ngFor="let ther of therapist" value='ther.id' [(ngModel)]='trp.therapist_id' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>{{ther.username}}</option>
       </select>
     <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-primary" (click)='add()'>Agregar</button>
     </div>
 </form>

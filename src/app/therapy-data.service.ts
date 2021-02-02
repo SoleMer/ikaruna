@@ -9,10 +9,18 @@ const URL = 'http://localhost/ikaruna-backend/api/therapy';
   providedIn: 'root'
 })
 export class TherapyDataService {
+  
 
   constructor( private http: HttpClient) { }
 
   public getAll(): Observable<Therapy[]> {
     return this.http.get<Therapy[]>(URL);
   }
+
+  public add(therapy:Therapy) {
+    return this.http.post(URL,therapy);
+  }
+
+  public edit(therapy:Therapy,id:number) {}
+  public delete(id:number) {}
 }

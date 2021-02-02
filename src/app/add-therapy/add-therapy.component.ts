@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TherapyDataService } from '../therapy-data.service';
+import { Therapy } from '../therapy-list/therapy';
+import { UserControlService } from '../user-control.service';
+import { User } from '../user-list/user';
 
 @Component({
   selector: 'app-add-therapy',
@@ -7,9 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTherapyComponent implements OnInit {
 
-  constructor() { }
+  therapist: User[] = [];
+  response: any;
+
+  constructor(private therapyDataSvc: TherapyDataService,
+    private userControlSvc: UserControlService) {
+      //userControlSvc.admins.subscribe(a => this.therapist = a);
+     }
+
+  trp: Therapy;
 
   ngOnInit(): void {
+    this.trp = {
+      name: '',
+      description: '',
+      therapist_id: 0,
+      therapist_name: ''
+    }
+    this.userControlSvc.getTherapist()
+    .subscribe(t => {
+      return this.therapist = t;
+    });
   }
 
+  add() {
+    this.therapyDataSvc.add(this.trp)
+    .subscribe(res => this.response = res);
+  }
 }

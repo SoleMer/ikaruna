@@ -15,6 +15,6 @@
         <option *ngFor="let ther of therapist" value='ther.id' [(ngModel)]='trp.therapist_id' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>{{ther.username}}</option>
       </select>
     <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="btn btn-primary" (click)='add()'>Agregar</button>
+        <button type="submit" class="btn btn-primary" (click)='add()'>Agregar</button>
     </div>
 </form>

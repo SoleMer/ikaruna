@@ -19,6 +19,7 @@ export class TherapyListComponent implements OnInit {
   constructor(private therapiesDataService: TherapyDataService,
     private userControlSvc: UserControlService) {
       //userControlSvc.admins.subscribe(a => this.admins = a);
+      therapiesDataService.therapies.subscribe(t => this.therapies = t);
      }
   
   selected: Therapy;

@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { TherapyDataService } from '../therapy-data.service';
 import { Therapy } from '../therapy-list/therapy';
@@ -25,8 +26,7 @@ export class AddTherapyComponent implements OnInit {
     this.trp = {
       name: '',
       description: '',
-      therapist_id: 0,
-      therapist_name: ''
+      therapist_id: 0
     }
     this.userControlSvc.getTherapist()
     .subscribe(t => {
@@ -35,7 +35,10 @@ export class AddTherapyComponent implements OnInit {
   }
 
   add() {
+    console.log("agregando")
     this.therapyDataSvc.add(this.trp)
-    .subscribe(res => this.response = res);
+    .subscribe(r => {
+      return this.response = r;
+    });
   }
 }

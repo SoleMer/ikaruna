@@ -6,3 +6,9 @@ export interface Therapy {
     therapist_name?: string;
     //la terapeuta deberia estar asociada a un usuario admin
 }
+
+export interface Reply {
+    status: string;
+    msg: string;
+    id?:number;
+}

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { NewUser } from './ikaruna-check-in/newUser';
 import { User, UserLogin, UserStatus } from './user-list/user';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 const URL = 'http://localhost/ikaruna-backend/api/user';

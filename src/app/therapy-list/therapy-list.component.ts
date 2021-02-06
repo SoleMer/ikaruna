@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TherapyDataService } from '../therapy-data.service';
 import { UserControlService } from '../user-control.service';
-import { User } from '../user-list/user';
+import { User, UserStatus } from '../user-list/user';
 import { Therapy } from './therapy';
 
 @Component({
@@ -13,15 +13,17 @@ import { Therapy } from './therapy';
 
 export class TherapyListComponent implements OnInit {
 
-  therapies : Therapy[] = [] ;
-  admins : User[] =[] ;
   
   constructor(private therapiesDataService: TherapyDataService,
     private userControlSvc: UserControlService) {
       //userControlSvc.admins.subscribe(a => this.admins = a);
       therapiesDataService.therapies.subscribe(t => this.therapies = t);
-     }
-  
+      userControlSvc.logged.subscribe(s => this.status = s);
+    }
+    
+    therapies : Therapy[] = [] ;
+    admins : User[] =[] ;
+    status : UserStatus;
   selected: Therapy;
 
   setSelected(trp: Therapy):void {
@@ -56,6 +58,10 @@ export class TherapyListComponent implements OnInit {
       }
       
     }
+  }
+
+  edit() {
+    //llamar al componente que hace el edit
   }
 
 }

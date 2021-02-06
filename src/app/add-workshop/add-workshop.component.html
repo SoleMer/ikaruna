@@ -5,21 +5,21 @@
 <form>
     <div class="mb-3">
         <label for="inputName" class="form-label">Nombre del taller</label>
-        <input type="text" class="form-control" id="inputName">
+        <input type="text" class="form-control" id="inputName" [(ngModel)]='wsp.name' [ngModelOptions]="{standalone: true}">
     </div>
     <div class="mb-3">
         <label for="inputCaption" class="form-label">Subtítulo</label>
-        <input type="text" class="form-control" id="inputCaption">
+        <input type="text" class="form-control" id="inputCaption" [(ngModel)]='wsp.caption' [ngModelOptions]="{standalone: true}">
     </div>
     <div class="mb-3">
         <label for="contents" class="form-label">Contenidos</label>
-        <textarea class="form-control" id="contents" rows="3"></textarea>
+        <textarea class="form-control" id="contents" rows="3" [(ngModel)]='wsp.contents' [ngModelOptions]="{standalone: true}"></textarea>
     </div>
     <div class="mb-3">
         <label for="modality" class="form-label">Modalidad</label>
-        <textarea class="form-control" id="modality" rows="3"></textarea>
+        <textarea class="form-control" id="modality" rows="3" [(ngModel)]='wsp.modality' [ngModelOptions]="{standalone: true}"></textarea>
     </div>
     <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="btn btn-primary">Agregar</button>
+        <button type="button" class="btn btn-primary" (click)="add()">Agregar</button>
     </div>
 </form>

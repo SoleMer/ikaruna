@@ -15,5 +15,5 @@ export class IkarunaWorkshopsComponent implements OnInit {
   ngOnInit(): void {
     this.name = 'workshop';
   }
-
+ 
 }

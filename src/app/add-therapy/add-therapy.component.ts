@@ -35,7 +35,6 @@ export class AddTherapyComponent implements OnInit {
   }
 
   add() {
-    console.log("agregando")
     this.therapyDataSvc.add(this.trp)
     .subscribe(r => {
       return this.response = r;

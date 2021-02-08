@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { NewUser } from './ikaruna-check-in/newUser';
@@ -6,7 +6,7 @@ import { User, UserLogin, UserStatus } from './user-list/user';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-const URL = 'http://localhost/ikaruna-backend/api/user';
+const URL = 'http://localhost/ikaruna-backend/api/user/';
 const URL_LOGIN = 'http://localhost/ikaruna-backend/api/login';
 const URL_LOGOUT = 'http://localhost/ikaruna-backend/api/logout';
 const URL_ADMIN = 'http://localhost/ikaruna-backend/api/admin';
@@ -88,6 +88,11 @@ export class UserControlService {
   
   public getAll(): Observable<User[]> {
     return this.http.get<User[]>(URL);
+  }
+
+  public getById(id): Observable<User> {
+    const  params = new  HttpParams().set(':ID', id);
+    return this.http.get<User>(URL,{params});
   }
   
   public getTherapist(): Observable<User[]> {

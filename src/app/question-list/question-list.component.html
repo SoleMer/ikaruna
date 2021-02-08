@@ -10,10 +10,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
+        <tr *ngFor="let q of questions">
+            <td>{{q.text}}</td>
+            <td>{{q.user_id}}</td>
+            <td>{{q.email}}</td>
         </tr>
     </tbody>
 </table>

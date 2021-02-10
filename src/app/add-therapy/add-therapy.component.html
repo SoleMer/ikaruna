@@ -11,8 +11,8 @@
         <label for="textarea" class="form-label">Descripción</label>
         <textarea class="form-control" id="textarea" rows="3" [(ngModel)]='trp.description' [ngModelOptions]="{standalone: true}"></textarea>
     </div>
-    <select class="form-select" aria-label="Default select example" aria-placeholder="Terapeuta">
-        <option *ngFor="let ther of therapist" value='ther.id' [(ngModel)]='trp.therapist_id' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>{{ther.username}}</option>
+    <select class="form-select" aria-label="Default select example" aria-placeholder="Terapeuta" [(ngModel)]='trp.therapist_id' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>
+        <option *ngFor="let ther of therapist" value={{ther.id}}>{{ther.username}}</option>
       </select>
     <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
         <button type="submit" class="btn btn-primary" (click)='add()'>Agregar</button>

@@ -21,7 +21,6 @@ export class TherapyDataService {
   }
 
   public add(therapy:Therapy): any {
-    console.log("service");
     return this.http.post(URL,JSON.parse(JSON.stringify(therapy)))
     .pipe(
       map((res:Reply)=> {

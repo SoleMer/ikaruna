@@ -4,5 +4,5 @@ export interface Shift {
     date: number;
     time: number;
     patient: number;
-    status: boolean;
+    status: number; 
 }

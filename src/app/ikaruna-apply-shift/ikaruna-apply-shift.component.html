@@ -2,21 +2,17 @@
     <h2 class="title">Sacá tu turno!</h2>
 </div>
 <form class="text-center">
-    <select class="form-select" aria-label="Default select example">
-            <option selected>Terapia</option>
-            <option value="1">Reiki</option>
-            <option value="2">Masaje Venusiano</option>
-            <option value="3">Tarot</option>
+    <select class="form-select" aria-label="Default select example" [(ngModel)]='shift.therapy' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>
+            <option *ngFor="let ther of therapies" value={{ther.id}} >{{ther.name}}</option>
         </select>
-
     <div class="div-margin-top">
         <label for="inputDate" class="form-label">Fecha: </label>
-        <input type="date" id="inputDate">
+        <input type="date" id="inputDate" [(ngModel)]='shift.date' [ngModelOptions]="{standalone: true}">
     </div>
 
     <div class="div-margin-top">
         <label for="inputTime" class="form-label">Hora: </label>
-        <input type="time" id="inputTime">
+        <input type="time" id="inputTime" [(ngModel)]='shift.time' [ngModelOptions]="{standalone: true}">
     </div>
     <div *ngIf="status.isAdmin == 0; else admin" class="div-margin-top d-grid gap-2 col-6 mx-auto">
         <button (click)="postTurn()" class="btn btn-primary">Solicitar turno</button>

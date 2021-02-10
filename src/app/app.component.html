@@ -21,18 +21,21 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['shifts']">Turnos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" *ngIf="status.status == 'ok'; else login" (click)="logout()" [routerLink]="['login']">Cerrar sesión</a>
+            <li class="nav-item" *ngIf="status.isAdmin == 1">
+                <a class=" nav-link " [routerLink]="[ 'users'] ">Users</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " *ngIf="status.status=='ok' ; else login " (click)="logout() " [routerLink]="[ 'login'] ">Cerrar sesión</a>
                 <ng-template #login>
-                    <a class="nav-link" [routerLink]="['login']">Iniciar sesión</a>
+                    <a class="nav-link " [routerLink]="[ 'login'] ">Iniciar sesión</a>
                 </ng-template>
             </li>
         </ul>
     </div>
-    <!-- <img src="../assets/img/dark-mode-icon.png" class="right" (click)="toggleDarkMode()"> -->
+    <!-- <img src="../assets/img/dark-mode-icon.png " class="right " (click)="toggleDarkMode() "> -->
 </nav>
 
 
-<div class="container">
+<div class="container ">
     <router-outlet></router-outlet>
 </div>

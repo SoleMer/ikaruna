@@ -38,6 +38,7 @@ export class TherapyListComponent implements OnInit {
     });
     
   }
+  
 
   setAdmins(therapies: Therapy[]) {
     this.userControlSvc.getTherapist()

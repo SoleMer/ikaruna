@@ -1,1 +1,19 @@
-<p>user-list works!</p>
+<div class="text-center">
+    <h2 class="title">Usuarios</h2>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>email</th>
+            <th>Teléfono</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+        </tr>
+    </tbody>
+</table>

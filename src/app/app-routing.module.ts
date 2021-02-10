@@ -10,6 +10,7 @@ import { WorkshopListComponent } from "./workshop-list/workshop-list.component";
 import { IkarunaShiftsComponent } from "./ikaruna-shifts/ikaruna-shifts.component";
 import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
 import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'shifts',
     component: IkarunaShiftsComponent,
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
   },
   {
     path: 'login',

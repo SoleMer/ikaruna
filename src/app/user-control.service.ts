@@ -5,6 +5,8 @@ import { NewUser } from './ikaruna-check-in/newUser';
 import { User, UserLogin, UserStatus } from './user-list/user';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { stringify } from '@angular/compiler/src/util';
+import { Reply } from './therapy-list/therapy';
 
 const URL = 'http://localhost/ikaruna-backend/api/user/';
 const URL_LOGIN = 'http://localhost/ikaruna-backend/api/login';
@@ -90,8 +92,8 @@ export class UserControlService {
     return this.http.get<User[]>(URL);
   }
 
-  public getById(id): Observable<User> {
-    const  params = new  HttpParams().set(':ID', id);
+  public getById(id: number): Observable<User> {
+    const  params = new  HttpParams().set(':ID', stringify(id));
     return this.http.get<User>(URL,{params});
   }
   
@@ -104,6 +106,10 @@ export class UserControlService {
         return res;
       }) 
     ) */
+  }
+
+  public delete(id: number): any{
+    return this.http.delete(`http://localhost/ikaruna-backend/api/user/${id}`);
   }
 /** 
   updateListAdmins(res:User[]) {

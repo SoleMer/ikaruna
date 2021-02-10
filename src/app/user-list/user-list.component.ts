@@ -10,6 +10,7 @@ import { User } from './user';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
+  response : any;
 
   constructor(private userControlSvc: UserControlService) { }
 
@@ -22,5 +23,14 @@ export class UserListComponent implements OnInit {
     .subscribe((res) => {
       this.users = res;
     });
+  }
+
+  delete(id: number) {
+    this.userControlSvc.delete(id)
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
+    });
+    this.getAll();
   }
 }

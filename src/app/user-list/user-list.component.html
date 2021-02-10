@@ -7,6 +7,7 @@
             <th>Nombre</th>
             <th>email</th>
             <th>Teléfono</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +15,9 @@
             <td>{{user.username}}</td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
+            <td>
+                <app-btn-delete [id]="user.id" (delete)="delete($event)"></app-btn-delete>
+            </td>
         </tr>
     </tbody>
 </table>

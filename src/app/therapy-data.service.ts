@@ -31,7 +31,10 @@ export class TherapyDataService {
     }
     
     public edit(therapy:Therapy,id:number) {}
-    public delete(id:number) {}
+    
+    public delete(id: number): any{
+      return this.http.delete(`http://localhost/ikaruna-backend/api/therapy/${id}`);
+    }
     
     public getById(id:number) {
       console.log("getById")

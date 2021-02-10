@@ -24,6 +24,8 @@ import { IkarunaSectionComponent } from './ikaruna-section/ikaruna-section.compo
 import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
 import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
 import { TherapyListComponent } from './therapy-list/therapy-list.component';
+import { BtnDeleteComponent } from './btn-delete/btn-delete.component';
+import { BtnEditComponent } from './btn-edit/btn-edit.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { TherapyListComponent } from './therapy-list/therapy-list.component';
     LogAndCheckInComponent,
     AddWorkshopComponent,
     TherapyListComponent,
+    BtnDeleteComponent,
+    BtnEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Workshop } from './workshop';
-import { WorkshopDataService } from '../workshop-data.service'
+import { WorkshopDataService } from '../workshop-data.service';
+import { UserControlService } from '../user-control.service';
+import { UserStatus } from '../user-list/user';
 
 
 @Component({
@@ -11,15 +13,23 @@ import { WorkshopDataService } from '../workshop-data.service'
 export class WorkshopListComponent implements OnInit {
 
   workshops: Workshop[] = [];
+  status: UserStatus;
+  response: any;
 
-  constructor(private workshopsDataService: WorkshopDataService) { }
+  constructor(private workshopsDataService: WorkshopDataService,
+    private userControlSvc: UserControlService) {
+      userControlSvc.logged.subscribe(t => this.status = t);
+     }
 
   selected: Workshop;
 
   ngOnInit(): void {
+    this.getAll();
+  }
+  
+  getAll() {
     this.workshopsDataService.getAll()
     .subscribe(workshops => this.workshops = workshops);
-    console.log(this.workshops);
   }
 
   setSelected(ws: Workshop) {
@@ -28,5 +38,14 @@ export class WorkshopListComponent implements OnInit {
 
   deleteSelected() {
     this.selected = null;
+  }
+
+  delete(id: number) {
+    this.workshopsDataService.delete(id)
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
+    });
+    this.getAll();
   }
 }

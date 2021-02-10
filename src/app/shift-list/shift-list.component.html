@@ -16,7 +16,7 @@
             <td>{{shift.patient}}</td>
             <td *ngIf="!status">
                 <button type="button" class="btn btn-success" (click)="agree(shift)">Confirmar</button>
-                <button type="button" class="btn btn-danger margin-left" (click)="delete(shift)">Rechazar</button>
+                <app-btn-delete [id]="shift.id" (delete)="delete($event)"></app-btn-delete>
             </td>
         </tr>
     </tbody>

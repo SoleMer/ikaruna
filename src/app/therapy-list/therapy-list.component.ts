@@ -24,21 +24,24 @@ export class TherapyListComponent implements OnInit {
     therapies : Therapy[] = [] ;
     admins : User[] =[] ;
     status : UserStatus;
-  selected: Therapy;
+    selected: Therapy;
+    response: any;
 
   setSelected(trp: Therapy):void {
     this.selected = trp;
   }
 
   ngOnInit(): void {
+    this.getAll();
+  }
+  
+  getAll() {
     this.therapiesDataService.getAll()
     .subscribe((res) => {
       this.therapies = res;
       this.setAdmins(res);
     });
-    
   }
-  
 
   setAdmins(therapies: Therapy[]) {
     this.userControlSvc.getTherapist()
@@ -59,6 +62,15 @@ export class TherapyListComponent implements OnInit {
       }
       
     }
+  }
+
+  delete(id: number) {
+    this.therapiesDataService.delete(id)
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
+    });
+    this.getAll();
   }
 
   edit() {

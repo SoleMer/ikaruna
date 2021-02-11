@@ -26,6 +26,7 @@ import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
 import { TherapyListComponent } from './therapy-list/therapy-list.component';
 import { BtnDeleteComponent } from './btn-delete/btn-delete.component';
 import { BtnEditComponent } from './btn-edit/btn-edit.component';
+import { IkarunaProfileComponent } from './ikaruna-profile/ikaruna-profile.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { BtnEditComponent } from './btn-edit/btn-edit.component';
     TherapyListComponent,
     BtnDeleteComponent,
     BtnEditComponent,
+    IkarunaProfileComponent,
   ],
   imports: [
     BrowserModule,

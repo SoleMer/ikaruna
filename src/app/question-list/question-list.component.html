@@ -4,16 +4,16 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Pregunta</th>
-            <th>Usuario</th>
-            <th>E mail</th>
+            <th><img src="../../assets/img/user-icon.png" class="icon" alt=""></th>
+            <th><img src="../../assets/img/email-icon.png" alt="" class="icon"></th>
+            <th><img src="../../assets/img/question-icon.png" alt="" class="icon"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let q of questions">
-            <td>{{q.text}}</td>
-            <td>{{q.user_id}}</td>
+            <td>{{q.username}}</td>
             <td>{{q.email}}</td>
+            <td>{{q.text}}</td>
         </tr>
     </tbody>
 </table>

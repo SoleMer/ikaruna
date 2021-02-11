@@ -13,9 +13,9 @@
             <div class="accordion-body ">
                 <p>{{therapy.description}}</p>
                 <strong>Terapeuta/s: </strong> {{therapy.therapist_name}}
-                <div class="col-md-2 offset-md-10" style="margin-bottom: 10px;">
-                    <app-btn-delete *ngIf="status.isAdmin == 1" [id]="therapy.id" (delete)="delete($event)"></app-btn-delete>
-                    <button type="button" class="btn btn-primary" *ngIf="status.isAdmin == 1" (click)="edit()">Editar</button>
+                <div class="col-md-4 offset-md-8" style="margin-bottom: 10px;">
+                    <app-btn-delete class="right" *ngIf="status.isAdmin == 1" [id]="therapy.id" (delete)="delete($event)"></app-btn-delete>
+                    <app-btn-edit class="right" [id]="therapy.id" (edit)="edit($event)"></app-btn-edit>
                 </div>
             </div>
         </div>

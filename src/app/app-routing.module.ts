@@ -11,6 +11,7 @@ import { IkarunaShiftsComponent } from "./ikaruna-shifts/ikaruna-shifts.componen
 import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
 import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { IkarunaProfileComponent } from './ikaruna-profile/ikaruna-profile.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserListComponent,
+  },
+  {
+    path: 'profile',
+    component: IkarunaProfileComponent,
   },
   {
     path: 'login',

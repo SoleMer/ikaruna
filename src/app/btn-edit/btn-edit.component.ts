@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-btn-edit',
@@ -7,13 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BtnEditComponent implements OnInit {
 
+  @Output()
+  toggleEdit: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Output()
+  editWorkshop: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output()
+  editUser: EventEmitter<number> = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   toEdit() {
-    
+    console.log("true");
+    this.toggleEdit.emit(true);
   }
   //evento que le dice al service cual es la terapia que se va a editar
   //el service le pide a la api la terapia por el id

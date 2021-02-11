@@ -3,7 +3,7 @@
 </div>
 <ng-template #logged>
     <app-ikaruna-apply-shift *ngIf="page == 'therapies' && status.isAdmin == 0"></app-ikaruna-apply-shift>
-    <app-add-therapy *ngIf="status.isAdmin == 1 && page == 'therapies'"></app-add-therapy>
+    <app-add-edit-therapy *ngIf="status.isAdmin == 1 && page == 'therapies'" [edit]="editTrp"></app-add-edit-therapy>
     <app-ikaruna-questions *ngIf="page == 'workshop' && status.isAdmin == 0"></app-ikaruna-questions>
     <app-add-workshop *ngIf="page == 'workshop' && status.isAdmin == 1"></app-add-workshop>
     <app-ikaruna-contact *ngIf="page == 'about'"></app-ikaruna-contact>

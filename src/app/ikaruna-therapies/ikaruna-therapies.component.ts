@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Therapy } from '../therapy-list/therapy';
 
 @Component({
   selector: 'app-ikaruna-therapies',
@@ -8,14 +9,20 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 export class IkarunaTherapiesComponent implements OnInit {
 
   name: string;
+  editable: Therapy;
 
   constructor() {
     this.name = 'therapies';
    }
 
   ngOnInit(): void {
-    
   }
 
+  setEditable(trp: Therapy) {
+    console.log("therapies");
+    console.log(trp);
+    this.editable = trp;
+    console.log(this.editable);
+  }
 
 }

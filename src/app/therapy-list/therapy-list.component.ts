@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TherapyDataService } from '../therapy-data.service';
 import { UserControlService } from '../user-control.service';
 import { User, UserStatus } from '../user-list/user';
@@ -13,6 +13,8 @@ import { Therapy } from './therapy';
 
 export class TherapyListComponent implements OnInit {
 
+  @Output()
+  setEditable: EventEmitter<Therapy> = new EventEmitter<Therapy>();
   
   constructor(private therapiesDataService: TherapyDataService,
     private userControlSvc: UserControlService) {
@@ -73,8 +75,14 @@ export class TherapyListComponent implements OnInit {
     this.getAll();
   }
 
-  edit() {
-    //llamar al componente que hace el edit
+  toggleEdit(b:boolean) {
+    console.log("therapyList");
+    console.log(this.selected);
+    if(b){
+      this.setEditable.emit(this.selected);
+    } else {
+      this.setEditable.emit(null);
+    }
   }
 
 }

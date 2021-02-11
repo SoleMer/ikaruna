@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Therapy } from '../therapy-list/therapy';
 import { UserControlService } from '../user-control.service';
 import { UserStatus } from '../user-list/user';
 
@@ -17,6 +18,9 @@ export class IkarunaSectionComponent implements OnInit {
 
    @Input()
    page: string = '';
+
+   @Input()
+   editTrp: Therapy;
 
   ngOnInit(): void {  
   }

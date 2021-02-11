@@ -1,0 +1,27 @@
+<div class="text-center">
+    <h2 class="title" *ngIf="edit; else add">Editar terapia</h2>
+    <ng-template #add>
+        <h2 class="title">Agregar terapia</h2>
+    </ng-template>
+</div>
+
+<form>
+    <div class="mb-3">
+        <label for="inputName" class="form-label">Nombre de la terapia</label>
+        <input *ngIf="edit" type="text" class="form-control" id="inputName" [(ngModel)]='trp.name' [ngModelOptions]="{standalone: true}" placeholder={{edit.name}}>
+        <ng-template #add>
+            <input type="text" class="form-control" id="inputName" [(ngModel)]='trp.name' [ngModelOptions]="{standalone: true}">
+        </ng-template>
+    </div>
+    <div class="mb-3">
+        <label for="textarea" class="form-label">Descripción</label>
+        <textarea class="form-control" id="textarea" rows="3" [(ngModel)]='trp.description' [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+    <select class="form-select" aria-label="Default select example" aria-placeholder="Terapeuta" [(ngModel)]='trp.therapist_id' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>
+        <option *ngFor="let ther of therapist" value={{ther.id}}>{{ther.username}}</option>
+      </select>
+    <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-primary" (click)='save()'>Guardar</button>
+        <button type="submit" class="btn btn-primary" (click)='cancel()' *ngIf="edit">Cancelar</button>
+    </div>
+</form>

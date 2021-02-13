@@ -28,6 +28,13 @@ export class UserControlService {
 
   logged: BehaviorSubject<UserStatus> = new BehaviorSubject(this._logged);
 
+  private _userLogged: User = {
+    username: '',
+    email: '',
+    phone: ''
+  }
+
+  userLogged: BehaviorSubject<User> = new BehaviorSubject(this._userLogged);
   
   private _admins: User[] = [];
   admins: BehaviorSubject<User[]> = new BehaviorSubject([]);
@@ -77,6 +84,7 @@ export class UserControlService {
   updateLog(res: UserStatus = null) {
     if(res) {
       this._logged = res;
+      this.updateUserLogged(res.id_user);
     } else {
       this._logged.id_user = 0;
       this._logged.isAdmin = 0;
@@ -87,14 +95,21 @@ export class UserControlService {
     this.logged.next(this._logged);
     console.log(this._logged);
   }
+
+  updateUserLogged(id: number) {
+    this.getById(id)
+    .subscribe(u => {
+      this._userLogged = u
+      this.userLogged.next(this._userLogged);
+    });
+  }
   
   public getAll(): Observable<User[]> {
     return this.http.get<User[]>(URL);
   }
 
   public getById(id: number): Observable<User> {
-    const  params = new  HttpParams().set(':ID', stringify(id));
-    return this.http.get<User>(URL,{params});
+    return this.http.get<User>(`http://localhost/ikaruna-backend/api/user/${id}`);
   }
   
   public getTherapist(): Observable<User[]> {
@@ -110,6 +125,10 @@ export class UserControlService {
 
   public delete(id: number): any{
     return this.http.delete(`http://localhost/ikaruna-backend/api/user/${id}`);
+  }
+
+  public edit(user: User, id: number): any {
+    return this.http.put(`http://localhost/ikaruna-backend/api/user/${id}`,user)
   }
 /** 
   updateListAdmins(res:User[]) {

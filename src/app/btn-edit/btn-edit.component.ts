@@ -13,9 +13,6 @@ export class BtnEditComponent implements OnInit {
   @Output()
   editWorkshop: EventEmitter<number> = new EventEmitter<number>();
 
-  @Output()
-  editUser: EventEmitter<number> = new EventEmitter<number>();
-
   constructor() { }
 
   ngOnInit(): void {

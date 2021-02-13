@@ -4,10 +4,12 @@
             <app-shift-list></app-shift-list>
         </div>
         <div class="col-md-4">
-            <app-ikaruna-apply-shift></app-ikaruna-apply-shift>
+            <app-ikaruna-section [page]="name"></app-ikaruna-section>
         </div>
     </div>
 </div>
 <ng-template #user>
-    <app-ikaruna-section [page]="name"></app-ikaruna-section>
+    <div class="col-md-12">
+        <app-ikaruna-section [page]="name"></app-ikaruna-section>
+    </div>
 </ng-template>

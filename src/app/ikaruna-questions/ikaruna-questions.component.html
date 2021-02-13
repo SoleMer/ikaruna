@@ -1,33 +1,14 @@
-<div *ngIf="status.status == 'ok'; else notLogged">
-    <div *ngIf="status.isAdmin == 0; else admin">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="text-center">
-                    <h2 class="title">Consulta</h2>
-                </div>
-                <form>
-                    <div class="mb-3">
-                        <label for="textarea" class="form-label">Ingresá tu consulta para recibir la respuesta en tu correo</label>
-                        <textarea class="form-control" id="textarea" rows="3" [(ngModel)]='q.text' [ngModelOptions]="{standalone: true}"></textarea>
-                    </div>
-
-                    <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-                        <button type="button" class="btn btn-primary" (click)="add()">Enviar</button>
-                    </div>
-                </form>
-
-                <app-ikaruna-contact></app-ikaruna-contact>
-            </div>
-            <div class="col-md-4" *ngIf="status.status != 'ok'">
-                <app-ikaruna-section [page]="name"></app-ikaruna-section>
-            </div>
-
-        </div>
+<div class="row">
+    <div class="col-md-12" *ngIf="status.status == 'ok'; else notLogged">
+        <app-question-list *ngIf="status.isAdmin == 1; else notAdmin"></app-question-list>
+        <ng-template #notAdmin>
+            <app-add-question></app-add-question>
+        </ng-template>
     </div>
-    <ng-template #admin>
-        <app-question-list></app-question-list>
+
+    <ng-template #notLogged>
+        <div class="col-md-12">
+            <app-ikaruna-section></app-ikaruna-section>
+        </div>
     </ng-template>
 </div>
-<ng-template #notLogged>
-    <app-ikaruna-section></app-ikaruna-section>
-</ng-template>

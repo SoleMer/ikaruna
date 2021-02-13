@@ -8,8 +8,8 @@
 <form>
     <div class="mb-3">
         <label for="inputName" class="form-label">Nombre de la terapia</label>
-        <input *ngIf="edit" type="text" class="form-control" id="inputName" [(ngModel)]='trp.name' [ngModelOptions]="{standalone: true}" placeholder={{edit.name}}>
-        <ng-template #add>
+        <input *ngIf="edit; else inputAdd" type="text" class="form-control" id="inputName" [(ngModel)]='trp.name' [ngModelOptions]="{standalone: true}" placeholder={{edit.name}}>
+        <ng-template #inputAdd>
             <input type="text" class="form-control" id="inputName" [(ngModel)]='trp.name' [ngModelOptions]="{standalone: true}">
         </ng-template>
     </div>

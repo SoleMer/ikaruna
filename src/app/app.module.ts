@@ -16,7 +16,6 @@ import { IkarunaShiftsComponent } from './ikaruna-shifts/ikaruna-shifts.componen
 import { IkarunaWorkshopsComponent } from './ikaruna-workshops/ikaruna-workshops.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { IkarunaNotificationsComponent } from './ikaruna-notifications/ikaruna-notifications.component';
-import { AddTherapyComponent } from './add-therapy/add-therapy.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { FormsModule } from '@angular/forms'
@@ -28,6 +27,7 @@ import { BtnDeleteComponent } from './btn-delete/btn-delete.component';
 import { BtnEditComponent } from './btn-edit/btn-edit.component';
 import { IkarunaProfileComponent } from './ikaruna-profile/ikaruna-profile.component';
 import { AddEditTherapyComponent } from './add-edit-therapy/add-edit-therapy.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,6 @@ import { AddEditTherapyComponent } from './add-edit-therapy/add-edit-therapy.com
     IkarunaWorkshopsComponent,
     QuestionListComponent,
     IkarunaNotificationsComponent,
-    AddTherapyComponent,
     UserListComponent,
     IkarunaSectionComponent,
     LogAndCheckInComponent,
@@ -55,6 +54,7 @@ import { AddEditTherapyComponent } from './add-edit-therapy/add-edit-therapy.com
     BtnEditComponent,
     IkarunaProfileComponent,
     AddEditTherapyComponent,
+    AddQuestionComponent,
   ],
   imports: [
     BrowserModule,

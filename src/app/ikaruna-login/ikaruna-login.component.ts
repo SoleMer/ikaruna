@@ -29,7 +29,6 @@ export class IkarunaLoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.user);
     this.userControlService.login(this.user)
     .subscribe(res => {
       this.response =res;

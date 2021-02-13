@@ -11,7 +11,7 @@
                             <img src="../../assets/img/user-icon.png" class="icon" alt="">
                         </th>
                         <th>
-                            <h2>username</h2>
+                            <h2>{{user.username}}</h2>
                         </th>
                     </tr>
                 </thead>
@@ -21,7 +21,10 @@
                             <img src="../../assets/img/email-icon.png" class="icon" alt="">
                         </td>
                         <td>
-                            <p class="big"> user.email</p>
+                            <p *ngIf="!edit; else editEmail" class="big"> {{user.email}}</p>
+                            <ng-template #editEmail>
+                                <input type="text" class="margin-bottom" [(ngModel)]='userEdit.email' [ngModelOptions]="{standalone: true}" placeholder="{{user.email}}">
+                            </ng-template>
                         </td>
                     </tr>
                     <tr>
@@ -29,15 +32,31 @@
                             <img src="../../assets/img/whatsapp-icon.png" class="icon" alt="">
                         </td>
                         <td>
-                            <p class="big"> user.phone</p>
+                            <p *ngIf="!edit; else editPhone" class="big"> {{user.phone}}</p>
+                            <ng-template #editPhone>
+                                <input type="text" class="margin-bottom" [(ngModel)]='userEdit.phone' [ngModelOptions]="{standalone: true}" placeholder="{{user.phone}}">
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr *ngIf="edit">
+                        <td>
+                            <img src="../../assets/img/pass-icon.png" class="icon" alt="">
+                        </td>
+                        <td>
+                            <p>Ingresa tu contraseña para confirmar tu identidad</p>
+                            <input type="password" class="margin-bottom" [(ngModel)]='userEdit.password' [ngModelOptions]="{standalone: true}">
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="card-footer">
-                <app-btn-edit class="right" [id]=""></app-btn-edit>
+                <app-btn-edit *ngIf="!edit; else cancel" class="right" (toggleEdit)="toggleEdit($event)"></app-btn-edit>
+                <ng-template #cancel>
+                    <img src="../../assets/img/cancel-icon.png" class="right icon margin-left" (click)="toggleEdit(false)" alt="">
+                    <img src="../../assets/img/save-icon.png" class="right icon margin-left" (click)="save()" alt=" ">
+                </ng-template>
             </div>
         </div>
     </div>
-    <div class="col-md-3 offset-md-3">Section Notificacones</div>
+    <div class="col-md-3 offset-md-3 ">Section Notificacones</div>
 </div>

@@ -4,7 +4,7 @@
 <ng-template #logged>
     <div *ngIf="status.isAdmin ==1 ; else user">
         <app-add-edit-therapy *ngIf="page == 'therapies'" [edit]="editTrp"></app-add-edit-therapy>
-        <app-add-workshop *ngIf="page == 'workshop'"></app-add-workshop>
+        <app-add-edit-workshop *ngIf="page == 'workshop'" [edit]="editWs"></app-add-edit-workshop>
     </div>
     <ng-template #user>
         <div>

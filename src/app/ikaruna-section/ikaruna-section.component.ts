@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Therapy } from '../therapy-list/therapy';
 import { UserControlService } from '../user-control.service';
 import { UserStatus } from '../user-list/user';
+import { Workshop } from '../workshop-list/workshop';
 
 @Component({
   selector: 'app-ikaruna-section',
@@ -21,6 +22,9 @@ export class IkarunaSectionComponent implements OnInit {
 
    @Input()
    editTrp: Therapy;
+
+   @Input()
+   editWs: Workshop;
 
   ngOnInit(): void {  
   }

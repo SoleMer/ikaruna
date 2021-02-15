@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Workshop } from './workshop';
 import { WorkshopDataService } from '../workshop-data.service';
 import { UserControlService } from '../user-control.service';
@@ -11,6 +11,9 @@ import { UserStatus } from '../user-list/user';
   styleUrls: ['./workshop-list.component.scss']
 })
 export class WorkshopListComponent implements OnInit {
+
+  @Output()
+  setEditable: EventEmitter<Workshop> = new EventEmitter<Workshop>();
 
   workshops: Workshop[] = [];
   status: UserStatus;
@@ -33,6 +36,7 @@ export class WorkshopListComponent implements OnInit {
   }
 
   setSelected(ws: Workshop) {
+    console.log("setSelected");
     this.selected = ws;
   }
 
@@ -47,5 +51,15 @@ export class WorkshopListComponent implements OnInit {
       console.log(this.response);
     });
     this.getAll();
+  }
+
+  toggleEdit(b:boolean) {
+    if(b){
+      console.log("ws-list: toggleEdit");
+      console.log(this.selected);
+      this.setEditable.emit(this.selected);
+    } else {
+      this.setEditable.emit(null);
+    }
   }
 }

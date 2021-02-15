@@ -30,7 +30,10 @@ export class WorkshopDataService {
       ));
   }
 
-  public edit(workshop: Workshop, id:number) {}
+  public edit(workshop: Workshop,id:number): any {
+    return this.http.put(`http://localhost/ikaruna-backend/api/workshop/${id}`,
+    JSON.parse(JSON.stringify(workshop)));
+  }
   
   public delete(id: number): any{
     return this.http.delete(`http://localhost/ikaruna-backend/api/workshop/${id}`);

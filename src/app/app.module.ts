@@ -28,6 +28,7 @@ import { BtnEditComponent } from './btn-edit/btn-edit.component';
 import { IkarunaProfileComponent } from './ikaruna-profile/ikaruna-profile.component';
 import { AddEditTherapyComponent } from './add-edit-therapy/add-edit-therapy.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
+import { AddEditWorkshopComponent } from './add-edit-workshop/add-edit-workshop.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AddQuestionComponent } from './add-question/add-question.component';
     IkarunaProfileComponent,
     AddEditTherapyComponent,
     AddQuestionComponent,
+    AddEditWorkshopComponent,
   ],
   imports: [
     BrowserModule,

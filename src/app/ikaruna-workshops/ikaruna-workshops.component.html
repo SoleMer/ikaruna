@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-8">
-        <app-workshop-list></app-workshop-list>
+        <app-workshop-list (setEditable)="setEditable($event)"></app-workshop-list>
     </div>
     <div class="col-md-4">
-        <app-ikaruna-section [page]="name"></app-ikaruna-section>
+        <app-ikaruna-section [page]="name" [editWs]="editable"></app-ikaruna-section>
     </div>
 </div>

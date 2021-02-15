@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Workshop } from '../workshop-list/workshop';
 
 @Component({
   selector: 'app-ikaruna-workshops',
@@ -8,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class IkarunaWorkshopsComponent implements OnInit {
 
   name:string;
+  editable: Workshop;
 
   constructor() { 
+    this.name = 'workshop';
   }
   
   ngOnInit(): void {
-    this.name = 'workshop';
   }
  
+  setEditable(ws: Workshop) {
+    console.log("workshops");
+    console.log(ws);
+    this.editable = ws;
+    console.log(this.editable);
+  }
 }

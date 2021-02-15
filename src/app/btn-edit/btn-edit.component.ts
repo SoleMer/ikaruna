@@ -10,8 +10,8 @@ export class BtnEditComponent implements OnInit {
   @Output()
   toggleEdit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @Output()
-  editWorkshop: EventEmitter<number> = new EventEmitter<number>();
+  @Input()
+  id: number;
 
   constructor() { }
 
@@ -19,7 +19,7 @@ export class BtnEditComponent implements OnInit {
   }
 
   toEdit() {
-    console.log("true");
+    console.log("btn-edit: id");
     this.toggleEdit.emit(true);
   }
   //evento que le dice al service cual es la terapia que se va a editar

@@ -18,7 +18,6 @@
                             <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success" style="margin-left: 10px;">Quiero hacer este taller!</button>
                             <ng-template #admin>
                                 <app-btn-delete class="right" *ngIf="status.isAdmin == 1" [id]="ws.id" (delete)="delete($event)"></app-btn-delete>
-                                <app-btn-edit class="right" [id]="therapy.id" (edit)="edit($event)"></app-btn-edit>
                             </ng-template>
                         </ng-template>
                     </div>
@@ -35,12 +34,12 @@
                     <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success">Quiero hacer este taller!</button>
                     <ng-template #admin>
                         <app-btn-delete class="right" *ngIf="status.isAdmin == 1" [id]="ws.id" (delete)="delete($event)"></app-btn-delete>
-                        <app-btn-edit class="right" [id]="therapy.id" (edit)="edit($event)"></app-btn-edit>
+                        <app-btn-edit class="right" (toggleEdit)="toggleEdit($event)"></app-btn-edit>
                     </ng-template>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 ">
     </div>
 </div>

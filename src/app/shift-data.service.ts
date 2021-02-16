@@ -23,6 +23,10 @@ export class ShiftDataService {
     return this.http.get<Shift[]>(URL);
   }
 
+  public getMyShifts(id: number): Observable<Shift[]> {
+    return this.http.get<Shift[]>(`http://localhost/ikaruna-backend/api/shift/${id}`);
+  }
+
   public add(shift: Shift): any {
     return this.http.post(URL,JSON.parse(JSON.stringify(shift)))
     .pipe(

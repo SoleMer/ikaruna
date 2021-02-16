@@ -1,0 +1,10 @@
+<div *ngFor="let shift of shifts" [ngClass]="{'alert alert-info': shift.status == 1}">
+    <p *ngIf="shift.status == 1; else pendiente">
+        Tenés un turno <strong>confirmado</strong> para:
+    </p>
+    <ng-template #pendiente>
+        <p>Tenés un turno <strong>pendiente de confirmación</strong> para:</p>
+    </ng-template>
+    <h5>{{shift.name}}</h5>
+    <p>Fecha y hora: {{shift.date}}</p>
+</div>

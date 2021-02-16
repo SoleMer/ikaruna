@@ -1,6 +1,7 @@
 <div class="text-center">
     <h2 *ngIf="status.isAdmin == 1; else user" class="title">Agregá un turno!</h2>
     <ng-template #user>
+        <app-shift-user-list></app-shift-user-list>
         <h2 class="title">Sacá tu turno!</h2>
     </ng-template>
 </div>

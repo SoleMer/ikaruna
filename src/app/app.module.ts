@@ -28,6 +28,7 @@ import { IkarunaProfileComponent } from './ikaruna-profile/ikaruna-profile.compo
 import { AddEditTherapyComponent } from './add-edit-therapy/add-edit-therapy.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { AddEditWorkshopComponent } from './add-edit-workshop/add-edit-workshop.component';
+import { ShiftUserListComponent } from './shift-user-list/shift-user-list.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AddEditWorkshopComponent } from './add-edit-workshop/add-edit-workshop.
     AddEditTherapyComponent,
     AddQuestionComponent,
     AddEditWorkshopComponent,
+    ShiftUserListComponent,
   ],
   imports: [
     BrowserModule,

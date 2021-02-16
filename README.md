@@ -19,9 +19,9 @@ COMO USUARIO LOGUEADO DEBO PODER:
 	+hacer una consulta.
 	+editar mis datos de contacto.
 	+sacar un turno.
-	-ver mis turnos pendientes y aceptados.
+	+ver mis turnos pendientes y aceptados.
 	?solicitar hacer un taller.
-	-ver mis notificaciones.
+	+ver mis notificaciones.
 	-eliminar mis notifcaciones de una en una.
 	-eliminar todas mis notificaciones a la vez.
 	
@@ -34,6 +34,9 @@ COMO ADMIN DEBO PODER:
 	+confirmar un turno solicitado. (cambiar el status=0->1).
 	+acceder al listado de usuarios.
 	+eliminar un usuario.
+
+TASKS
+	+generación automática de notificaciones
 
 ## Ingreso user de prueba
 

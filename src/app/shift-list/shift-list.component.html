@@ -1,8 +1,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Día</th>
-            <th>Hora</th>
+            <th>Fecha y hora</th>
             <th>Terapia</th>
             <th>Paciente</th>
             <th>Confirmar</th>
@@ -11,12 +10,11 @@
     <tbody>
         <tr *ngFor="let shift of shifts" [ngClass]="{'table-warning': !shift.status}">
             <td>{{shift.date}}</td>
-            <td>{{shift.time}}</td>
-            <td>{{shift.therapy}}</td>
-            <td>{{shift.patient}}</td>
-            <td *ngIf="!status">
-                <button type="button" class="btn btn-success" (click)="agree(shift)">Confirmar</button>
-                <app-btn-delete [id]="shift.id" (delete)="delete($event)"></app-btn-delete>
+            <td>{{shift.name}}</td>
+            <td>{{shift.patient_name}}</td>
+            <td>
+                <img *ngIf="shift.status == 0" src="../../assets/img/save-icon.png" class="icon" (click)="agree(shift)" alt="Confirmar">
+                <app-btn-delete [id]="shift.id" (delete)="delete($event)" class="icon margin-left"></app-btn-delete>
             </td>
         </tr>
     </tbody>

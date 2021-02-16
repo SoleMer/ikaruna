@@ -16,7 +16,7 @@ export class IkarunaApplyShiftComponent implements OnInit {
   status: UserStatus;
   shift: Shift;
   therapies: Therapy[] = [];
-  response: Reply;
+  response: any;
 
   constructor(private userControlService: UserControlService,
     private shiftDataSvc: ShiftDataService,
@@ -40,9 +40,14 @@ export class IkarunaApplyShiftComponent implements OnInit {
   }
 
   postTurn(){
-    this.shift.patient = this.status.id_user;
+    console.log(this.status);
     this.shift.status = this.status.isAdmin;
     console.log(this.shift);
+    if(this.status.isAdmin == 1) {
+      this.shift.patient = 0;
+    } else {
+      this.shift.patient = this.status.id_user;
+    }
     this.shiftDataSvc.add(this.shift)
     .subscribe(r => {
       console.log(r);

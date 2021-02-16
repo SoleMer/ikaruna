@@ -44,4 +44,8 @@ export class AddEditWorkshopComponent implements OnInit {
     });
   }
 }
+
+cancel() {
+  this.edit = null;
+}
 }

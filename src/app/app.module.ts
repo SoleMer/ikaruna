@@ -21,7 +21,6 @@ import { UserListComponent } from './user-list/user-list.component';
 import { FormsModule } from '@angular/forms'
 import { IkarunaSectionComponent } from './ikaruna-section/ikaruna-section.component';
 import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.component';
-import { AddWorkshopComponent } from './add-workshop/add-workshop.component';
 import { TherapyListComponent } from './therapy-list/therapy-list.component';
 import { BtnDeleteComponent } from './btn-delete/btn-delete.component';
 import { BtnEditComponent } from './btn-edit/btn-edit.component';
@@ -49,7 +48,6 @@ import { AddEditWorkshopComponent } from './add-edit-workshop/add-edit-workshop.
     UserListComponent,
     IkarunaSectionComponent,
     LogAndCheckInComponent,
-    AddWorkshopComponent,
     TherapyListComponent,
     BtnDeleteComponent,
     BtnEditComponent,

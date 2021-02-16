@@ -33,7 +33,7 @@
                 <div class="col-md-5 offset-md-7" style="margin-bottom: 10px;">
                     <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success">Quiero hacer este taller!</button>
                     <ng-template #admin>
-                        <app-btn-delete class="right" *ngIf="status.isAdmin == 1" [id]="ws.id" (delete)="delete($event)"></app-btn-delete>
+                        <app-btn-delete class="right" [id]="ws.id" (delete)="delete($event)"></app-btn-delete>
                         <app-btn-edit class="right" (toggleEdit)="toggleEdit($event)"></app-btn-edit>
                     </ng-template>
                 </div>

@@ -1,7 +1,14 @@
 <div class="text-center">
-    <h2 class="title">Sacá tu turno!</h2>
+    <h2 *ngIf="status.isAdmin == 1; else user" class="title">Agregá un turno!</h2>
+    <ng-template #user>
+        <h2 class="title">Sacá tu turno!</h2>
+    </ng-template>
 </div>
 <form class="text-center">
+    <div *ngIf="status.isAdmin == 1">
+        <label for="inputPatient" class="form-label">Paciente: </label>
+        <input type="text" [(ngModel)]='shift.patient_name' id="inputPatient" [ngModelOptions]="{standalone: true}">
+    </div>
     <select class="form-select" aria-label="Default select example" [(ngModel)]='shift.therapy' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>
             <option *ngFor="let ther of therapies" value={{ther.id}} >{{ther.name}}</option>
         </select>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TherapyDataService } from '../therapy-data.service';
 import { UserControlService } from '../user-control.service';
 import { User, UserStatus } from '../user-list/user';
@@ -16,14 +17,14 @@ export class TherapyListComponent implements OnInit {
   @Output()
   setEditable: EventEmitter<Therapy> = new EventEmitter<Therapy>();
   
+  therapies$ : Observable<Therapy[]>;
+  
   constructor(private therapiesDataService: TherapyDataService,
     private userControlSvc: UserControlService) {
-      //userControlSvc.admins.subscribe(a => this.admins = a);
-      therapiesDataService.therapies.subscribe(t => this.therapies = t);
+      this.therapies$ = therapiesDataService.therapies.asObservable();
       userControlSvc.logged.subscribe(s => this.status = s);
     }
     
-    therapies : Therapy[] = [] ;
     admins : User[] =[] ;
     status : UserStatus;
     selected: Therapy;
@@ -39,40 +40,19 @@ export class TherapyListComponent implements OnInit {
   
   getAll() {
     this.therapiesDataService.getAll()
-    .subscribe((res) => {
-      this.therapies = res;
-      this.setAdmins(res);
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
     });
   }
-
-  setAdmins(therapies: Therapy[]) {
-    this.userControlSvc.getTherapist()
-    .subscribe(a => {
-      this.admins = a;
-      this.setTherapistName(therapies, a);
-    });
-  }
-
-  setTherapistName(trp:Therapy[], administrators:User[]) {
-    for (let i = 0; i < trp.length; i++) {
-      const t = trp[i];
-      for (let j = 0; j < administrators.length; j++) {
-        const admin = administrators[j];
-        if (t.therapist_id == admin.id) {
-          t.therapist_name = admin.username;
-        }
-      }
-      
-    }
-  }
-
+  
   delete(id: number) {
     this.therapiesDataService.delete(id)
     .subscribe(r => {
       this.response = r;
       console.log(this.response);
+      this.getAll();
     });
-    this.getAll();
   }
 
   toggleEdit(b:boolean) {

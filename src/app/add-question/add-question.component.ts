@@ -35,6 +35,10 @@ export class AddQuestionComponent implements OnInit {
       this.response =res;
       console.log(this.response);
     });
+    this.q = {
+      text : '',
+      user_id : this.status.id_user
+    }
   }
 
 }

@@ -49,12 +49,26 @@ export class AddEditTherapyComponent implements OnInit {
     this.therapyDataSvc.edit(this.trp, this.edit.id)
     .subscribe(r => {
       console.log(r);
-      return this.response = r;
+      this.response = r;
+      this.getAll();
     });
+  }
+  this.trp = {
+    name: '',
+    description: '',
+    therapist_id: 0
   }
   }
 
   cancel() {
     this.edit = null;
+  }
+
+  getAll() {
+    this.therapyDataSvc.getAll()
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
+    });
   }
 }

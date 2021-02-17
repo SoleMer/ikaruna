@@ -22,7 +22,7 @@ COMO USUARIO LOGUEADO DEBO PODER:
 	+ver mis turnos pendientes y aceptados.
 	?solicitar hacer un taller.
 	+ver mis notificaciones.
-	-eliminar mis notifcaciones de una en una.
+	+eliminar mis notifcaciones de una en una.
 	-eliminar todas mis notificaciones a la vez.
 	
 COMO ADMIN DEBO PODER:
@@ -37,6 +37,16 @@ COMO ADMIN DEBO PODER:
 
 TASKS
 	+generación automática de notificaciones
+	+limpiar formularios al finalizar
+	actualización automática de listados después de A/B/M:
+		+therapies
+		-workshops
+		-shifts
+		-users
+		-profile
+		-notifcations
+	-mostrar pequeñas 'toasts' al solicitar un turno o generar una consulta.
+	-imágenes a los workshops
 
 ## Ingreso user de prueba
 

@@ -43,6 +43,12 @@ export class AddEditWorkshopComponent implements OnInit {
       return this.response = r;
     });
   }
+  this.wsp = {
+    name: '',
+    caption: '',
+    contents: '',
+    modality: ''
+  }
 }
 
 cancel() {

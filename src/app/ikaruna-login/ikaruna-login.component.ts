@@ -21,10 +21,15 @@ export class IkarunaLoginComponent implements OnInit {
   user: UserLogin;
   response: UserStatus;
 
+  pagina: string = "";
+
   ngOnInit(): void {
     this.user = {
       email : '',
       password : ''
+    }
+    if(location.href == "http://localhost:4200/login") {
+      this.pagina = "../therapies";
     }
   }
 
@@ -39,6 +44,9 @@ export class IkarunaLoginComponent implements OnInit {
       this.cookieSvc.set("user_id", id);
       this.cookieSvc.set("isAdmin", isAdmin);
       this.cookieSvc.set("token", token);
+      if(this.response.status == 'ok' && this.pagina != "") {
+        location.href = this.pagina ;
+      }
     });
   }
 

@@ -14,4 +14,8 @@ export class NotificationDataService {
   public getAll(id: number): Observable<Notification[]> {
     return this.http.get<Notification[]>(`http://localhost/ikaruna-backend/api/notification/${id}`);
   }
+
+  public delete(id: number): any{
+    return this.http.delete(`http://localhost/ikaruna-backend/api/notification/${id}`);
+  }
 }

@@ -2,7 +2,7 @@
     <h2 class="title">Terapias</h2>
 </div>
 <div class="accordion" id="accordionExample">
-    <div *ngFor="let therapy of therapies" class="accordion-item">
+    <div *ngFor="let therapy of (therapies$ | async)" class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button" type="button" (click)="setSelected(therapy)">
                 {{therapy.name}}
@@ -12,7 +12,7 @@
         <div *ngIf=" (selected) && (selected.id==therapy.id) " class="accordion-collapse collapse show ">
             <div class="accordion-body ">
                 <p>{{therapy.description}}</p>
-                <strong>Terapeuta/s: </strong> {{therapy.therapist_name}}
+                <strong>Terapeuta/s: </strong> {{therapy.username}}
                 <div class="col-md-4 offset-md-8" *ngIf="status.isAdmin == 1" style="margin-bottom: 10px;">
                     <app-btn-delete class="right" [id]="therapy.id" (delete)="delete($event)"></app-btn-delete>
                     <app-btn-edit class="right" (toggleEdit)="toggleEdit($event)"></app-btn-edit>

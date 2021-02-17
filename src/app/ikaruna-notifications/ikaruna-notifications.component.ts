@@ -12,6 +12,7 @@ export class IkarunaNotificationsComponent implements OnInit {
 
   notifications: Notification[] = [];
   status: UserStatus;
+  response: any;
 
   constructor(private userControlSvc: UserControlService,
     private notifDataSvc: NotificationDataService) {
@@ -29,6 +30,14 @@ export class IkarunaNotificationsComponent implements OnInit {
     .subscribe((res) => {
       this.notifications = res;
       console.log(this.notifications);
+    });
+  }
+
+  delete(id: number) {
+    this.notifDataSvc.delete(id)
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
     });
   }
 

@@ -52,6 +52,13 @@ export class IkarunaApplyShiftComponent implements OnInit {
     .subscribe(r => {
       console.log(r);
       return this.response = r;
-    })
+    });
+    this.shift = {
+      patient: 0,
+      therapy: 0,
+      date: 0,
+      time: 0,
+      status: 0
+    };
   }
 }

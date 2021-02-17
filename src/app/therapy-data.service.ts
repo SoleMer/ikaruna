@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Reply, Therapy } from './therapy-list/therapy';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 const URL = 'http://localhost/ikaruna-backend/api/therapy';
 
@@ -17,7 +17,18 @@ export class TherapyDataService {
   constructor( private http: HttpClient) { }
 
   public getAll(): Observable<Therapy[]> {
-    return this.http.get<Therapy[]>(URL);
+    return this.http.get<Therapy[]>(URL)
+     .pipe(
+       tap((therapies: Therapy[]) => {
+         this._therapies = [];
+          therapies.forEach(trp => {
+            console.log(trp);
+            this._therapies.push({...trp});
+          });
+          console.log(this._therapies);
+          this.therapies.next(this._therapies);
+        })
+     );
   }
 
   public add(therapy:Therapy): any {
@@ -25,7 +36,9 @@ export class TherapyDataService {
     .pipe(
       map((res:Reply)=> {
         console.log(res);
-        this.getById(res.id);
+        this._therapies.push({...therapy});
+        console.log(this._therapies);
+        this.therapies.next(this._therapies);
       }
       ));
     }
@@ -45,14 +58,15 @@ export class TherapyDataService {
       .pipe(
         map((trp:Therapy)=> {
           console.log(trp);
-          this.updateTherapies(trp);
       })
     );
   }
 
-  public updateTherapies(trp: Therapy) {
-    console.log("update");
-    this._therapies.push({...trp});
+  public updateTherapies(therapies: Therapy[]) {
+    therapies.forEach(trp => {
+      console.log(trp);
+      this._therapies.push({...trp});
+    });
     console.log(this._therapies);
     this.therapies.next(this._therapies);
   }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Shift } from './shift-list/shift';
 import { Reply } from './therapy-list/therapy';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -14,26 +14,44 @@ export class ShiftDataService {
 
   private _shifts: Shift[] = [];
   shifts: BehaviorSubject<Shift[]> = new BehaviorSubject(this._shifts);
-  //QUESTION: para mantener actualizado el listdo, usar un BehaviorSubect o 
-  //llamar a getAll() cada vez que se agregue algo a la DB?
+
+  private _myShifts: Shift[] = [];
+  myShifts: BehaviorSubject<Shift[]> = new BehaviorSubject(this._myShifts);
 
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<Shift[]> {
-    return this.http.get<Shift[]>(URL);
+    return this.http.get<Shift[]>(URL)
+    .pipe(
+      tap((shifts: Shift[]) => {
+        this._shifts = [];
+         shifts.forEach(s => {
+           console.log(s);
+           this._shifts.push({...s});
+         });
+         console.log(this._shifts);
+         this.shifts.next(this._shifts);
+       })
+    );
   }
 
   public getMyShifts(id: number): Observable<Shift[]> {
-    return this.http.get<Shift[]>(`http://localhost/ikaruna-backend/api/shift/${id}`);
+    return this.http.get<Shift[]>(`http://localhost/ikaruna-backend/api/shift/${id}`)
+    .pipe(
+      tap((shifts: Shift[]) => {
+        this._myShifts = [];
+         shifts.forEach(s => {
+           console.log(s);
+           this._myShifts.push({...s});
+         });
+         console.log(this._myShifts);
+         this.myShifts.next(this._myShifts);
+       })
+    );
   }
 
   public add(shift: Shift): any {
-    return this.http.post(URL,JSON.parse(JSON.stringify(shift)))
-    .pipe(
-      map((res:Reply)=> {
-        console.log(res);
-      }
-      ));
+    return this.http.post(URL,JSON.parse(JSON.stringify(shift)));
   }
 
   public delete(id: number): any{

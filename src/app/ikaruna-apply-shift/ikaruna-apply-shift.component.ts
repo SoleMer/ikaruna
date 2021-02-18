@@ -51,7 +51,12 @@ export class IkarunaApplyShiftComponent implements OnInit {
     this.shiftDataSvc.add(this.shift)
     .subscribe(r => {
       console.log(r);
-      return this.response = r;
+      this.response = r;
+      if(this.shift.status == 0) {
+        this.getMyShifts();
+      } else {
+        this.getAll();
+      }
     });
     this.shift = {
       patient: 0,
@@ -60,5 +65,20 @@ export class IkarunaApplyShiftComponent implements OnInit {
       time: 0,
       status: 0
     };
+  }
+
+  getMyShifts() {
+    this.shiftDataSvc.getMyShifts(this.status.id_user)
+    .subscribe((res) => {
+      this.response = res;
+      console.log(res);
+    });
+  }
+
+  getAll() {
+    this.shiftDataSvc.getAll()
+    .subscribe((res) => {
+      this.response = res;
+    });
   }
 }

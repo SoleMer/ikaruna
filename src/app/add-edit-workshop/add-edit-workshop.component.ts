@@ -33,7 +33,8 @@ export class AddEditWorkshopComponent implements OnInit {
     if(this.edit ==null){
       this.wspSvc.add(this.wsp)
     .subscribe(r => {
-      return this.response = r;
+       this.response = r;
+       this.getAll();
     });
   } else {
     console.log("edit");
@@ -42,6 +43,7 @@ export class AddEditWorkshopComponent implements OnInit {
       console.log(r);
       this.response = r;
       this.getAll();
+      this.cancel();
     });
   }
   this.wsp = {

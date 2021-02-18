@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { NotificationDataService } from '../notification-data.service';
 import { UserControlService } from '../user-control.service';
 import { UserStatus } from '../user-list/user';
@@ -10,13 +11,14 @@ import { UserStatus } from '../user-list/user';
 })
 export class IkarunaNotificationsComponent implements OnInit {
 
-  notifications: Notification[] = [];
+  notifications$: Observable<Notification[]>;
   status: UserStatus;
   response: any;
 
   constructor(private userControlSvc: UserControlService,
     private notifDataSvc: NotificationDataService) {
       userControlSvc.logged.subscribe(s => this.status = s);
+      this.notifications$ = notifDataSvc.notifications.asObservable();
    }
 
   ngOnInit(): void {
@@ -28,8 +30,7 @@ export class IkarunaNotificationsComponent implements OnInit {
   getAll() {
     this.notifDataSvc.getAll(this.status.id_user)
     .subscribe((res) => {
-      this.notifications = res;
-      console.log(this.notifications);
+      this.response = res;
     });
   }
 
@@ -38,6 +39,7 @@ export class IkarunaNotificationsComponent implements OnInit {
     .subscribe(r => {
       this.response = r;
       console.log(this.response);
+      this.getAll();
     });
   }
 

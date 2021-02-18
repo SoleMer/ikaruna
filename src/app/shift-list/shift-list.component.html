@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let shift of shifts" [ngClass]="{'table-warning': shift.status == 0}">
+        <tr *ngFor="let shift of (shifts$ | async)" [ngClass]="{'table-warning': shift.status == 0}">
             <td>{{shift.date}}</td>
             <td>{{shift.name}}</td>
             <td>{{shift.patient_name}}</td>

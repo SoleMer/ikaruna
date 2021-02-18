@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ShiftDataService } from '../shift-data.service';
 import { Shift } from './shift';
 
@@ -9,11 +10,11 @@ import { Shift } from './shift';
 })
 export class ShiftListComponent implements OnInit {
 
-  shifts : Shift[] = [];
+  shifts$ : Observable<Shift[]> ;
   response: any;
 
   constructor(private shiftSvc: ShiftDataService) {
-    shiftSvc.shifts.subscribe(s => this.shifts = s);
+    this.shifts$ = shiftSvc.shifts.asObservable();
    }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class ShiftListComponent implements OnInit {
   getAll() {
     this.shiftSvc.getAll()
     .subscribe((res) => {
-      this.shifts = res;
+      this.response = res;
     });
   }
 
@@ -32,9 +33,9 @@ export class ShiftListComponent implements OnInit {
     this.shiftSvc.agree(shift, shift.id)
     .subscribe(r => {
       this.response = r;
+      this.getAll();
       console.log(this.response);
     });
-    this.getAll();
   }
 
   delete(id: number) {
@@ -42,8 +43,8 @@ export class ShiftListComponent implements OnInit {
     .subscribe(r => {
       this.response = r;
       console.log(this.response);
+      this.getAll();
     });
-    this.getAll();
   }
 
 }

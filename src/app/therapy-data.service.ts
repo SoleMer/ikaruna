@@ -32,15 +32,7 @@ export class TherapyDataService {
   }
 
   public add(therapy:Therapy): any {
-    return this.http.post(URL,JSON.parse(JSON.stringify(therapy)))
-    .pipe(
-      map((res:Reply)=> {
-        console.log(res);
-        this._therapies.push({...therapy});
-        console.log(this._therapies);
-        this.therapies.next(this._therapies);
-      }
-      ));
+    return this.http.post(URL,JSON.parse(JSON.stringify(therapy)));
     }
     
     public edit(therapy:Therapy,id:number): any {

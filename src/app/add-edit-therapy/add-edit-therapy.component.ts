@@ -42,7 +42,8 @@ export class AddEditTherapyComponent implements OnInit {
     if(this.edit ==null){
     this.therapyDataSvc.add(this.trp)
     .subscribe(r => {
-      return this.response = r;
+     this.response = r;
+     this.getAll();
     });
   } else {
     console.log("edit");
@@ -51,6 +52,7 @@ export class AddEditTherapyComponent implements OnInit {
       console.log(r);
       this.response = r;
       this.getAll();
+      this.cancel();
     });
   }
   this.trp = {

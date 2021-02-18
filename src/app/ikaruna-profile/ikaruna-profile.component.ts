@@ -21,7 +21,7 @@ export class IkarunaProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //this.getUser();
+    this.getUser();
     console.log(this.user);
     this.edit = false;
     this.userEdit = {
@@ -49,8 +49,8 @@ export class IkarunaProfileComponent implements OnInit {
     .subscribe(r => {
       this.response = r
       console.log(r);
+      this.getUser();
     });
-    this.getUser();
     this.edit = false;
   }
 }

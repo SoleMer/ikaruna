@@ -36,15 +36,7 @@ export class WorkshopDataService {
   public add(workshop: Workshop): any {
     console.log("enviando al servidor:")
     console.log(workshop);
-    return this.http.post(URL, JSON.parse(JSON.stringify(workshop)))
-    .pipe(
-      map((res:Reply)=> {
-        console.log(res);
-        this._workshops.push({...workshop});
-        console.log(this._workshops);
-        this.workshops.next(this._workshops);
-      }
-      ));
+    return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
   }
 
   public edit(workshop: Workshop,id:number): any {

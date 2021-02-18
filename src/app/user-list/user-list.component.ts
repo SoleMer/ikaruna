@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserControlService } from '../user-control.service';
 import { User } from './user';
 
@@ -9,10 +10,12 @@ import { User } from './user';
 })
 export class UserListComponent implements OnInit {
 
-  users: User[] = [];
+  users$: Observable<User[]>;
   response : any;
 
-  constructor(private userControlSvc: UserControlService) { }
+  constructor(private userControlSvc: UserControlService) {
+    this.users$ = userControlSvc.users.asObservable();
+   }
 
   ngOnInit(): void {
     this.getAll();
@@ -21,7 +24,7 @@ export class UserListComponent implements OnInit {
   getAll() {
     this.userControlSvc.getAll()
     .subscribe((res) => {
-      this.users = res;
+      this.response = res;
     });
   }
 
@@ -30,7 +33,7 @@ export class UserListComponent implements OnInit {
     .subscribe(r => {
       this.response = r;
       console.log(this.response);
+      this.getAll();
     });
-    this.getAll();
   }
 }

@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { NewUser } from './ikaruna-check-in/newUser';
 import { User, UserLogin, UserStatus } from './user-list/user';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'http://localhost/ikaruna-backend/api/user/';
+const URL = 'http://localhost/ikaruna-backend/api/user';
 const URL_LOGIN = 'http://localhost/ikaruna-backend/api/login';
 const URL_LOGOUT = 'http://localhost/ikaruna-backend/api/logout';
 const URL_ADMIN = 'http://localhost/ikaruna-backend/api/admin';
@@ -38,6 +38,9 @@ export class UserControlService {
   
   private _admins: User[] = [];
   admins: BehaviorSubject<User[]> = new BehaviorSubject([]);
+
+  private _users: User[] = [];
+  users: BehaviorSubject<User[]> = new BehaviorSubject(this._users);
   
   constructor( private http: HttpClient) { }
 
@@ -105,11 +108,29 @@ export class UserControlService {
   }
   
   public getAll(): Observable<User[]> {
-    return this.http.get<User[]>(URL);
+    return this.http.get<User[]>(URL)
+    .pipe(
+      tap((users: User[]) => {
+        this._users = [];
+         users.forEach(user => {
+           console.log(user);
+           this._users.push({...user});
+         });
+         console.log(this._users);
+         this.users.next(this._users);
+       })
+    );
   }
 
   public getById(id: number): Observable<User> {
-    return this.http.get<User>(`http://localhost/ikaruna-backend/api/user/${id}`);
+    return this.http.get<User>(`http://localhost/ikaruna-backend/api/user/${id}`)
+    .pipe(
+      tap((user: User) => {
+        this._userLogged = user;
+         console.log(this._userLogged);
+         this.userLogged.next(this._userLogged);
+       })
+    );
   }
   
   public getTherapist(): Observable<User[]> {

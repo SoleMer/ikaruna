@@ -40,7 +40,8 @@ export class AddEditWorkshopComponent implements OnInit {
     this.wspSvc.edit(this.wsp, this.edit.id)
     .subscribe(r => {
       console.log(r);
-      return this.response = r;
+      this.response = r;
+      this.getAll();
     });
   }
   this.wsp = {
@@ -53,5 +54,13 @@ export class AddEditWorkshopComponent implements OnInit {
 
 cancel() {
   this.edit = null;
+}
+
+getAll() {
+  this.wspSvc.getAll()
+  .subscribe(r => {
+    this.response = r;
+    console.log(this.response);
+  });
 }
 }

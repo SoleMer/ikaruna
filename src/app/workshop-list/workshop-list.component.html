@@ -1,7 +1,7 @@
 <div class="text-center">
     <h2 class="title">Talleres</h2>
 </div>
-<div class="row" *ngFor="let ws of workshops">
+<div class="row" *ngFor="let ws of (workshops$ | async)">
     <div class="col-md-11">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">

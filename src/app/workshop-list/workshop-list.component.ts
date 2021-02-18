@@ -3,6 +3,7 @@ import { Workshop } from './workshop';
 import { WorkshopDataService } from '../workshop-data.service';
 import { UserControlService } from '../user-control.service';
 import { UserStatus } from '../user-list/user';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,12 +16,13 @@ export class WorkshopListComponent implements OnInit {
   @Output()
   setEditable: EventEmitter<Workshop> = new EventEmitter<Workshop>();
 
-  workshops: Workshop[] = [];
+  workshops$: Observable<Workshop[]> ;
   status: UserStatus;
   response: any;
 
   constructor(private workshopsDataService: WorkshopDataService,
     private userControlSvc: UserControlService) {
+      this.workshops$ = workshopsDataService.workshops.asObservable();
       userControlSvc.logged.subscribe(t => this.status = t);
      }
 
@@ -32,7 +34,10 @@ export class WorkshopListComponent implements OnInit {
   
   getAll() {
     this.workshopsDataService.getAll()
-    .subscribe(workshops => this.workshops = workshops);
+    .subscribe(r => {
+      this.response = r;
+      console.log(this.response);
+    });
   }
 
   setSelected(ws: Workshop) {
@@ -49,8 +54,8 @@ export class WorkshopListComponent implements OnInit {
     .subscribe(r => {
       this.response = r;
       console.log(this.response);
+      this.getAll();
     });
-    this.getAll();
   }
 
   toggleEdit(b:boolean) {

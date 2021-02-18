@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Workshop } from './workshop-list/workshop';
 import { Reply } from './therapy-list/therapy';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 const URL = 'http://localhost/ikaruna-backend/api/workshop';
 
@@ -13,10 +13,24 @@ const URL = 'http://localhost/ikaruna-backend/api/workshop';
 
 export class WorkshopDataService {
 
+  private _workshops: Workshop[] = [];
+  workshops: BehaviorSubject<Workshop[]> = new BehaviorSubject(this._workshops);
+
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<Workshop[]> {
-    return this.http.get<Workshop[]>(URL);
+    return this.http.get<Workshop[]>(URL)
+    .pipe(
+      tap((workshops: Workshop[]) => {
+        this._workshops = [];
+         workshops.forEach(wsp => {
+           console.log(wsp);
+           this._workshops.push({...wsp});
+         });
+         console.log(this._workshops);
+         this.workshops.next(this._workshops);
+       })
+    );
   }
 
   public add(workshop: Workshop): any {
@@ -26,6 +40,9 @@ export class WorkshopDataService {
     .pipe(
       map((res:Reply)=> {
         console.log(res);
+        this._workshops.push({...workshop});
+        console.log(this._workshops);
+        this.workshops.next(this._workshops);
       }
       ));
   }

@@ -29,6 +29,8 @@ import { AddEditTherapyComponent } from './add-edit-therapy/add-edit-therapy.com
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { AddEditWorkshopComponent } from './add-edit-workshop/add-edit-workshop.component';
 import { ShiftUserListComponent } from './shift-user-list/shift-user-list.component';
+import { FastNoteComponent } from './fast-note/fast-note.component';
+import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { ShiftUserListComponent } from './shift-user-list/shift-user-list.compon
     AddQuestionComponent,
     AddEditWorkshopComponent,
     ShiftUserListComponent,
+    FastNoteComponent,
+    ErrorNoAdminComponent,
   ],
   imports: [
     BrowserModule,

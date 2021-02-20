@@ -17,6 +17,8 @@ export class IkarunaApplyShiftComponent implements OnInit {
   shift: Shift;
   therapies: Therapy[] = [];
   response: any;
+  viewNote: boolean = false;
+  msgNote: string = "";
 
   constructor(private userControlService: UserControlService,
     private shiftDataSvc: ShiftDataService,
@@ -57,6 +59,7 @@ export class IkarunaApplyShiftComponent implements OnInit {
       } else {
         this.getAll();
       }
+      this.viewFastNote(this.response.msg);
     });
     this.shift = {
       patient: 0,
@@ -80,5 +83,17 @@ export class IkarunaApplyShiftComponent implements OnInit {
     .subscribe((res) => {
       this.response = res;
     });
+  }
+
+  viewFastNote(txt:string) {
+    this.msgNote = txt;
+    this.viewNote = true;
+    setTimeout(() => {
+      this.hide();
+    }, 5000);
+  }
+
+  hide() {
+    this.viewNote = false;
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserControlService } from '../user-control.service';
-import { User } from './user';
+import { User, UserStatus } from './user';
 
 @Component({
   selector: 'app-user-list',
@@ -12,13 +12,22 @@ export class UserListComponent implements OnInit {
 
   users$: Observable<User[]>;
   response : any;
+  status: UserStatus;
+  listUser: boolean;
 
-  constructor(private userControlSvc: UserControlService) {
+  constructor(private userControlSvc: UserControlService ) {
     this.users$ = userControlSvc.users.asObservable();
+    userControlSvc.logged.subscribe(s => this.status = s);
    }
 
   ngOnInit(): void {
-    this.getAll();
+    if(this.status.isAdmin == 1) {
+      this.listUser = true;
+      this.getAll();
+    } else {
+      this.listUser= false;
+      location.href == "http://localhost:4200/notfound"
+    }
   }
 
   getAll() {

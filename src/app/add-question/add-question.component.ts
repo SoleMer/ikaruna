@@ -15,6 +15,8 @@ export class AddQuestionComponent implements OnInit {
   status: UserStatus;
   q: Question;
   response: Reply;
+  viewNote: boolean = false;
+  msgNote: string = "";
 
   constructor( private userControlService: UserControlService ,
     private questionDataSvc: QuestionDataService) {
@@ -33,12 +35,25 @@ export class AddQuestionComponent implements OnInit {
     this.questionDataSvc.add(this.q)
     .subscribe(res => {
       this.response =res;
+      this.viewFastNote('Consulta enviada. Te responderemos a la brevedad. Gracias por comunicarte!')
       console.log(this.response);
     });
     this.q = {
       text : '',
       user_id : this.status.id_user
     }
+  }
+
+  viewFastNote(txt:string) {
+    this.msgNote = txt;
+    this.viewNote = true;
+    setTimeout(() => {
+      this.hide();
+    }, 5000);
+  }
+
+  hide() {
+    this.viewNote = false;
   }
 
 }

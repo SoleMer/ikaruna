@@ -1,7 +1,20 @@
-<div class="col-md-12" *ngFor="let not of (notifications$ | async)">
-    <div class="alert alert-secondary" role="alert">
-        <img src="../../assets/img/cancel-icon.png" class="mini-icon right" (click)="delete(not.id)" alt="Eliminar"> {{not.message}}
-        <a *ngIf="not.subject == 'shift'" class=" nav-link right" [routerLink]="[ '../shifts'] ">Ver</a>
-        <a *ngIf="not.subject == 'question'" class=" nav-link right" [routerLink]="[ '../questions'] ">Ver</a>
+<div *ngIf="status.status == 'ok'; else login">
+    <div *ngIf="notifications$ != []; else notNotifications">
+        <div class="col-md-12" *ngFor="let not of (notifications$ | async)">
+            <div class="alert alert-secondary" role="alert">
+                <img src="../../assets/img/cancel-icon.png" class="mini-icon right" (click)="delete(not.id)" alt="Eliminar"> {{not.message}}
+                <a *ngIf="not.subject == 'shift'" class=" nav-link right" [routerLink]="[ '../shifts'] ">Ver</a>
+                <a *ngIf="not.subject == 'question'" class=" nav-link right" [routerLink]="[ '../questions'] ">Ver</a>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" (click)="deleteAll()">Eliminar todas</button>
+        </div>
     </div>
+    <ng-template #notNotifications>
+        <h5>No tenés notificaciones.</h5>
+    </ng-template>
 </div>
+<ng-template #login>
+    <app-log-and-check-in></app-log-and-check-in>
+</ng-template>

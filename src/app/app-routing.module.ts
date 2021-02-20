@@ -13,6 +13,7 @@ import { LogAndCheckInComponent } from './log-and-check-in/log-and-check-in.comp
 import { UserListComponent } from './user-list/user-list.component';
 import { IkarunaProfileComponent } from './ikaruna-profile/ikaruna-profile.component';
 import { IkarunaNotificationsComponent } from './ikaruna-notifications/ikaruna-notifications.component';
+import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LogAndCheckInComponent,
+  },
+  {
+    path: 'notfound',
+    component: ErrorNoAdminComponent,
   }
 ];
 

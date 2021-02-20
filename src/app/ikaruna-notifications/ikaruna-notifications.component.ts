@@ -31,6 +31,7 @@ export class IkarunaNotificationsComponent implements OnInit {
     this.notifDataSvc.getAll(this.status.id_user)
     .subscribe((res) => {
       this.response = res;
+      console.log(this.response);
     });
   }
 
@@ -39,6 +40,15 @@ export class IkarunaNotificationsComponent implements OnInit {
     .subscribe(r => {
       this.response = r;
       console.log(this.response);
+      this.getAll();
+    });
+  }
+
+  deleteAll() {
+    console.log("deleteAll");
+    this.notifDataSvc.deleteAll(this.status.id_user)
+    .subscribe(r => {
+      this.response = r;
       this.getAll();
     });
   }

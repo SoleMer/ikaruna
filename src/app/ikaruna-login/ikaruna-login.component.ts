@@ -21,6 +21,9 @@ export class IkarunaLoginComponent implements OnInit {
   user: UserLogin;
   response: UserStatus;
 
+  viewNote: boolean = false;
+  msgNote: string = "";
+
   pagina: string = "";
 
   ngOnInit(): void {
@@ -47,11 +50,26 @@ export class IkarunaLoginComponent implements OnInit {
       if(this.response.status == 'ok' && this.pagina != "") {
         location.href = this.pagina ;
       }
+      if(this.response.status == 'error') {
+        this.viewFastNote(this.response.msg);
+      }
     });
   }
-
 
   notRegistered(){
     this.registered = false;
   }
+
+  viewFastNote(txt:string) {
+    this.msgNote = txt;
+    this.viewNote = true;
+    setTimeout(() => {
+      this.hide();
+    }, 5000);
+  }
+
+  hide() {
+    this.viewNote = false;
+  }
+  
 }

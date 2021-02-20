@@ -53,3 +53,18 @@ nav {
 .big {
     font-size: x-large;
 }
+
+.fast-note {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    max-width: 400px;
+    vertical-align: baseline;
+    z-index: 99999;
+    left: 20px;
+}
+
+.image-error {
+    max-width: 400px;
+    margin-top: 40px;
+}

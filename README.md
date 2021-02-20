@@ -38,14 +38,14 @@ COMO ADMIN DEBO PODER:
 TASKS
 	+generación automática de notificaciones
 	+limpiar formularios al finalizar
-	actualización automática de listados después de A/B/M:
+	+actualización automática de listados después de A/B/M:
 		+therapies
 		+workshops
 		+shifts
 		+users
 		+profile
 		+notifications
-	-mostrar pequeñas 'toasts' al solicitar un turno o generar una consulta.
+	+mostrar pequeñas 'toasts' al solicitar un turno o generar una consulta.
 	-imágenes a los workshops
 
 ## Ingreso user de prueba

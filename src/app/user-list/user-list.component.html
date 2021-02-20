@@ -1,23 +1,33 @@
-<div class="text-center">
-    <h2 class="title">Usuarios</h2>
+<div *ngIf="listUser; else notFound">
+    <div class="text-center">
+        <h2 class="title">Usuarios</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><img src="../../assets/img/user-icon.png" class="icon" alt=""></th>
+                <th><img src="../../assets/img/email-icon.png" class="icon" alt=""></th>
+                <th><img src="../../assets/img/whatsapp-icon.png" class="icon" alt=""></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of (users$ | async)">
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <a href="https://wa.me/549{{user.phone}}" target="_blank">
+                    {{user.phone}}
+                </a>
+                </td>
+                <td>
+                    <app-btn-delete [id]="user.id" (delete)="delete($event)"></app-btn-delete>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th><img src="../../assets/img/user-icon.png" class="icon" alt=""></th>
-            <th><img src="../../assets/img/email-icon.png" class="icon" alt=""></th>
-            <th><img src="../../assets/img/whatsapp-icon.png" class="icon" alt=""></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of (users$ | async)">
-            <td>{{user.username}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
-            <td>
-                <app-btn-delete [id]="user.id" (delete)="delete($event)"></app-btn-delete>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<ng-template #notFound>
+    <app-error-no-admin class="error"></app-error-no-admin>
+</ng-template>

@@ -5,3 +5,8 @@ export interface Workshop {
     contents: string;
     modality: string;
 }
+
+export interface RequestWs {
+    ws: number;
+    user: number;
+}

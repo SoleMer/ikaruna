@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="status.status == 'ok'; else login">
     <div class="col-md-6">
         <div class="text-center">
             <h2 class="title">Perfil</h2>
@@ -62,3 +62,6 @@
         <app-ikaruna-notifications></app-ikaruna-notifications>
     </div>
 </div>
+<ng-template #login>
+    <app-log-and-check-in></app-log-and-check-in>
+</ng-template>

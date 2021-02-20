@@ -16,6 +16,8 @@ export class IkarunaCheckInComponent implements OnInit {
   
   user: NewUser;
   response: UserStatus;
+  viewNote: boolean = false;
+  msgNote: string = "";
 
   ngOnInit(): void {
     this.user = {
@@ -30,7 +32,24 @@ export class IkarunaCheckInComponent implements OnInit {
   readData(): void {
     console.log(this.user);
     this.userControlService.add(this.user)
-    .subscribe(response => this.response = response);
+    .subscribe(response => {this.response = response;
     console.log(this.response);
+    if(this.response.status == 'error') {
+      this.viewFastNote(this.response.msg);
+    }
+  });
   }
-}
+
+  viewFastNote(txt:string) {
+    this.msgNote = txt;
+    this.viewNote = true;
+    setTimeout(() => {
+      this.hide();
+    }, 5000);
+  }
+
+  hide() {
+    this.viewNote = false;
+  }
+
+  }

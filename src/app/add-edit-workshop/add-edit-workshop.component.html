@@ -5,7 +5,7 @@
     </ng-template>
 </div>
 
-<form>
+<form enctype="multipart/form-data">
     <div class="mb-3">
         <label for="inputName" class="form-label">Nombre del taller</label>
         <input *ngIf="edit; else inputAdd" type="text" class="form-control" id="inputName" [(ngModel)]='wsp.name' [ngModelOptions]="{standalone: true}" placeholder={{edit.name}}>

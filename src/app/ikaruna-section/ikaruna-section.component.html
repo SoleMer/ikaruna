@@ -4,7 +4,8 @@
 <ng-template #logged>
     <div *ngIf="status.isAdmin ==1 ; else user">
         <app-add-edit-therapy *ngIf="page == 'therapies'" [edit]="editTrp"></app-add-edit-therapy>
-        <app-add-edit-workshop *ngIf="page == 'workshop'" [edit]="editWs"></app-add-edit-workshop>
+        <app-add-edit-workshop *ngIf="page == 'workshop' && !(changeImg$ | async)" [edit]="editWs"></app-add-edit-workshop>
+        <app-change-img *ngIf="page == 'workshop' && (changeImg$ | async)"></app-change-img>
     </div>
     <ng-template #user>
         <div>

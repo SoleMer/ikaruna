@@ -4,6 +4,7 @@ export interface Workshop {
     caption: string;
     contents: string;
     modality: string;
+    image?: string;
 }
 
 export interface RequestWs {

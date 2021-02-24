@@ -106,4 +106,8 @@ export class WorkshopListComponent implements OnInit {
     this.viewNote = false;
   }
 
+  selectImg(ws: Workshop) {
+    this.workshopsDataService.setChangeImg(ws);
+  }
+
 }

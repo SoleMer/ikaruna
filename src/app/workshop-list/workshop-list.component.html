@@ -5,8 +5,11 @@
     <div class="col-md-11">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="" alt="">
+                <div class="col-md-4 text-center">
+                    <img *ngIf="ws.image; else addImg" src={{ws.image}} class="ws-img" alt="">
+                    <ng-template #addImg>
+                        <img *ngIf="status.isAdmin == 1" src="../../assets/img/add-icon.png" (click)="selectImg(ws)" class="mini-icon" alt="">
+                    </ng-template>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

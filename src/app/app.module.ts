@@ -31,6 +31,7 @@ import { AddEditWorkshopComponent } from './add-edit-workshop/add-edit-workshop.
 import { ShiftUserListComponent } from './shift-user-list/shift-user-list.component';
 import { FastNoteComponent } from './fast-note/fast-note.component';
 import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
+import { ChangeImgComponent } from './change-img/change-img.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component
     ShiftUserListComponent,
     FastNoteComponent,
     ErrorNoAdminComponent,
+    ChangeImgComponent,
   ],
   imports: [
     BrowserModule,

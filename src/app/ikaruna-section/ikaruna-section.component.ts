@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Therapy } from '../therapy-list/therapy';
 import { UserControlService } from '../user-control.service';
 import { UserStatus } from '../user-list/user';
+import { WorkshopDataService } from '../workshop-data.service';
 import { Workshop } from '../workshop-list/workshop';
 
 @Component({
@@ -12,9 +14,12 @@ import { Workshop } from '../workshop-list/workshop';
 export class IkarunaSectionComponent implements OnInit {
 
   status: UserStatus;
+  changeImg$: Observable<Workshop>;
 
-  constructor(private userControlService: UserControlService) {
+  constructor(private userControlService: UserControlService,
+    private wspSvc: WorkshopDataService) {
     userControlService.logged.subscribe(s => this.status = s);
+    this.changeImg$ = wspSvc.changeImg.asObservable();
    }
 
    @Input()

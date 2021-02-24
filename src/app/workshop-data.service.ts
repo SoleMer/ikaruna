@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Workshop } from './workshop-list/workshop';
 import { Reply } from './therapy-list/therapy';
 import { map, tap } from 'rxjs/operators';
+import { Archive } from './change-img/archive';
 
 const URL = 'http://localhost/ikaruna-backend/api/workshop';
 
@@ -15,6 +16,9 @@ export class WorkshopDataService {
 
   private _workshops: Workshop[] = [];
   workshops: BehaviorSubject<Workshop[]> = new BehaviorSubject(this._workshops);
+
+  private _changeImg: Workshop = null;
+  changeImg: BehaviorSubject<Workshop> = new BehaviorSubject(this._changeImg);
 
   constructor(private http: HttpClient) { }
 
@@ -46,5 +50,15 @@ export class WorkshopDataService {
   
   public delete(id: number): any{
     return this.http.delete(`http://localhost/ikaruna-backend/api/workshop/${id}`);
+  }
+
+  public setChangeImg(ws: Workshop) {
+    this._changeImg = ws;
+    this.changeImg.next(this._changeImg);
+  }
+
+  public addImg(img: FormData, id: number): any {
+    return this.http.put(`http://localhost/ikaruna-backend/api/workshopp/${id}`,
+    JSON.parse(JSON.stringify(img)));
   }
 }

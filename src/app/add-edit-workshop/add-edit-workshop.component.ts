@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { WorkshopDataService } from '../workshop-data.service';
 import { Workshop } from '../workshop-list/workshop';
 
@@ -15,6 +16,8 @@ export class AddEditWorkshopComponent implements OnInit {
   wsp : Workshop;
   response: any;
 
+  
+
   constructor(private wspSvc: WorkshopDataService) { }
 
 
@@ -28,12 +31,11 @@ export class AddEditWorkshopComponent implements OnInit {
   }
 
   save() {
-    console.log("save");
-    console.log(this.edit);
     if(this.edit ==null){
       this.wspSvc.add(this.wsp)
     .subscribe(r => {
        this.response = r;
+       console.log(r);
        this.getAll();
     });
   } else {
@@ -54,9 +56,12 @@ export class AddEditWorkshopComponent implements OnInit {
   }
 }
 
+
+
 cancel() {
   this.edit = null;
 }
+
 
 getAll() {
   this.wspSvc.getAll()
@@ -65,4 +70,5 @@ getAll() {
     console.log(this.response);
   });
 }
+
 }

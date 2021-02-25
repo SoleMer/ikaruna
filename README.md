@@ -13,17 +13,17 @@ SIN IMPORTAR MI CONDICIÓN DEBO PODER:
 	+acceder al listado de talleres.
 	+darme de alta como nuevo usuario.
 	+loguearme.
-	?acceder al enlace para comunicarme vía whataspp con las administradoras.
+	+acceder al enlace para comunicarme vía whataspp con las administradoras.
 
 COMO USUARIO LOGUEADO DEBO PODER:
 	+hacer una consulta.
 	+editar mis datos de contacto.
 	+sacar un turno.
 	+ver mis turnos pendientes y aceptados.
-	?solicitar hacer un taller.
+	+solicitar hacer un taller.
 	+ver mis notificaciones.
 	+eliminar mis notifcaciones de una en una.
-	-eliminar todas mis notificaciones a la vez.
+	+eliminar todas mis notificaciones a la vez.
 	
 COMO ADMIN DEBO PODER:
 	+agregar, eliminar y editar terapias 
@@ -46,7 +46,6 @@ TASKS
 		+profile
 		+notifications
 	+mostrar pequeñas 'toasts' al solicitar un turno o generar una consulta.
-	-imágenes a los workshops
 
 ## Ingreso user de prueba
 

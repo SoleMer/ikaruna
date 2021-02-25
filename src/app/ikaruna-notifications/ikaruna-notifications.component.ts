@@ -31,7 +31,6 @@ export class IkarunaNotificationsComponent implements OnInit {
     this.notifDataSvc.getAll(this.status.id_user)
     .subscribe((res) => {
       this.response = res;
-      console.log(this.response);
     });
   }
 

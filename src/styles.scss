@@ -68,3 +68,19 @@ nav {
     max-width: 400px;
     margin-top: 40px;
 }
+
+
+/* --------------------------------RESPONSIVE------------------------------- */
+
+@media only screen and (max-width: 768px) {
+    .responsive-hide {
+        display: none;
+    }
+    .my-navbar {
+        z-index: 99999;
+        background-color: lightblue;
+    }
+    .image-error {
+        max-width: 300px;
+    }
+}

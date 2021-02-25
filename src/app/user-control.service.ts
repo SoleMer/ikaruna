@@ -8,10 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'http://localhost/ikaruna-backend/api/user';
-const URL_LOGIN = 'http://localhost/ikaruna-backend/api/login';
-const URL_LOGOUT = 'http://localhost/ikaruna-backend/api/logout';
-const URL_ADMIN = 'http://localhost/ikaruna-backend/api/admin';
+const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/user';
+const URL_LOGIN = 'http://localhost/ikaru-na/ikaruna-backend/api/login';
+const URL_LOGOUT = 'http://localhost/ikaru-na/ikaruna-backend/api/logout';
+const URL_ADMIN = 'http://localhost/ikaru-na/ikaruna-backend/api/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -123,7 +123,7 @@ export class UserControlService {
   }
 
   public getById(id: number): Observable<User> {
-    return this.http.get<User>(`http://localhost/ikaruna-backend/api/user/${id}`)
+    return this.http.get<User>(`http://localhost/ikaru-na/ikaruna-backend/api/user/${id}`)
     .pipe(
       tap((user: User) => {
         this._userLogged = user;
@@ -145,11 +145,11 @@ export class UserControlService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`http://localhost/ikaruna-backend/api/user/${id}`);
+    return this.http.delete(`http://localhost/ikaru-na/ikaruna-backend/api/user/${id}`);
   }
 
   public edit(user: User, id: number): any {
-    return this.http.put(`http://localhost/ikaruna-backend/api/user/${id}`,user)
+    return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/user/${id}`,user)
   }
 /** 
   updateListAdmins(res:User[]) {

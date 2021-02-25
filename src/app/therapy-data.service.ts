@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Reply, Therapy } from './therapy-list/therapy';
 import { map, tap } from 'rxjs/operators';
 
-const URL = 'http://localhost/ikaruna-backend/api/therapy';
+const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/therapy';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +36,12 @@ export class TherapyDataService {
     }
     
     public edit(therapy:Therapy,id:number): any {
-      return this.http.put(`http://localhost/ikaruna-backend/api/therapy/${id}`,
+      return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/therapy/${id}`,
       JSON.parse(JSON.stringify(therapy)));
     }
     
     public delete(id: number): any{
-      return this.http.delete(`http://localhost/ikaruna-backend/api/therapy/${id}`);
+      return this.http.delete(`http://localhost/ikaru-na/ikaruna-backend/api/therapy/${id}`);
     }
     
     public getById(id:number) {

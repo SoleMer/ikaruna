@@ -32,6 +32,7 @@ import { ShiftUserListComponent } from './shift-user-list/shift-user-list.compon
 import { FastNoteComponent } from './fast-note/fast-note.component';
 import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
 import { ChangeImgComponent } from './change-img/change-img.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap/';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ChangeImgComponent } from './change-img/change-img.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

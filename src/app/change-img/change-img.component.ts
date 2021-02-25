@@ -16,6 +16,7 @@ export class ChangeImgComponent implements OnInit {
   archive: Archive;
   preview: string;
   response: any;
+  element: any;
 
   constructor(private wspSvc: WorkshopDataService) {
       wspSvc.changeImg.subscribe(w => this.workshop = w);
@@ -24,33 +25,26 @@ export class ChangeImgComponent implements OnInit {
   ngOnInit(): void {
     this.archive = {
       name: null,
-      nameArchive: null,
-      base64textString: null
+      img: null
     }
   }
 
   setImg(event): any {
     let element = event.target;
-    if(element.files.length > 0){
-      let formData = new FormData();
-      formData.append('file', element.files[0]);
+    console.log(element);
+  }
 
+  saveImage() {
+    if(this.element.files.length > 0){
+      let formData = new FormData();
+    /*  formData.append('file', this.element.files[0]);
       this.wspSvc.addImg(formData, this.workshop.id) 
       .subscribe(r => {
         this.response = r;
         console.log(r);
         this.getAll();
-      });
-    }
-  }
-
-  saveImage() {
-   this.wspSvc.addImg(this.archive, this.workshop.id) 
-      .subscribe(r => {
-        this.response = r;
-        console.log(r);
-        this.getAll();
-      });
+      }); */
+    } 
   }
 
 

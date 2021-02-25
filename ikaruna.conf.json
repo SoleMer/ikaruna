@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "http://localhost/ikaruna-backend",
+        "target": "http://localhost/ikaru-na/ikaruna-backend",
         "secure": false,
         "logLevel": "debug"
     }

@@ -5,7 +5,7 @@ import { Shift } from './shift-list/shift';
 import { Reply } from './therapy-list/therapy';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-const URL = 'http://localhost/ikaruna-backend/api/shift';
+const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/shift';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class ShiftDataService {
   }
 
   public getMyShifts(id: number): Observable<Shift[]> {
-    return this.http.get<Shift[]>(`http://localhost/ikaruna-backend/api/shift/${id}`)
+    return this.http.get<Shift[]>(`http://localhost/ikaru-na/ikaruna-backend/api/shift/${id}`)
     .pipe(
       tap((shifts: Shift[]) => {
         this._myShifts = [];
@@ -55,12 +55,12 @@ export class ShiftDataService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`http://localhost/ikaruna-backend/api/shift/${id}`);
+    return this.http.delete(`http://localhost/ikaru-na/ikaruna-backend/api/shift/${id}`);
   }
 
 
 public agree(shift: Shift, id: number): any{
-    return this.http.put(`http://localhost/ikaruna-backend/api/shift/${id}`, shift);
+    return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/shift/${id}`, shift);
   }
   public updateShifts(s: Shift) {
     console.log("update");

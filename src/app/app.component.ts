@@ -11,6 +11,7 @@ import { UserStatus } from './user-list/user';
 export class AppComponent {
 
   status: UserStatus;
+  navbarExpand: boolean = false;
 
   constructor( private userControlService: UserControlService,
     private cookieSvc: CookieService) {
@@ -35,9 +36,14 @@ export class AppComponent {
   }
 
   logout() {
+    this.toggleNavbar();
     console.log("logout");
     this.userControlService.logout();
     this.cookieSvc.deleteAll();
+  }
+
+  toggleNavbar() {
+    this.navbarExpand = !this.navbarExpand;
   }
 
   

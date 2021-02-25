@@ -1,42 +1,44 @@
-<img class="border-bottom-orange" src="assets/img/bandaMandala.jpg" alt="">
+<img class="border-bottom-orange responsive-hide" src="assets/img/bandaMandala.jpg" alt="">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="" width="100" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-    <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']">Terapias </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['workshops']">Talleres</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['about']">Sobre nosotras</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['questions']">Consultas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['shifts']">Turnos</a>
-            </li>
-            <li class="nav-item" *ngIf="status.isAdmin == 1">
-                <a class=" nav-link " [routerLink]="[ 'users'] ">Users</a>
-            </li>
-            <li class="nav-item" *ngIf="status.status == 'ok'">
-                <a class=" nav-link " [routerLink]="[ 'profile'] ">Perfil</a>
-            </li>
-            <li class="nav-item" *ngIf="status.status == 'ok'">
-                <a class=" nav-link " [routerLink]="[ 'notifications'] ">Notificaciones</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link " *ngIf="status.status=='ok' ; else login " (click)="logout() " [routerLink]="[ 'login'] ">Cerrar sesión</a>
-                <ng-template #login>
-                    <a class="nav-link " [routerLink]="[ 'login'] ">Iniciar sesión</a>
-                </ng-template>
-            </li>
-        </ul>
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span (click)="toggleNavbar()" class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="" width="100" alt=""></a>
+        <div class="navbar-collapse my-navbar" [ngClass]="{'responsive-hide': !navbarExpand}">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/']" (click)="toggleNavbar()">Terapias </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['workshops']" (click)="toggleNavbar()">Talleres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['about']" (click)="toggleNavbar()">Sobre nosotras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['questions']" (click)="toggleNavbar()">Consultas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['shifts']" (click)="toggleNavbar()">Turnos</a>
+                </li>
+                <li class="nav-item" *ngIf="status.isAdmin == 1">
+                    <a class=" nav-link " [routerLink]="[ 'users'] " (click)="toggleNavbar()">Users</a>
+                </li>
+                <li class="nav-item" *ngIf="status.status == 'ok'">
+                    <a class=" nav-link " [routerLink]="[ 'profile'] " (click)="toggleNavbar()">Perfil</a>
+                </li>
+                <li class="nav-item" *ngIf="status.status == 'ok'">
+                    <a class=" nav-link " [routerLink]="[ 'notifications'] " (click)="toggleNavbar()">Notificaciones</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " *ngIf="status.status=='ok' ; else login " (click)="logout() " [routerLink]="[ 'login'] ">Cerrar sesión</a>
+                    <ng-template #login>
+                        <a class="nav-link " [routerLink]="[ 'login'] " (click)="toggleNavbar()">Iniciar sesión</a>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
     </div>
     <!-- <img src="../assets/img/dark-mode-icon.png " class="right " (click)="toggleDarkMode() "> -->
 </nav>

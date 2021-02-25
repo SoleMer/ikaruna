@@ -5,7 +5,7 @@ import { Reply } from '../app/therapy-list/therapy';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-const URL = 'http://localhost/ikaruna-backend/api/question';
+const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/question';
 
 @Injectable({
   providedIn: 'root'

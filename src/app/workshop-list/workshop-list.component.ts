@@ -24,6 +24,7 @@ export class WorkshopListComponent implements OnInit {
   viewNote: boolean = false;
   msgNote: string = "";
   request: RequestWs;
+  loading: boolean = false;
 
   constructor(private workshopsDataService: WorkshopDataService,
     private userControlSvc: UserControlService,
@@ -48,12 +49,10 @@ export class WorkshopListComponent implements OnInit {
     this.workshopsDataService.getAll()
     .subscribe(r => {
       this.response = r;
-      console.log(this.response);
     });
   }
 
   setSelected(ws: Workshop) {
-    console.log("setSelected");
     this.selected = ws;
   }
 
@@ -65,15 +64,12 @@ export class WorkshopListComponent implements OnInit {
     this.workshopsDataService.delete(id)
     .subscribe(r => {
       this.response = r;
-      console.log(this.response);
       this.getAll();
     });
   }
 
   toggleEdit(b:boolean) {
     if(b){
-      console.log("ws-list: toggleEdit");
-      console.log(this.selected);
       this.setEditable.emit(this.selected);
     } else {
       this.setEditable.emit(null);
@@ -81,12 +77,14 @@ export class WorkshopListComponent implements OnInit {
   }
 
   doWorkshop(id:number) {
+    this.loading = true;
     if(this.status.status == 'ok') {
       this.request.ws = id;
       this.request.user = this.status.id_user;
       this.notifSvc.doWorkshop(this.request)
       .subscribe(r => {
         this.response = r;
+        this.loading = false;
         this.viewFastNote("Solicitud enviada. Nos pondremos en contacto en la brevedad. ¡Gracias!");
       });
     } else {

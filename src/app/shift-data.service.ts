@@ -5,7 +5,7 @@ import { Shift } from './shift-list/shift';
 import { Reply } from './therapy-list/therapy';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/shift';
+const URL = 'http://ikaruna.atwebpages.com/api/shift';
 
 @Injectable({
   providedIn: 'root'
@@ -26,25 +26,21 @@ export class ShiftDataService {
       tap((shifts: Shift[]) => {
         this._shifts = [];
          shifts.forEach(s => {
-           console.log(s);
            this._shifts.push({...s});
          });
-         console.log(this._shifts);
          this.shifts.next(this._shifts);
        })
     );
   }
 
   public getMyShifts(id: number): Observable<Shift[]> {
-    return this.http.get<Shift[]>(`http://localhost/ikaru-na/ikaruna-backend/api/shift/${id}`)
+    return this.http.get<Shift[]>(`http://ikaruna.atwebpages.com/api/shift/${id}`)
     .pipe(
       tap((shifts: Shift[]) => {
         this._myShifts = [];
          shifts.forEach(s => {
-           console.log(s);
            this._myShifts.push({...s});
          });
-         console.log(this._myShifts);
          this.myShifts.next(this._myShifts);
        })
     );
@@ -55,17 +51,15 @@ export class ShiftDataService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`http://localhost/ikaru-na/ikaruna-backend/api/shift/${id}`);
+    return this.http.delete(`http://ikaruna.atwebpages.com/api/shift/${id}`);
   }
 
 
 public agree(shift: Shift, id: number): any{
-    return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/shift/${id}`, shift);
+    return this.http.put(`http://ikaruna.atwebpages.com/api/shift/${id}`, shift);
   }
   public updateShifts(s: Shift) {
-    console.log("update");
     this._shifts.push({...s});
-    console.log(this._shifts);
     this.shifts.next(this._shifts);
   }
 }

@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "http://localhost/ikaru-na/ikaruna-backend",
+        "target": "http://ikaruna.byethost13.com",
         "secure": false,
         "logLevel": "debug"
     }

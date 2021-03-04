@@ -5,7 +5,7 @@ import { Reply } from '../app/therapy-list/therapy';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/question';
+const URL = 'http://ikaruna.atwebpages.com/api/question';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,6 @@ export class QuestionDataService {
     return this.http.post<Reply>(URL,JSON.parse(JSON.stringify(q)))
     .pipe(
       map((res:Reply)=> {
-        console.log('Res->',res);
         return res;
       })
       )

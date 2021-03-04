@@ -30,7 +30,6 @@ export class ShiftUserListComponent implements OnInit {
     this.shiftSvc.getMyShifts(this.status.id_user)
     .subscribe((res) => {
       this.response = res;
-      console.log(res);
     });
   }
 

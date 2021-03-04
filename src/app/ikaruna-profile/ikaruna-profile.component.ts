@@ -21,8 +21,11 @@ export class IkarunaProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.userControlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
     this.getUser();
-    console.log(this.user);
     this.edit = false;
     this.userEdit = {
       username: this.user.username,
@@ -44,11 +47,9 @@ export class IkarunaProfileComponent implements OnInit {
   }
 
   save() {
-    console.log("editando user");
     this.userControlSvc.edit(this.userEdit, this.status.id_user)
     .subscribe(r => {
-      this.response = r
-      console.log(r);
+      this.response = 
       this.getUser();
     });
     this.edit = false;

@@ -34,7 +34,6 @@ export class ShiftListComponent implements OnInit {
     .subscribe(r => {
       this.response = r;
       this.getAll();
-      console.log(this.response);
     });
   }
 
@@ -42,7 +41,6 @@ export class ShiftListComponent implements OnInit {
     this.shiftSvc.delete(id)
     .subscribe(r => {
       this.response = r;
-      console.log(this.response);
       this.getAll();
     });
   }

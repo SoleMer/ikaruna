@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { NewUser } from './ikaruna-check-in/newUser';
@@ -8,10 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/user';
-const URL_LOGIN = 'http://localhost/ikaru-na/ikaruna-backend/api/login';
-const URL_LOGOUT = 'http://localhost/ikaru-na/ikaruna-backend/api/logout';
-const URL_ADMIN = 'http://localhost/ikaru-na/ikaruna-backend/api/admin';
+const URL = 'http://ikaruna.atwebpages.com/api/user';
+const URL_LOG = 'http://ikaruna.atwebpages.com/api/log';
+const URL_ADMIN = 'http://ikaruna.atwebpages.com/api/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +47,6 @@ export class UserControlService {
     return this.http.post<UserStatus>(URL,user)
     .pipe(
       map((res:UserStatus)=> {
-        // console.log('Res->',res);
         this.saveToken(res.token);
         this.updateLog(res);
         return res;
@@ -58,10 +56,9 @@ export class UserControlService {
   }
   
   public login(user: UserLogin): Observable<UserStatus>  {
-    return this.http.post<UserStatus>(URL_LOGIN,user)
+    return this.http.post<UserStatus>(URL_LOG,user)
     .pipe(
       map((res:UserStatus)=> {
-        // console.log('Res->',res);
         this.saveToken(res.token);
         this.updateLog(res);
         return res;
@@ -74,10 +71,16 @@ export class UserControlService {
     localStorage.setItem('token',token);
   }
   
-  public logout(): void {
-    this.http.delete(URL_LOGOUT);
-    this.deleteToken();
-    this.updateLog();
+  public logout(id: number): any {
+    return this.http.delete(`http://ikaruna.atwebpages.com/api/log/${id}`)
+    .pipe(
+      map((r: UserStatus)=> {
+        if(r.status == 'closed'){
+          this.updateLog(r);
+          return r;
+        }
+    })
+  );
   }
   
   private deleteToken() {
@@ -96,7 +99,6 @@ export class UserControlService {
       this._logged.token= '';
     }
     this.logged.next(this._logged);
-    console.log(this._logged);
   }
 
   updateUserLogged(id: number) {
@@ -113,21 +115,18 @@ export class UserControlService {
       tap((users: User[]) => {
         this._users = [];
          users.forEach(user => {
-           console.log(user);
            this._users.push({...user});
          });
-         console.log(this._users);
          this.users.next(this._users);
        })
     );
   }
 
   public getById(id: number): Observable<User> {
-    return this.http.get<User>(`http://localhost/ikaru-na/ikaruna-backend/api/user/${id}`)
+    return this.http.get<User>(`http://ikaruna.atwebpages.com/api/user/${id}`)
     .pipe(
       tap((user: User) => {
         this._userLogged = user;
-         console.log(this._userLogged);
          this.userLogged.next(this._userLogged);
        })
     );
@@ -135,30 +134,24 @@ export class UserControlService {
   
   public getTherapist(): Observable<User[]> {
     return this.http.get<User[]>(URL_ADMIN);
-   /* .pipe(
-      map((res:User[])=> {
-        console.log('Res->',res);
-        //this.updateListAdmins(res);
-        return res;
-      }) 
-    ) */
   }
 
   public delete(id: number): any{
-    return this.http.delete(`http://localhost/ikaru-na/ikaruna-backend/api/user/${id}`);
+    return this.http.delete(`http://ikaruna.atwebpages.com/api/user/${id}`);
   }
 
   public edit(user: User, id: number): any {
-    return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/user/${id}`,user)
+    return this.http.put(`http://ikaruna.atwebpages.com/api/user/${id}`,user)
   }
-/** 
-  updateListAdmins(res:User[]) {
-    res.forEach(admin => {
-      console.log(admin);
-      this._admins.push({...admin});
-    });
-    console.log(this._admins);
-    this.admins.next(this._admins);
-  }
-  */
+
+  public checkSession(): Observable<UserStatus>  {
+    return this.http.get<UserStatus>(URL_LOG)
+    .pipe(
+      map((res:UserStatus)=> {
+        this.updateLog(res);
+        return res;
+        
+      })
+    );
+    }
 }

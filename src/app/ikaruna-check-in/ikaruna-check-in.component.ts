@@ -10,6 +10,7 @@ import { NewUser } from './newUser';
 })
 export class IkarunaCheckInComponent implements OnInit {
 
+  loading: boolean = false;
   
   constructor( 
     private userControlService: UserControlService) { }
@@ -30,10 +31,10 @@ export class IkarunaCheckInComponent implements OnInit {
   }
 
   readData(): void {
-    console.log(this.user);
+    this.loading = true;
     this.userControlService.add(this.user)
     .subscribe(response => {this.response = response;
-    console.log(this.response);
+      this.loading = false;
     if(this.response.status == 'error') {
       this.viewFastNote(this.response.msg);
     }

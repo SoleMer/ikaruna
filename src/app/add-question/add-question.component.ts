@@ -17,6 +17,7 @@ export class AddQuestionComponent implements OnInit {
   response: Reply;
   viewNote: boolean = false;
   msgNote: string = "";
+  loading: boolean = false;
 
   constructor( private userControlService: UserControlService ,
     private questionDataSvc: QuestionDataService) {
@@ -31,12 +32,13 @@ export class AddQuestionComponent implements OnInit {
   }
 
   add() {
+    this.loading = true;
     this.q.user_id = this.status.id_user;
     this.questionDataSvc.add(this.q)
     .subscribe(res => {
       this.response =res;
+      this.loading = false;
       this.viewFastNote('Consulta enviada. Te responderemos a la brevedad. Gracias por comunicarte!')
-      console.log(this.response);
     });
     this.q = {
       text : '',

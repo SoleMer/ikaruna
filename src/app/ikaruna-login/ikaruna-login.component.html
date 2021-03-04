@@ -17,7 +17,7 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="btn btn-primary" (click)="login()">Ingresar</button>
+        <button type="button" class="btn btn-primary" (click)="login()" [disabled]="loading">Ingresar</button>
     </div>
 </form>
 <app-fast-note class="fast-note" *ngIf="viewNote" [note]='msgNote'></app-fast-note>

@@ -19,7 +19,6 @@ export class BtnDeleteComponent implements OnInit {
   }
 
   toDelete() {
-    console.log("delete");
     this.delete.emit(this.id);
   }
 }

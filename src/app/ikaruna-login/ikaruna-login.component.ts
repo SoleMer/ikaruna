@@ -26,6 +26,8 @@ export class IkarunaLoginComponent implements OnInit {
 
   pagina: string = "";
 
+  loading: boolean = false;
+
   ngOnInit(): void {
     this.user = {
       email : '',
@@ -37,16 +39,17 @@ export class IkarunaLoginComponent implements OnInit {
   }
 
   login(){
+    this.loading = true;
     this.userControlService.login(this.user)
     .subscribe(res => {
       this.response =res;
-      //console.log(this.response);
       let id = stringify(this.response.id_user);
       let isAdmin = stringify(this.response.isAdmin);
       let token = this.response.token;
       this.cookieSvc.set("user_id", id);
       this.cookieSvc.set("isAdmin", isAdmin);
       this.cookieSvc.set("token", token);
+      this.loading = false;
       if(this.response.status == 'ok' && this.pagina != "") {
         location.href = this.pagina ;
       }

@@ -42,7 +42,6 @@ export class TherapyListComponent implements OnInit {
     this.therapiesDataService.getAll()
     .subscribe(r => {
       this.response = r;
-      console.log(this.response);
     });
   }
   
@@ -50,14 +49,11 @@ export class TherapyListComponent implements OnInit {
     this.therapiesDataService.delete(id)
     .subscribe(r => {
       this.response = r;
-      console.log(this.response);
       this.getAll();
     });
   }
 
   toggleEdit(b:boolean) {
-    console.log("therapyList");
-    console.log(this.selected);
     if(b){
       this.setEditable.emit(this.selected);
     } else {

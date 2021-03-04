@@ -19,9 +19,6 @@ export class IkarunaWorkshopsComponent implements OnInit {
   }
  
   setEditable(ws: Workshop) {
-    console.log("workshops");
-    console.log(ws);
     this.editable = ws;
-    console.log(this.editable);
   }
 }

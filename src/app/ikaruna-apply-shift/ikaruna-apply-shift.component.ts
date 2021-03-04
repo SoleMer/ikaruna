@@ -19,6 +19,7 @@ export class IkarunaApplyShiftComponent implements OnInit {
   response: any;
   viewNote: boolean = false;
   msgNote: string = "";
+  loading: boolean = false;
 
   constructor(private userControlService: UserControlService,
     private shiftDataSvc: ShiftDataService,
@@ -29,7 +30,6 @@ export class IkarunaApplyShiftComponent implements OnInit {
    ngOnInit(): void {
     this.therapyDataSvc.getAll()
     .subscribe(t => {
-      console.log(t);
       this.therapies = t;
     });
     this.shift = {
@@ -42,9 +42,8 @@ export class IkarunaApplyShiftComponent implements OnInit {
   }
 
   postTurn(){
-    console.log(this.status);
+    this.loading = true;
     this.shift.status = this.status.isAdmin;
-    console.log(this.shift);
     if(this.status.isAdmin == 1) {
       this.shift.patient = 0;
     } else {
@@ -52,8 +51,8 @@ export class IkarunaApplyShiftComponent implements OnInit {
     }
     this.shiftDataSvc.add(this.shift)
     .subscribe(r => {
-      console.log(r);
       this.response = r;
+      this.loading = false;
       if(this.shift.status == 0) {
         this.getMyShifts();
       } else {
@@ -74,7 +73,6 @@ export class IkarunaApplyShiftComponent implements OnInit {
     this.shiftDataSvc.getMyShifts(this.status.id_user)
     .subscribe((res) => {
       this.response = res;
-      console.log(res);
     });
   }
 

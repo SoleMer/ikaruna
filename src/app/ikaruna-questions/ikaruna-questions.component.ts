@@ -35,7 +35,6 @@ export class IkarunaQuestionsComponent implements OnInit {
     this.questionDataSvc.add(this.q)
     .subscribe(res => {
       this.response =res;
-      console.log(this.response);
     });
   }
 

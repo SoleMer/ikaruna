@@ -12,6 +12,7 @@ export class AppComponent {
 
   status: UserStatus;
   navbarExpand: boolean = false;
+  response: any;
 
   constructor( private userControlService: UserControlService,
     private cookieSvc: CookieService) {
@@ -23,6 +24,7 @@ export class AppComponent {
   darkMode: boolean;
 
   ngOnInit(): void {
+    this.userControlService.checkSession();
     this.darkMode = false;
   }
 
@@ -32,13 +34,14 @@ export class AppComponent {
     } else {
       this.darkMode =true;
     }
-    console.log(this.darkMode);
   }
 
   logout() {
     this.toggleNavbar();
-    console.log("logout");
-    this.userControlService.logout();
+    this.userControlService.logout(this.status.id_user)
+    .subscribe(r => {
+      this.response = r
+    });
     this.cookieSvc.deleteAll();
   }
 

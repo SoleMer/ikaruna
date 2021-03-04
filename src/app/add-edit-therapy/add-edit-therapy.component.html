@@ -21,7 +21,7 @@
         <option *ngFor="let ther of therapist" value={{ther.id}}>{{ther.username}}</option>
       </select>
     <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button type="submit" class="btn btn-primary" (click)='save()'>Guardar</button>
+        <button type="submit" class="btn btn-primary" (click)='save()' [disabled]="loading">Guardar</button>
         <button type="submit" class="btn btn-primary" (click)='cancel()' *ngIf="edit">Cancelar</button>
     </div>
 </form>

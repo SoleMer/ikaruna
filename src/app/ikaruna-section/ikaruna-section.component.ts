@@ -14,12 +14,12 @@ import { Workshop } from '../workshop-list/workshop';
 export class IkarunaSectionComponent implements OnInit {
 
   status: UserStatus;
-  changeImg$: Observable<Workshop>;
+  //changeImg$: Observable<Workshop>;
 
   constructor(private userControlService: UserControlService,
     private wspSvc: WorkshopDataService) {
     userControlService.logged.subscribe(s => this.status = s);
-    this.changeImg$ = wspSvc.changeImg.asObservable();
+    //this.changeImg$ = wspSvc.changeImg.asObservable();
    }
 
    @Input()
@@ -32,6 +32,10 @@ export class IkarunaSectionComponent implements OnInit {
    editWs: Workshop;
 
   ngOnInit(): void {  
+    this.userControlService.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
   }
 
   

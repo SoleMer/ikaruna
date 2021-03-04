@@ -6,10 +6,7 @@
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4 text-center">
-                    <img *ngIf="ws.image; else addImg" src={{ws.image}} class="ws-img" alt="">
-                    <ng-template #addImg>
-                        <img *ngIf="status.isAdmin == 1" src="../../assets/img/add-icon.png" (click)="selectImg(ws)" class="mini-icon" alt="">
-                    </ng-template>
+                    <img *ngIf="ws.image" src={{ws.image}} class="ws-img" alt="taller">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -18,7 +15,7 @@
                         <button type="button" class="btn btn-outline-primary" (click)="deleteSelected()" *ngIf="selected && selected.id == ws.id; else dontSelected">Ver menos</button>
                         <ng-template #dontSelected>
                             <button type="button" class="btn btn-outline-primary" (click)="setSelected(ws)">Ver más...</button>
-                            <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success" style="margin-left: 10px;" (click)="doWorkshop(ws.id)">Quiero hacer este taller!</button>
+                            <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success" style="margin-left: 10px;" (click)="doWorkshop(ws.id)" [disabled]="loading">Quiero hacer este taller!</button>
                             <ng-template #admin>
                                 <app-btn-delete class="right" *ngIf="status.isAdmin == 1" [id]="ws.id" (delete)="delete($event)"></app-btn-delete>
                             </ng-template>
@@ -34,7 +31,7 @@
                     <p>{{ws.modality}}</p>
                 </div>
                 <div class="col-md-5 offset-md-7" style="margin-bottom: 10px;">
-                    <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success">Quiero hacer este taller!</button>
+                    <button *ngIf="status.isAdmin != 1; else admin" type="button" class="btn btn-success" [disabled]="loading">Quiero hacer este taller!</button>
                     <ng-template #admin>
                         <app-btn-delete class="right" [id]="ws.id" (delete)="delete($event)"></app-btn-delete>
                         <app-btn-edit class="right" (toggleEdit)="toggleEdit($event)"></app-btn-edit>

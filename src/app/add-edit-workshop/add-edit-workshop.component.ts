@@ -16,7 +16,7 @@ export class AddEditWorkshopComponent implements OnInit {
   wsp : Workshop;
   response: any;
 
-  
+  loading: boolean = false;
 
   constructor(private wspSvc: WorkshopDataService) { }
 
@@ -31,19 +31,19 @@ export class AddEditWorkshopComponent implements OnInit {
   }
 
   save() {
+    this.loading = true;
     if(this.edit ==null){
       this.wspSvc.add(this.wsp)
     .subscribe(r => {
        this.response = r;
-       console.log(r);
+       this.loading = false;
        this.getAll();
     });
   } else {
-    console.log("edit");
     this.wspSvc.edit(this.wsp, this.edit.id)
     .subscribe(r => {
-      console.log(r);
       this.response = r;
+      this.loading = false;
       this.getAll();
       this.cancel();
     });
@@ -67,7 +67,6 @@ getAll() {
   this.wspSvc.getAll()
   .subscribe(r => {
     this.response = r;
-    console.log(this.response);
   });
 }
 

@@ -19,7 +19,6 @@ export class QuestionListComponent implements OnInit {
     this.questionDataSvc.getAll()
     .subscribe((res) => {
       this.questions = res;
-      console.log(this.questions);
     });
   }
 

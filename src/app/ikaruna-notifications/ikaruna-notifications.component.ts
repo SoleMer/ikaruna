@@ -22,9 +22,13 @@ export class IkarunaNotificationsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(this.status.status == 'ok') {
-      this.getAll();
-    }
+    this.userControlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+      if(this.status.status == 'ok') {
+        this.getAll();
+      }
+    });
   }
 
   getAll() {
@@ -38,7 +42,6 @@ export class IkarunaNotificationsComponent implements OnInit {
     this.notifDataSvc.delete(id)
     .subscribe(r => {
       this.response = r;
-      console.log(this.response);
       this.getAll();
     });
   }

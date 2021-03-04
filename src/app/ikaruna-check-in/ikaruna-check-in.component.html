@@ -28,7 +28,7 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <div class="div-button d-grid gap-2 col-6 mx-auto">
-        <button type="submit" class="btn btn-primary" (click)='readData()'>Registrarme</button>
+        <button type="submit" class="btn btn-primary" (click)='readData()' [disabled]="loading">Registrarme</button>
     </div>
 </form>
 <app-fast-note class="fast-note" *ngIf="viewNote" [note]='msgNote'></app-fast-note>

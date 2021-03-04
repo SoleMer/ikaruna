@@ -4,7 +4,7 @@ export interface Therapy {
     description: string;
     therapist_id: number;
     username?: string;
-    //la terapeuta deberia estar asociada a un usuario admin
+    userlogged?: number;
 }
 
 export interface Reply {

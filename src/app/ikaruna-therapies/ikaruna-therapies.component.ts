@@ -19,10 +19,7 @@ export class IkarunaTherapiesComponent implements OnInit {
   }
 
   setEditable(trp: Therapy) {
-    console.log("therapies");
-    console.log(trp);
     this.editable = trp;
-    console.log(this.editable);
   }
 
 }

@@ -13,8 +13,6 @@ export class FastNoteService {
   constructor() { }
 
   public setFastNote(txt: string) {
-    console.log("setFastNote");
-    console.log(txt);
     this._fastNote = txt;
     this.fastNote.next(this._fastNote);
   }

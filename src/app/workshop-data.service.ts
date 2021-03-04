@@ -6,7 +6,8 @@ import { Reply } from './therapy-list/therapy';
 import { map, tap } from 'rxjs/operators';
 import { Archive } from './change-img/archive';
 
-const URL = 'http://localhost/ikaru-na/ikaruna-backend/api/workshop';
+
+const URL = 'http://ikaruna.atwebpages.com/api/workshop';
 
 @Injectable({
   providedIn: 'root'
@@ -28,28 +29,24 @@ export class WorkshopDataService {
       tap((workshops: Workshop[]) => {
         this._workshops = [];
          workshops.forEach(wsp => {
-           console.log(wsp);
            this._workshops.push({...wsp});
          });
-         console.log(this._workshops);
          this.workshops.next(this._workshops);
        })
     );
   }
 
   public add(workshop: Workshop): any {
-    console.log("enviando al servidor:")
-    console.log(workshop);
     return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
   }
 
   public edit(workshop: Workshop,id:number): any {
-    return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/workshop/${id}`,
+    return this.http.put(`http://ikaruna.atwebpages.com/api/workshop/${id}`,
     JSON.parse(JSON.stringify(workshop)));
   }
   
   public delete(id: number): any{
-    return this.http.delete(`http://localhost/ikaru-na/ikaruna-backend/api/workshop/${id}`);
+    return this.http.delete(`http://ikaruna.atwebpages.com/api/workshop/${id}`);
   }
 
   public setChangeImg(ws: Workshop) {
@@ -58,7 +55,7 @@ export class WorkshopDataService {
   }
 
   public addImg(img: FormData, id: number): any {
-    return this.http.put(`http://localhost/ikaru-na/ikaruna-backend/api/workshopp/${id}`,
+    return this.http.put(`http://ikaruna.atwebpages.com/api/workshopp/${id}`,
     JSON.parse(JSON.stringify(img)));
   }
 }

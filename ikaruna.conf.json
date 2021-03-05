@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "http://ikaruna.byethost13.com",
+        "target": "http://ikaruna.atwebpages.com",
         "secure": false,
         "logLevel": "debug"
     }

@@ -16,7 +16,7 @@ exports.config = {
         browserName: 'chrome'
     },
     directConnect: true,
-    baseUrl: 'https://ikaruna.vercel.app/',
+    baseUrl: 'https://ikaruna.netlify.app/',
     framework: 'jasmine',
     jasmineNodeOpts: {
         showColors: true,

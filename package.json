@@ -11,7 +11,7 @@
         "prod-build-dev": "ng build --prod --build-optimizer",
         "prod-build-staging": "ng build --prod --configuration=staging --build-optimizer"
     },
-    "private": true,
+    "private": false,
     "dependencies": {
         "@angular/animations": "~10.2.0",
         "@angular/common": "~10.2.0",

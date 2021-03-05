@@ -33,6 +33,7 @@ import { FastNoteComponent } from './fast-note/fast-note.component';
 import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
 import { ChangeImgComponent } from './change-img/change-img.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap/';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap/';
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

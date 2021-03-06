@@ -50,8 +50,26 @@
 
                         ]
                     },
+                    "builder": "@angular-builders/custom-webpack:browser",
+                    "options": {
+                        "outputPath": "dist/ng-blog",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.json",
+                        "aot": true,
+                        "styles": [],
+                        "scripts": []
+                    },
                     "configurations": {
                         "production": {
+                            "customWebpackConfig": {
+                                "path": "webpack.prod.config.js",
+                                "mergeStrategies": {
+                                    "optimization": "replace"
+                                },
+                                "replaceDuplicatePlugins": false
+                            },
                             "fileReplacements": [{
                                 "replace": "src/environments/environment.ts",
                                 "with": "src/environments/environment.prod.ts"
@@ -76,69 +94,75 @@
                                 }
                             ]
                         }
-                    }
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "ikaruna:build"
                     },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "ikaruna:build:production"
+                    "development": {
+                        "customWebpackConfig": {
+                            "path": "webpack.dev.config.js",
+                            "replaceDuplicatePlugins": true
                         }
-                    }
-                },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
-                    "options": {
-                        "browserTarget": "ikaruna:build"
-                    }
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "src/test.ts",
-                        "polyfills": "src/polyfills.ts",
-                        "tsConfig": "tsconfig.spec.json",
-                        "karmaConfig": "karma.conf.js",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
-                        "styles": [
-                            "src/styles.scss"
-                        ],
-                        "scripts": []
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "tsconfig.app.json",
-                            "tsconfig.spec.json",
-                            "e2e/tsconfig.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                },
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "ikaruna:serve"
                     },
-                    "configurations": {
-                        "production": {
-                            "devServerTarget": "ikaruna:serve:production"
+                    "serve": {
+                        "builder": "@angular-devkit/build-angular:dev-server",
+                        "options": {
+                            "browserTarget": "ikaruna:build"
+                        },
+                        "configurations": {
+                            "production": {
+                                "browserTarget": "ikaruna:build:production"
+                            }
+                        }
+                    },
+                    "extract-i18n": {
+                        "builder": "@angular-devkit/build-angular:extract-i18n",
+                        "options": {
+                            "browserTarget": "ikaruna:build"
+                        }
+                    },
+                    "test": {
+                        "builder": "@angular-devkit/build-angular:karma",
+                        "options": {
+                            "main": "src/test.ts",
+                            "polyfills": "src/polyfills.ts",
+                            "tsConfig": "tsconfig.spec.json",
+                            "karmaConfig": "karma.conf.js",
+                            "assets": [
+                                "src/favicon.ico",
+                                "src/assets"
+                            ],
+                            "styles": [
+                                "src/styles.scss"
+                            ],
+                            "scripts": []
+                        }
+                    },
+                    "lint": {
+                        "builder": "@angular-devkit/build-angular:tslint",
+                        "options": {
+                            "tsConfig": [
+                                "tsconfig.app.json",
+                                "tsconfig.spec.json",
+                                "e2e/tsconfig.json"
+                            ],
+                            "exclude": [
+                                "**/node_modules/**"
+                            ]
+                        }
+                    },
+                    "e2e": {
+                        "builder": "@angular-devkit/build-angular:protractor",
+                        "options": {
+                            "protractorConfig": "e2e/protractor.conf.js",
+                            "devServerTarget": "ikaruna:serve"
+                        },
+                        "configurations": {
+                            "production": {
+                                "devServerTarget": "ikaruna:serve:production"
+                            }
                         }
                     }
                 }
             }
-        }
-    },
-    "defaultProject": "ikaruna"
+        },
+        "defaultProject": "ikaruna"
+    }
 }

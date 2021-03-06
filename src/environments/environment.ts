@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  baseUrl: "http://localhost/ikaruna-backend"
+  baseUrl: "http://ikaruna.atwebpages.com"
 };
 
 /*

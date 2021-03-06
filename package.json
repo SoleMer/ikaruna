@@ -30,6 +30,7 @@
         "ngx-cookie-service": "^11.0.2",
         "rxjs": "^6.6.3",
         "tslib": "^2.0.0",
+        "webpack": "^5.24.3",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {

@@ -3,7 +3,7 @@
 
 module.exports = function(config) {
     config.set({
-        basePath: 'https://ikaruna.vercel.app/',
+        basePath: '',
         frameworks: ['jasmine', '@angular-devkit/build-angular'],
         plugins: [
             require('karma-jasmine'),

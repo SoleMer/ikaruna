@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+//import { CookieService } from 'ngx-cookie-service';
 import { UserControlService } from './user-control.service';
 import { UserStatus } from './user-list/user';
 
@@ -15,7 +15,8 @@ export class AppComponent {
   response: any;
 
   constructor( private userControlService: UserControlService,
-    private cookieSvc: CookieService) {
+    //private cookieSvc: CookieService
+    ) {
       userControlService.logged.subscribe(s => this.status = s);
      } 
   
@@ -42,7 +43,7 @@ export class AppComponent {
     .subscribe(r => {
       this.response = r
     });
-    this.cookieSvc.deleteAll();
+    //this.cookieSvc.deleteAll();
   }
 
   toggleNavbar() {

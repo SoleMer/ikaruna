@@ -32,8 +32,7 @@ import { ShiftUserListComponent } from './shift-user-list/shift-user-list.compon
 import { FastNoteComponent } from './fast-note/fast-note.component';
 import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
 import { ChangeImgComponent } from './change-img/change-img.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap/';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap/';
 
 @NgModule({
   declarations: [
@@ -71,10 +70,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    //NgbModule
+    //npm install --save @ng-bootstrap/ng-bootstrap.
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

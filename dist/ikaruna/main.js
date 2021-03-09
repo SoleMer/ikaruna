@@ -1358,7 +1358,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.epizy.com/api/question';
+const URL = 'https://ikaruna.000webhostapp.com/api/question';
 class QuestionDataService {
     constructor(http) {
         this.http = http;
@@ -2204,7 +2204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.epizy.com/api/workshop';
+const URL = 'https://ikaruna.000webhostapp.com/api/workshop';
 class WorkshopDataService {
     constructor(http) {
         this.http = http;
@@ -2227,17 +2227,17 @@ class WorkshopDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
     }
     edit(workshop, id) {
-        return this.http.put(`https://ikaruna.epizy.com/api/workshop/${id}`, JSON.parse(JSON.stringify(workshop)));
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/workshop/${id}`, JSON.parse(JSON.stringify(workshop)));
     }
     delete(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/workshop/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/workshop/${id}`);
     }
     setChangeImg(ws) {
         this._changeImg = ws;
         this.changeImg.next(this._changeImg);
     }
     addImg(img, id) {
-        return this.http.put(`https://ikaruna.epizy.com/api/workshopp/${id}`, JSON.parse(JSON.stringify(img)));
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/workshopp/${id}`, JSON.parse(JSON.stringify(img)));
     }
 }
 WorkshopDataService.ɵfac = function WorkshopDataService_Factory(t) { return new (t || WorkshopDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
@@ -2635,9 +2635,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.epizy.com/api/user';
-const URL_LOG = 'https://ikaruna.epizy.com/api/log';
-const URL_ADMIN = 'https://ikaruna.epizy.com/api/admin';
+const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
+const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 class UserControlService {
     constructor(http) {
         this.http = http;
@@ -2680,7 +2680,7 @@ class UserControlService {
         localStorage.setItem('token', token);
     }
     logout(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/log/${id}`)
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/log/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((r) => {
             if (r.status == 'closed') {
                 this.updateLog(r);
@@ -2733,10 +2733,10 @@ class UserControlService {
         return this.http.get(URL_ADMIN);
     }
     delete(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/user/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/user/${id}`);
     }
     edit(user, id) {
-        return this.http.put(`https://ikaruna.epizy.com/api/user/${id}`, user);
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/user/${id}`, user);
     }
     checkSession() {
         return this.http.get(URL_LOG)
@@ -3108,7 +3108,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.epizy.com/api/shift';
+const URL = 'https://ikaruna.000webhostapp.com/api/shift';
 class ShiftDataService {
     constructor(http) {
         this.http = http;
@@ -3128,7 +3128,7 @@ class ShiftDataService {
         }));
     }
     getMyShifts(id) {
-        return this.http.get(`https://ikaruna.epizy.com/api/shift/${id}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/shift/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((shifts) => {
             this._myShifts = [];
             shifts.forEach(s => {
@@ -3141,10 +3141,10 @@ class ShiftDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(shift)));
     }
     delete(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/shift/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/shift/${id}`);
     }
     agree(shift, id) {
-        return this.http.put(`https://ikaruna.epizy.com/api/shift/${id}`, shift);
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/shift/${id}`, shift);
     }
     updateShifts(s) {
         this._shifts.push(Object.assign({}, s));
@@ -3894,7 +3894,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.epizy.com/api/therapy';
+const URL = 'https://ikaruna.000webhostapp.com/api/therapy';
 class TherapyDataService {
     constructor(http) {
         this.http = http;
@@ -3915,10 +3915,10 @@ class TherapyDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(therapy)));
     }
     edit(therapy, id) {
-        return this.http.put(`https://ikaruna.epizy.com/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
     }
     delete(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/therapy/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/therapy/${id}`);
     }
     getById(id) {
         return this.http.get(URL + '/:' + id)
@@ -3963,7 +3963,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.epizy.com/api/notification';
+const URL = 'https://ikaruna.000webhostapp.com/api/notification';
 class NotificationDataService {
     constructor(http) {
         this.http = http;
@@ -3971,7 +3971,7 @@ class NotificationDataService {
         this.notifications = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](this._notifications);
     }
     getAll(id) {
-        return this.http.get(`https://ikaruna.epizy.com/api/notification/${id}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/notification/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((notifics) => {
             if (notifics != null) {
                 this._notifications = [];
@@ -3983,10 +3983,10 @@ class NotificationDataService {
         }));
     }
     delete(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/notification/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/notification/${id}`);
     }
     deleteAll(id) {
-        return this.http.delete(`https://ikaruna.epizy.com/api/notifications/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/notifications/${id}`);
     }
     doWorkshop(request) {
         return this.http.post(URL, request);

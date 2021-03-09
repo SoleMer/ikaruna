@@ -8,9 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'https://ikaruna.epizy.com/api/user';
-const URL_LOG = 'https://ikaruna.epizy.com/api/log';
-const URL_ADMIN = 'https://ikaruna.epizy.com/api/admin';
+const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
+const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -72,7 +72,7 @@ export class UserControlService {
   }
   
   public logout(id: number): any {
-    return this.http.delete(`https://ikaruna.epizy.com/api/log/${id}`)
+    return this.http.delete(`https://ikaruna.000webhostapp.com/api/log/${id}`)
     .pipe(
       map((r: UserStatus)=> {
         if(r.status == 'closed'){
@@ -137,11 +137,11 @@ export class UserControlService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`https://ikaruna.epizy.com/api/user/${id}`);
+    return this.http.delete(`https://ikaruna.000webhostapp.com/api/user/${id}`);
   }
 
   public edit(user: User, id: number): any {
-    return this.http.put(`https://ikaruna.epizy.com/api/user/${id}`,user)
+    return this.http.put(`https://ikaruna.000webhostapp.com/api/user/${id}`,user)
   }
 
   public checkSession(): Observable<UserStatus>  {

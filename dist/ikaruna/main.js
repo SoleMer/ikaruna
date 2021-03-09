@@ -1358,7 +1358,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/question';
+const URL = 'https://ikaruna.epizy.com/api/question';
 class QuestionDataService {
     constructor(http) {
         this.http = http;
@@ -2204,7 +2204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/workshop';
+const URL = 'https://ikaruna.epizy.com/api/workshop';
 class WorkshopDataService {
     constructor(http) {
         this.http = http;
@@ -2227,17 +2227,17 @@ class WorkshopDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
     }
     edit(workshop, id) {
-        return this.http.put(`http://ikaruna.atwebpages.com/api/workshop/${id}`, JSON.parse(JSON.stringify(workshop)));
+        return this.http.put(`https://ikaruna.epizy.com/api/workshop/${id}`, JSON.parse(JSON.stringify(workshop)));
     }
     delete(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/workshop/${id}`);
+        return this.http.delete(`https://ikaruna.epizy.com/api/workshop/${id}`);
     }
     setChangeImg(ws) {
         this._changeImg = ws;
         this.changeImg.next(this._changeImg);
     }
     addImg(img, id) {
-        return this.http.put(`http://ikaruna.atwebpages.com/api/workshopp/${id}`, JSON.parse(JSON.stringify(img)));
+        return this.http.put(`https://ikaruna.epizy.com/api/workshopp/${id}`, JSON.parse(JSON.stringify(img)));
     }
 }
 WorkshopDataService.ɵfac = function WorkshopDataService_Factory(t) { return new (t || WorkshopDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
@@ -2367,7 +2367,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_user_control_service__WEBPACK_IMPORTED_MODULE_1__["UserControlService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 32, vars: 18, consts: [[1, "navbar", "navbar-expand-lg", "navbar-light", "my-navbar-container"], [1, "container-fluid"], ["type", "button", "data-bs-toggle", "collapse", "data-toggle", "collapse", "data-target", "#navbarTogglerDemo03", "aria-controls", "navbarTogglerDemo03", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler"], [1, "navbar-toggler-icon", 3, "click"], ["href", "#", 1, "navbar-brand"], ["src", "", "width", "100", "alt", ""], [1, "navbar-collapse", "my-navbar", 3, "ngClass"], [1, "navbar-nav", "me-auto", "mb-2", "mb-lg-0"], [1, "my-nav-link"], [1, "nav-link", 3, "routerLink", "click"], ["class", "my-nav-link", 4, "ngIf"], ["class", "nav-link ", 3, "routerLink", "click", 4, "ngIf", "ngIfElse"], ["login", ""], [1, "container"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 32, vars: 18, consts: [[1, "navbar", "navbar-expand-lg", "navbar-light", "my-navbar-container"], [1, "container-fluid"], ["type", "button", "data-bs-toggle", "collapse", "data-toggle", "collapse", "data-target", "#navbarTogglerDemo03", "aria-controls", "navbarTogglerDemo03", "aria-expanded", "false", "aria-label", "Toggle navigation", 1, "navbar-toggler", "mini"], [1, "navbar-toggler-icon", 3, "click"], ["href", "#", 1, "navbar-brand"], ["src", "", "width", "100", "alt", ""], [1, "navbar-collapse", "my-navbar", 3, "ngClass"], [1, "navbar-nav", "me-auto", "mb-2", "mb-lg-0"], [1, "my-nav-link"], [1, "nav-link", 3, "routerLink", "click"], ["class", "my-nav-link", 4, "ngIf"], ["class", "nav-link ", 3, "routerLink", "click", 4, "ngIf", "ngIfElse"], ["login", ""], [1, "container"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 2);
@@ -2446,7 +2446,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.status.status == "ok");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.status.status == "ok")("ngIfElse", _r4);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterOutlet"]], styles: ["li[_ngcontent-%COMP%]:hover {\n  font-size: larger;\n  font-weight: 400;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQUE7RUFDQSxnQkFBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGk6aG92ZXIge1xyXG4gICAgZm9udC1zaXplOiBsYXJnZXI7XHJcbiAgICBmb250LXdlaWdodDogNDAwO1xyXG59Il19 */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgClass"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterOutlet"]], styles: ["li[_ngcontent-%COMP%]:hover {\n  font-size: larger;\n  font-weight: 400;\n}\n\n.mini[_ngcontent-%COMP%] {\n  max-width: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQUE7RUFDQSxnQkFBQTtBQUNKOztBQUVBO0VBQ0ksZUFBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsibGk6aG92ZXIge1xyXG4gICAgZm9udC1zaXplOiBsYXJnZXI7XHJcbiAgICBmb250LXdlaWdodDogNDAwO1xyXG59XHJcblxyXG4ubWluaSB7XHJcbiAgICBtYXgtd2lkdGg6IDIwcHg7XHJcbn0iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -2635,9 +2635,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/user';
-const URL_LOG = 'http://ikaruna.atwebpages.com/api/log';
-const URL_ADMIN = 'http://ikaruna.atwebpages.com/api/admin';
+const URL = 'https://ikaruna.epizy.com/api/user';
+const URL_LOG = 'https://ikaruna.epizy.com/api/log';
+const URL_ADMIN = 'https://ikaruna.epizy.com/api/admin';
 class UserControlService {
     constructor(http) {
         this.http = http;
@@ -2680,7 +2680,7 @@ class UserControlService {
         localStorage.setItem('token', token);
     }
     logout(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/log/${id}`)
+        return this.http.delete(`https://ikaruna.epizy.com/api/log/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((r) => {
             if (r.status == 'closed') {
                 this.updateLog(r);
@@ -2723,7 +2723,7 @@ class UserControlService {
         }));
     }
     getById(id) {
-        return this.http.get(`http://ikaruna.atwebpages.com/api/user/${id}`)
+        return this.http.get(`https://ikaruna.epizy.com/api/user/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((user) => {
             this._userLogged = user;
             this.userLogged.next(this._userLogged);
@@ -2733,10 +2733,10 @@ class UserControlService {
         return this.http.get(URL_ADMIN);
     }
     delete(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/user/${id}`);
+        return this.http.delete(`https://ikaruna.epizy.com/api/user/${id}`);
     }
     edit(user, id) {
-        return this.http.put(`http://ikaruna.atwebpages.com/api/user/${id}`, user);
+        return this.http.put(`https://ikaruna.epizy.com/api/user/${id}`, user);
     }
     checkSession() {
         return this.http.get(URL_LOG)
@@ -3108,7 +3108,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/shift';
+const URL = 'https://ikaruna.epizy.com/api/shift';
 class ShiftDataService {
     constructor(http) {
         this.http = http;
@@ -3128,7 +3128,7 @@ class ShiftDataService {
         }));
     }
     getMyShifts(id) {
-        return this.http.get(`http://ikaruna.atwebpages.com/api/shift/${id}`)
+        return this.http.get(`https://ikaruna.epizy.com/api/shift/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((shifts) => {
             this._myShifts = [];
             shifts.forEach(s => {
@@ -3141,10 +3141,10 @@ class ShiftDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(shift)));
     }
     delete(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/shift/${id}`);
+        return this.http.delete(`https://ikaruna.epizy.com/api/shift/${id}`);
     }
     agree(shift, id) {
-        return this.http.put(`http://ikaruna.atwebpages.com/api/shift/${id}`, shift);
+        return this.http.put(`https://ikaruna.epizy.com/api/shift/${id}`, shift);
     }
     updateShifts(s) {
         this._shifts.push(Object.assign({}, s));
@@ -3894,7 +3894,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/therapy';
+const URL = 'https://ikaruna.epizy.com/api/therapy';
 class TherapyDataService {
     constructor(http) {
         this.http = http;
@@ -3915,10 +3915,10 @@ class TherapyDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(therapy)));
     }
     edit(therapy, id) {
-        return this.http.put(`http://ikaruna.atwebpages.com/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
+        return this.http.put(`https://ikaruna.epizy.com/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
     }
     delete(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/therapy/${id}`);
+        return this.http.delete(`https://ikaruna.epizy.com/api/therapy/${id}`);
     }
     getById(id) {
         return this.http.get(URL + '/:' + id)
@@ -3963,7 +3963,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/notification';
+const URL = 'https://ikaruna.epizy.com/api/notification';
 class NotificationDataService {
     constructor(http) {
         this.http = http;
@@ -3971,7 +3971,7 @@ class NotificationDataService {
         this.notifications = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](this._notifications);
     }
     getAll(id) {
-        return this.http.get(`http://ikaruna.atwebpages.com/api/notification/${id}`)
+        return this.http.get(`https://ikaruna.epizy.com/api/notification/${id}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((notifics) => {
             if (notifics != null) {
                 this._notifications = [];
@@ -3983,10 +3983,10 @@ class NotificationDataService {
         }));
     }
     delete(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/notification/${id}`);
+        return this.http.delete(`https://ikaruna.epizy.com/api/notification/${id}`);
     }
     deleteAll(id) {
-        return this.http.delete(`http://ikaruna.atwebpages.com/api/notifications/${id}`);
+        return this.http.delete(`https://ikaruna.epizy.com/api/notifications/${id}`);
     }
     doWorkshop(request) {
         return this.http.post(URL, request);

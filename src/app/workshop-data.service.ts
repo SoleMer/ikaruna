@@ -7,7 +7,7 @@ import { map, tap } from 'rxjs/operators';
 import { Archive } from './change-img/archive';
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/workshop';
+const URL = 'https://ikaruna.epizy.com/api/workshop';
 
 @Injectable({
   providedIn: 'root'
@@ -41,12 +41,12 @@ export class WorkshopDataService {
   }
 
   public edit(workshop: Workshop,id:number): any {
-    return this.http.put(`http://ikaruna.atwebpages.com/api/workshop/${id}`,
+    return this.http.put(`https://ikaruna.epizy.com/api/workshop/${id}`,
     JSON.parse(JSON.stringify(workshop)));
   }
   
   public delete(id: number): any{
-    return this.http.delete(`http://ikaruna.atwebpages.com/api/workshop/${id}`);
+    return this.http.delete(`https://ikaruna.epizy.com/api/workshop/${id}`);
   }
 
   public setChangeImg(ws: Workshop) {
@@ -55,7 +55,7 @@ export class WorkshopDataService {
   }
 
   public addImg(img: FormData, id: number): any {
-    return this.http.put(`http://ikaruna.atwebpages.com/api/workshopp/${id}`,
+    return this.http.put(`https://ikaruna.epizy.com/api/workshopp/${id}`,
     JSON.parse(JSON.stringify(img)));
   }
 }

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ikaruna"
+    }
+  },
+  "defaultProject": "ikaruna",
+  "cli": {
+    "analytics": "7ee28221-6343-470e-8364-e212e289562c"
+  }
 }

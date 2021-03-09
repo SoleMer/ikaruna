@@ -8,9 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'http://ikaruna.atwebpages.com/api/user';
-const URL_LOG = 'http://ikaruna.atwebpages.com/api/log';
-const URL_ADMIN = 'http://ikaruna.atwebpages.com/api/admin';
+const URL = 'https://ikaruna.epizy.com/api/user';
+const URL_LOG = 'https://ikaruna.epizy.com/api/log';
+const URL_ADMIN = 'https://ikaruna.epizy.com/api/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -72,7 +72,7 @@ export class UserControlService {
   }
   
   public logout(id: number): any {
-    return this.http.delete(`http://ikaruna.atwebpages.com/api/log/${id}`)
+    return this.http.delete(`https://ikaruna.epizy.com/api/log/${id}`)
     .pipe(
       map((r: UserStatus)=> {
         if(r.status == 'closed'){
@@ -123,7 +123,7 @@ export class UserControlService {
   }
 
   public getById(id: number): Observable<User> {
-    return this.http.get<User>(`http://ikaruna.atwebpages.com/api/user/${id}`)
+    return this.http.get<User>(`https://ikaruna.epizy.com/api/user/${id}`)
     .pipe(
       tap((user: User) => {
         this._userLogged = user;
@@ -137,11 +137,11 @@ export class UserControlService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`http://ikaruna.atwebpages.com/api/user/${id}`);
+    return this.http.delete(`https://ikaruna.epizy.com/api/user/${id}`);
   }
 
   public edit(user: User, id: number): any {
-    return this.http.put(`http://ikaruna.atwebpages.com/api/user/${id}`,user)
+    return this.http.put(`https://ikaruna.epizy.com/api/user/${id}`,user)
   }
 
   public checkSession(): Observable<UserStatus>  {

@@ -5,7 +5,7 @@ import { Reply, Therapy } from './therapy-list/therapy';
 import { map, tap } from 'rxjs/operators';
 
 
-const URL = 'http://ikaruna.atwebpages.com/api/therapy';
+const URL = 'https://ikaruna.epizy.com/api/therapy';
 
 
 @Injectable({
@@ -38,12 +38,12 @@ export class TherapyDataService {
     }
     
     public edit(therapy:Therapy,id:number): any {
-      return this.http.put(`http://ikaruna.atwebpages.com/api/therapy/${id}`, 
+      return this.http.put(`https://ikaruna.epizy.com/api/therapy/${id}`, 
       JSON.parse(JSON.stringify(therapy)));
     }
     
     public delete(id: number): any{
-      return this.http.delete(`http://ikaruna.atwebpages.com/api/therapy/${id}`);
+      return this.http.delete(`https://ikaruna.epizy.com/api/therapy/${id}`);
     }
     
     public getById(id:number) {

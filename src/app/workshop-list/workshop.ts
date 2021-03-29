@@ -5,6 +5,7 @@ export interface Workshop {
     contents: string;
     modality: string;
     image?: string;
+    delete?: boolean;
 }
 
 export interface RequestWs {

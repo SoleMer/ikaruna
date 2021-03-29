@@ -27,7 +27,7 @@ export class ShiftUserListComponent implements OnInit {
   }
 
   getMyShifts() {
-    this.shiftSvc.getMyShifts(this.status.id_user)
+    this.shiftSvc.getAll(this.status.token)
     .subscribe((res) => {
       this.response = res;
     });

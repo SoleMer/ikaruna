@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ShiftDataService } from '../shift-data.service';
+import { UserControlService } from '../user-control.service';
+import { UserStatus } from '../user-list/user';
 import { Shift } from './shift';
 
 @Component({
@@ -12,9 +14,12 @@ export class ShiftListComponent implements OnInit {
 
   shifts$ : Observable<Shift[]> ;
   response: any;
+  status: UserStatus;
 
-  constructor(private shiftSvc: ShiftDataService) {
+  constructor(private shiftSvc: ShiftDataService,
+    private userCtrlSvc: UserControlService) {
     this.shifts$ = shiftSvc.shifts.asObservable();
+    userCtrlSvc.logged.subscribe(s => this.status = s);
    }
 
   ngOnInit(): void {
@@ -22,7 +27,7 @@ export class ShiftListComponent implements OnInit {
   }
 
   getAll() {
-    this.shiftSvc.getAll()
+    this.shiftSvc.getAll(this.status.token)
     .subscribe((res) => {
       this.response = res;
     });
@@ -30,7 +35,8 @@ export class ShiftListComponent implements OnInit {
 
 
   agree(shift: Shift){
-    this.shiftSvc.agree(shift, shift.id)
+    shift.token = this.status.token;
+    this.shiftSvc.manageShift(shift)
     .subscribe(r => {
       this.response = r;
       this.getAll();
@@ -38,7 +44,15 @@ export class ShiftListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.shiftSvc.delete(id)
+    let shift: Shift = {
+      id: id,
+      therapy: 0,
+      date: 0,
+      patient: 0,
+      status: 0, 
+      token: this.status.token
+    }
+    this.shiftSvc.manageShift(shift)
     .subscribe(r => {
       this.response = r;
       this.getAll();

@@ -32,28 +32,21 @@ export class AddEditWorkshopComponent implements OnInit {
 
   save() {
     this.loading = true;
-    if(this.edit ==null){
-      this.wspSvc.add(this.wsp)
+    if(this.edit !=null){
+      this.wsp.id = this.edit.id;
+    } 
+      this.wspSvc.manageWorkshop(this.wsp)
     .subscribe(r => {
        this.response = r;
        this.loading = false;
        this.getAll();
     });
-  } else {
-    this.wspSvc.edit(this.wsp, this.edit.id)
-    .subscribe(r => {
-      this.response = r;
-      this.loading = false;
-      this.getAll();
-      this.cancel();
-    });
-  }
-  this.wsp = {
-    name: '',
-    caption: '',
-    contents: '',
-    modality: ''
-  }
+    this.wsp = {
+      name: '',
+      caption: '',
+      contents: '',
+      modality: ''
+    }
 }
 
 

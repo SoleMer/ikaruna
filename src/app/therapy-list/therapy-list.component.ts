@@ -46,7 +46,14 @@ export class TherapyListComponent implements OnInit {
   }
   
   delete(id: number) {
-    this.therapiesDataService.delete(id)
+    let trp: Therapy = {
+      id: id,
+      name: '',
+      description: '',
+      therapist_id: -1,
+      token: this.status.token,
+    }
+    this.therapiesDataService.manageTherapy(trp)
     .subscribe(r => {
       this.response = r;
       this.getAll();

@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { RequestWs, Workshop } from './workshop-list/workshop';
 
-const URL = 'https://ikaruna.000webhostapp.com/api/notification';
+const URL = '/api/notification';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class NotificationDataService {
   constructor(private http: HttpClient) { }
 
   public getAll(id: number): Observable<Notification[]> {
-    return this.http.get<Notification[]>(`https://ikaruna.000webhostapp.com/api/notification/${id}`)
+    return this.http.get<Notification[]>(`/api/notification/${id}`)
     .pipe(
       tap((notifics: Notification[]) => {
         if(notifics != null) {
@@ -31,12 +31,12 @@ export class NotificationDataService {
     );
   }
 
-  public delete(id: number): any{
-    return this.http.delete(`https://ikaruna.000webhostapp.com/api/notification/${id}`);
+  public delete(id: number, token: string): any{
+    return this.http.get(`/api/notification/${id}/${token}`);
   }
 
-  public deleteAll(id: number): any {
-    return this.http.delete(`https://ikaruna.000webhostapp.com/api/notifications/${id}`);
+  public deleteAll(token: string): any {
+    return this.http.get(`/api/notifications/${token}`);
   }
 
   public doWorkshop(request: RequestWs):any {

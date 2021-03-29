@@ -39,7 +39,7 @@ export class IkarunaNotificationsComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.notifDataSvc.delete(id)
+    this.notifDataSvc.delete(id, this.status.token)
     .subscribe(r => {
       this.response = r;
       this.getAll();
@@ -48,7 +48,7 @@ export class IkarunaNotificationsComponent implements OnInit {
 
   deleteAll() {
     console.log("deleteAll");
-    this.notifDataSvc.deleteAll(this.status.id_user)
+    this.notifDataSvc.deleteAll(this.status.token)
     .subscribe(r => {
       this.response = r;
       this.getAll();

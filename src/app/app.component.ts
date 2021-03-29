@@ -22,24 +22,17 @@ export class AppComponent {
   
   title = 'ikaruna';
 
-  darkMode: boolean;
 
   ngOnInit(): void {
     this.userControlService.checkSession();
-    this.darkMode = false;
+    
   }
 
-  toggleDarkMode() {
-    if(this.darkMode){
-      this.darkMode = false;
-    } else {
-      this.darkMode =true;
-    }
-  }
+  
 
   logout() {
     this.toggleNavbar();
-    this.userControlService.logout(this.status.id_user)
+    this.userControlService.logout(this.status)
     .subscribe(r => {
       this.response = r
     });

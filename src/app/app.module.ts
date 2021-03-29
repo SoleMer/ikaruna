@@ -70,8 +70,6 @@ import { ChangeImgComponent } from './change-img/change-img.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    //NgbModule
-    //npm install --save @ng-bootstrap/ng-bootstrap.
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,8 +24,8 @@ export class IkarunaProfileComponent implements OnInit {
     this.userControlSvc.checkSession()
     .subscribe(s => {
       this.status = s
+      if(s.status == 'ok') this.getUser();
     });
-    this.getUser();
     this.edit = false;
     this.userEdit = {
       username: this.user.username,
@@ -36,7 +36,7 @@ export class IkarunaProfileComponent implements OnInit {
   }
 
   getUser() {
-    this.userControlSvc.getById(this.status.id_user)
+    this.userControlSvc.getById(this.status.token)
     .subscribe(r => {
       this.user = r
     });

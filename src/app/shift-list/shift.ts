@@ -7,4 +7,5 @@ export interface Shift {
     patient: number;
     patient_name?: string;
     status: number; 
+    token?: string;
 }

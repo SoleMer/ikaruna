@@ -7,7 +7,7 @@ import { map, tap } from 'rxjs/operators';
 import { Archive } from './change-img/archive';
 
 
-const URL = 'https://ikaruna.000webhostapp.com/api/workshop';
+const URL = '/api/workshop';
 
 @Injectable({
   providedIn: 'root'
@@ -36,17 +36,8 @@ export class WorkshopDataService {
     );
   }
 
-  public add(workshop: Workshop): any {
+  public manageWorkshop(workshop: Workshop): any {
     return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
-  }
-
-  public edit(workshop: Workshop,id:number): any {
-    return this.http.put(`https://ikaruna.000webhostapp.com/api/workshop/${id}`,
-    JSON.parse(JSON.stringify(workshop)));
-  }
-  
-  public delete(id: number): any{
-    return this.http.delete(`https://ikaruna.000webhostapp.com/api/workshop/${id}`);
   }
 
   public setChangeImg(ws: Workshop) {
@@ -55,7 +46,7 @@ export class WorkshopDataService {
   }
 
   public addImg(img: FormData, id: number): any {
-    return this.http.put(`https://ikaruna.000webhostapp.com/api/workshopp/${id}`,
+    return this.http.put(`/api/workshopp/${id}`,
     JSON.parse(JSON.stringify(img)));
   }
 }

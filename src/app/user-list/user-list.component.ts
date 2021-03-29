@@ -21,9 +21,7 @@ export class UserListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.userControlSvc.checkSession()
-    .subscribe(s => {
-      this.status = s
+    this.userControlSvc.checkSession();
       if(this.status.isAdmin == 1) {
         this.listUser = true;
         this.getAll();
@@ -31,7 +29,6 @@ export class UserListComponent implements OnInit {
         this.listUser= false;
         location.href == "http://localhost:4200/notfound"
       }
-    });
   }
 
   getAll() {

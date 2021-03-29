@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { NewUser } from './ikaruna-check-in/newUser';
@@ -8,9 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'https://ikaruna.000webhostapp.com/api/user';
-const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
-const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
+const URL = '/api/user';
+const URL_LOG = '/api/log';
+const URL_ADMIN = '/api/admin';
+
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,8 @@ export class UserControlService {
 
   private _users: User[] = [];
   users: BehaviorSubject<User[]> = new BehaviorSubject(this._users);
+
+  header: HttpHeaders;
   
   constructor( private http: HttpClient) { }
 
@@ -56,9 +59,10 @@ export class UserControlService {
   }
   
   public login(user: UserLogin): Observable<UserStatus>  {
-    return this.http.post<UserStatus>(URL_LOG,user)
+    return this.http.post<UserStatus>(URL_LOG,JSON.parse(JSON.stringify(user)))
     .pipe(
       map((res:UserStatus)=> {
+        console.log(res);
         this.saveToken(res.token);
         this.updateLog(res);
         return res;
@@ -71,12 +75,37 @@ export class UserControlService {
     localStorage.setItem('token',token);
   }
   
-  public logout(id: number): any {
-    return this.http.delete(`https://ikaruna.000webhostapp.com/api/log/${id}`)
+  /*public logout(id: number): any {
+    const headers = new HttpHeaders();
+    headers.append('TOKEN', localStorage.getItem('token') );
+    headers.append('Access-Control-Request-Method', "DELETE" );
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'TOKEN': localStorage.getItem('token'),
+      }),
+      Origin: 'https://ikaruna.000webhostapp.com',
+      mode: 'cors',
+      params: new HttpParams().set(':ID', String(id))
+    };
+    let options = { headers: null, withCredentials: true };
+    return this.http.delete(`/api/log/${id}`, httpOptions)
     .pipe(
       map((r: UserStatus)=> {
         if(r.status == 'closed'){
           this.updateLog(r);
+          return r;
+        }
+    })
+  );
+  }*/
+  public logout(user: UserStatus): any {
+    return this.http.post(`/api/logout`,JSON.parse(JSON.stringify(user)))
+    .pipe(
+      map((r: UserStatus)=> {
+        if(r.status == 'closed'){
+          this.updateLog(r);
+          this.deleteToken();
           return r;
         }
     })
@@ -90,7 +119,6 @@ export class UserControlService {
   updateLog(res: UserStatus = null) {
     if(res) {
       this._logged = res;
-      this.updateUserLogged(res.id_user);
     } else {
       this._logged.id_user = 0;
       this._logged.isAdmin = 0;
@@ -100,17 +128,10 @@ export class UserControlService {
     }
     this.logged.next(this._logged);
   }
-
-  updateUserLogged(id: number) {
-    this.getById(id)
-    .subscribe(u => {
-      this._userLogged = u
-      this.userLogged.next(this._userLogged);
-    });
-  }
   
   public getAll(): Observable<User[]> {
-    return this.http.get<User[]>(URL)
+    let token = localStorage.getitem('token');
+    return this.http.get<User[]>(`/api/users/${token}`)
     .pipe(
       tap((users: User[]) => {
         this._users = [];
@@ -122,10 +143,11 @@ export class UserControlService {
     );
   }
 
-  public getById(id: number): Observable<User> {
-    return this.http.get<User>(`https://ikaruna.epizy.com/api/user/${id}`)
+  public getById(token: string): Observable<User> {
+    return this.http.get<User>(`/api/user/${token}`)
     .pipe(
       tap((user: User) => {
+        console.log(user);
         this._userLogged = user;
          this.userLogged.next(this._userLogged);
        })
@@ -137,17 +159,19 @@ export class UserControlService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`https://ikaruna.000webhostapp.com/api/user/${id}`);
+    return this.http.delete(`/api/user/${id}`);
   }
 
   public edit(user: User, id: number): any {
-    return this.http.put(`https://ikaruna.000webhostapp.com/api/user/${id}`,user)
+    return this.http.put(`/api/user/${id}`,user)
   }
 
   public checkSession(): Observable<UserStatus>  {
-    return this.http.get<UserStatus>(URL_LOG)
+    let token = localStorage.getItem('token');
+    return this.http.get<UserStatus>(`/api/log/${token}`)
     .pipe(
       map((res:UserStatus)=> {
+        console.log(res);
         this.updateLog(res);
         return res;
         

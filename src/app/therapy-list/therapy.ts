@@ -4,7 +4,7 @@ export interface Therapy {
     description: string;
     therapist_id: number;
     username?: string;
-    userlogged?: number;
+    token?: string;
 }
 
 export interface Reply {

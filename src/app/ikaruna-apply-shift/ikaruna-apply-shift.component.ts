@@ -44,12 +44,13 @@ export class IkarunaApplyShiftComponent implements OnInit {
   postTurn(){
     this.loading = true;
     this.shift.status = this.status.isAdmin;
+    this.shift.token = this.status.token;
     if(this.status.isAdmin == 1) {
       this.shift.patient = 0;
     } else {
       this.shift.patient = this.status.id_user;
     }
-    this.shiftDataSvc.add(this.shift)
+    this.shiftDataSvc.manageShift(this.shift)
     .subscribe(r => {
       this.response = r;
       this.loading = false;
@@ -70,14 +71,14 @@ export class IkarunaApplyShiftComponent implements OnInit {
   }
 
   getMyShifts() {
-    this.shiftDataSvc.getMyShifts(this.status.id_user)
+    this.shiftDataSvc.getAll(this.status.token)
     .subscribe((res) => {
       this.response = res;
     });
   }
 
   getAll() {
-    this.shiftDataSvc.getAll()
+    this.shiftDataSvc.getAll(this.status.token)
     .subscribe((res) => {
       this.response = res;
     });

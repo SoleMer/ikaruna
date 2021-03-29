@@ -18,6 +18,7 @@ export class IkarunaShiftsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.userControlService.checkSession();
   }
 
 }

@@ -18,4 +18,5 @@ export interface UserStatus {
 export interface UserLogin {
     email: string;
     password:string;
+    token: string;
 }

@@ -34,7 +34,7 @@ export class AddEditTherapyComponent implements OnInit {
       name: '',
       description: '',
       therapist_id: 0,
-      userlogged: this.status.id_user
+      token: this.status.token
     }
     this.userControlSvc.getTherapist()
     .subscribe(t => {

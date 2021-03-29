@@ -61,7 +61,15 @@ export class WorkshopListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.workshopsDataService.delete(id)
+    let ws: Workshop = {
+      id: id,
+      name: '',
+      caption: '',
+      contents: '',
+      modality: '',
+      delete: true
+    }
+    this.workshopsDataService.manageWorkshop(ws)
     .subscribe(r => {
       this.response = r;
       this.getAll();

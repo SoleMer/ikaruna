@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light my-navbar-container">
     <div class="container-fluid">
-        <button class="navbar-toggler mini" type="button" data-bs-toggle="collapse" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span (click)="toggleNavbar()" class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img src="" width="100" alt=""></a>
+        <!--<button class="navbar-toggler mini" type="button" data-bs-toggle="collapse" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">-->
+        <span (click)="toggleNavbar()" class="navbar-toggler-icon my-toggler"></span>
+        <!--</button>-->
+        <img src="../assets/img/logoCuadrado.jpg" width="100" alt="" class="navbar-brand logo-navbar" [routerLink]="['/']">
         <div class="navbar-collapse my-navbar" [ngClass]="{'responsive-hide': !navbarExpand}">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="my-nav-link">

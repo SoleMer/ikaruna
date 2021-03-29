@@ -922,7 +922,10 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: true
+    production: true,
+    backend: {
+        baseURL: "https://ikaruna.000webhostapp.com"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -2206,7 +2209,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
 
 
 
@@ -2216,13 +2221,14 @@ const URL = '/api/workshop';
 class WorkshopDataService {
     constructor(http) {
         this.http = http;
+        this.baseUrl = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].backend.baseURL;
         this._workshops = [];
         this.workshops = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](this._workshops);
         this._changeImg = null;
         this.changeImg = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](this._changeImg);
     }
     getAll() {
-        return this.http.get(URL)
+        return this.http.get(`${this.baseUrl}` + URL)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((workshops) => {
             this._workshops = [];
             workshops.forEach(wsp => {
@@ -2242,14 +2248,14 @@ class WorkshopDataService {
         return this.http.put(`/api/workshopp/${id}`, JSON.parse(JSON.stringify(img)));
     }
 }
-WorkshopDataService.ɵfac = function WorkshopDataService_Factory(t) { return new (t || WorkshopDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
+WorkshopDataService.ɵfac = function WorkshopDataService_Factory(t) { return new (t || WorkshopDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"])); };
 WorkshopDataService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: WorkshopDataService, factory: WorkshopDataService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](WorkshopDataService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),

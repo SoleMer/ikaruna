@@ -5,6 +5,7 @@ import { Workshop } from './workshop-list/workshop';
 import { Reply } from './therapy-list/therapy';
 import { map, tap } from 'rxjs/operators';
 import { Archive } from './change-img/archive';
+import { environment } from 'src/environments/environment';
 
 
 const URL = '/api/workshop';
@@ -15,6 +16,8 @@ const URL = '/api/workshop';
 
 export class WorkshopDataService {
 
+  baseUrl: string = environment.backend.baseURL;
+
   private _workshops: Workshop[] = [];
   workshops: BehaviorSubject<Workshop[]> = new BehaviorSubject(this._workshops);
 
@@ -24,7 +27,7 @@ export class WorkshopDataService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<Workshop[]> {
-    return this.http.get<Workshop[]>(URL)
+    return this.http.get<Workshop[]>(`${this.baseUrl}`+URL)
     .pipe(
       tap((workshops: Workshop[]) => {
         this._workshops = [];

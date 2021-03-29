@@ -130,16 +130,17 @@ export class UserControlService {
   }
   
   public getAll(): Observable<User[]> {
-    let token = localStorage.getitem('token');
+    let token = localStorage.getItem('token');
     return this.http.get<User[]>(`/api/users/${token}`)
     .pipe(
       tap((users: User[]) => {
+        console.log(users);
         this._users = [];
          users.forEach(user => {
            this._users.push({...user});
          });
          this.users.next(this._users);
-       })
+        })
     );
   }
 
@@ -156,6 +157,16 @@ export class UserControlService {
   
   public getTherapist(): Observable<User[]> {
     return this.http.get<User[]>(URL_ADMIN);
+  }
+
+  public manageUser(user: User): any {
+    return this.http.post<UserStatus>(URL,JSON.parse(JSON.stringify(user)));
+    /*.pipe(
+      map((res:Reply)=> {
+        return res;
+        
+      })
+    )*/
   }
 
   public delete(id: number): any{

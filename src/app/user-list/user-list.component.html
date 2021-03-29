@@ -1,4 +1,4 @@
-<div *ngIf="listUser; else notFound">
+<div *ngIf="status.isAdmin == 1; else notFound">
     <div class="text-center">
         <h2 class="title">Usuarios</h2>
     </div>

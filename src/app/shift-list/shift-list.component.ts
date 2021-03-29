@@ -23,6 +23,10 @@ export class ShiftListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.userCtrlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
     this.getAll();
   }
 
@@ -35,6 +39,7 @@ export class ShiftListComponent implements OnInit {
 
 
   agree(shift: Shift){
+    shift.status = 1;
     shift.token = this.status.token;
     this.shiftSvc.manageShift(shift)
     .subscribe(r => {

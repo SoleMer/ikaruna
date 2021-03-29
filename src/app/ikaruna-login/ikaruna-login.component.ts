@@ -45,16 +45,10 @@ export class IkarunaLoginComponent implements OnInit {
     this.userControlService.login(this.user)
     .subscribe(res => {
       this.response =res;
-      /*let id = stringify(this.response.id_user);
-      let isAdmin = stringify(this.response.isAdmin);
-      let token = this.response.token;
-      this.cookieSvc.set("user_id", id);
-      this.cookieSvc.set("isAdmin", isAdmin);
-      this.cookieSvc.set("token", token);*/
       this.loading = false;
-      /*if(this.response.status == 'ok' && this.pagina != "") {
+      if(this.response.status == 'ok' && this.pagina != "") {
         location.href = this.pagina ;
-      }*/
+      }
       if(this.response.status == 'error') {
         this.viewFastNote(this.response.msg);
       }

@@ -21,14 +21,19 @@ export class UserListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.userControlSvc.checkSession();
-      if(this.status.isAdmin == 1) {
+    //this.userControlSvc.checkSession();
+    this.userControlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
+    this.getAll();
+      /*if(this.status.isAdmin == 1) {
         this.listUser = true;
         this.getAll();
       } else {
         this.listUser= false;
         location.href == "http://localhost:4200/notfound"
-      }
+      } */
   }
 
   getAll() {
@@ -39,7 +44,14 @@ export class UserListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.userControlSvc.delete(id)
+    let user: User = {
+      id: id,
+      username: '',
+      email: '',
+      phone: '',
+      token: this.status.token
+    }
+    this.userControlSvc.manageUser(user)
     .subscribe(r => {
       this.response = r;
       this.getAll();

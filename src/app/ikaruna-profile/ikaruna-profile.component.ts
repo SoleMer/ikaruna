@@ -14,6 +14,8 @@ export class IkarunaProfileComponent implements OnInit {
   status: UserStatus;
   userEdit: User;
   response: any;
+  viewNote: boolean = false;
+  msgNote: string = "";
 
   constructor(private userControlSvc: UserControlService) {
     userControlSvc.logged.subscribe(s => this.status = s);
@@ -47,11 +49,27 @@ export class IkarunaProfileComponent implements OnInit {
   }
 
   save() {
-    this.userControlSvc.edit(this.userEdit, this.status.id_user)
+    this.userEdit.id = this.status.id_user;
+    this.userEdit.token = this.status.token;
+    this.userControlSvc.manageUser(this.userEdit)
     .subscribe(r => {
-      this.response = 
+      this.response = r
+      console.log(r);
       this.getUser();
+      this.viewFastNote(this.response.msg);
     });
     this.edit = false;
+  }
+
+  viewFastNote(txt:string) {
+    this.msgNote = txt;
+    this.viewNote = true;
+    setTimeout(() => {
+      this.hide();
+    }, 5000);
+  }
+
+  hide() {
+    this.viewNote = false;
   }
 }

@@ -25,14 +25,12 @@ export class IkarunaNotificationsComponent implements OnInit {
     this.userControlSvc.checkSession()
     .subscribe(s => {
       this.status = s
-      if(this.status.status == 'ok') {
-        this.getAll();
-      }
     });
+    this.getAll();
   }
 
   getAll() {
-    this.notifDataSvc.getAll(this.status.id_user)
+    this.notifDataSvc.getAll()
     .subscribe((res) => {
       this.response = res;
     });

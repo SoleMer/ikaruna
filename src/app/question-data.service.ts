@@ -24,6 +24,7 @@ export class QuestionDataService {
   }
 
   public getAll(): Observable<Question[]> {
-    return this.http.get<Question[]>(URL);
+    let token = localStorage.getItem('token');
+    return this.http.get<Question[]>(`/api/question/${token}`);
   }
 }

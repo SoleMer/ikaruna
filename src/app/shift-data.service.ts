@@ -24,11 +24,12 @@ export class ShiftDataService {
     return this.http.get<Shift[]>(`/api/shift/${token}`)
     .pipe(
       tap((shifts: Shift[]) => {
-        this._myShifts = [];
+        console.log(shifts);
+        this._shifts = [];
          shifts.forEach(s => {
-           this._myShifts.push({...s});
+           this._shifts.push({...s});
          });
-         this.myShifts.next(this._myShifts);
+         this.shifts.next(this._shifts);
        })
     );
   }

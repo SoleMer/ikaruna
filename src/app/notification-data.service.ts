@@ -16,8 +16,9 @@ export class NotificationDataService {
 
   constructor(private http: HttpClient) { }
 
-  public getAll(id: number): Observable<Notification[]> {
-    return this.http.get<Notification[]>(`/api/notification/${id}`)
+  public getAll(): Observable<Notification[]> {
+    let token = localStorage.getItem('token');
+    return this.http.get<Notification[]>(`/api/notification/${token}`)
     .pipe(
       tap((notifics: Notification[]) => {
         if(notifics != null) {

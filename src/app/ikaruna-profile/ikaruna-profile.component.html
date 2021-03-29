@@ -72,10 +72,11 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 offset-md-3 ">
+    <div class="col-md-4 offset-md-2 ">
         <app-ikaruna-notifications></app-ikaruna-notifications>
     </div>
 </div>
 <ng-template #login>
     <app-log-and-check-in></app-log-and-check-in>
 </ng-template>
+<app-fast-note class="fast-note" *ngIf="viewNote" [note]='msgNote'></app-fast-note>

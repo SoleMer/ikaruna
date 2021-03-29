@@ -44,22 +44,15 @@ export class AddEditTherapyComponent implements OnInit {
 
   save() {
     this.loading = true;
-    if(this.edit ==null){
-    this.therapyDataSvc.add(this.trp)
+    if(this.edit !=null){
+      this.trp.id = this.edit.id;
+    }
+    this.therapyDataSvc.manageTherapy(this.trp)
     .subscribe(r => {
      this.response = r;
      this.loading = false;
      this.getAll();
     });
-  } else {
-    this.therapyDataSvc.edit(this.trp, this.edit.id)
-    .subscribe(r => {
-      this.response = r;
-      this.loading = false;
-      this.getAll();
-      this.cancel();
-    });
-  }
   this.trp = {
     name: '',
     description: '',

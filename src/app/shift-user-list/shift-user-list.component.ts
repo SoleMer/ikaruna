@@ -13,16 +13,20 @@ import { UserStatus } from '../user-list/user';
 export class ShiftUserListComponent implements OnInit {
 
   status: UserStatus;
-  myShifts$: Observable<Shift[]> ;
+  shifts$: Observable<Shift[]> ;
   response: any;
 
   constructor(private userCtrlSvc: UserControlService,
     private shiftSvc: ShiftDataService) { 
-    this.myShifts$ = shiftSvc.myShifts.asObservable();
+    this.shifts$ = shiftSvc.shifts.asObservable();
     userCtrlSvc.logged.subscribe(s => this.status = s);
   }
 
   ngOnInit(): void {
+    this.userCtrlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
     this.getMyShifts();
   }
 

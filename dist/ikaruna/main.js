@@ -2695,7 +2695,7 @@ class UserControlService {
         }));
     }
     login(user) {
-        return this.http.post(URL_LOG, JSON.parse(JSON.stringify(user)))
+        return this.http.post(URL_LOG, user)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
             console.log(res);
             this.saveToken(res.token);

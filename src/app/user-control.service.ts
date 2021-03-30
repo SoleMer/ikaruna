@@ -59,7 +59,7 @@ export class UserControlService {
   }
   
   public login(user: UserLogin): Observable<UserStatus>  {
-    return this.http.post<UserStatus>(URL_LOG,JSON.parse(JSON.stringify(user)))
+    return this.http.post<UserStatus>(URL_LOG,user)
     .pipe(
       map((res:UserStatus)=> {
         console.log(res);

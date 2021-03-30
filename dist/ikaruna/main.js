@@ -2695,7 +2695,8 @@ class UserControlService {
         }));
     }
     login(user) {
-        return this.http.post(URL_LOG, user)
+        const headers = { 'Access-Control-Request-Method': 'POST' };
+        return this.http.post(URL_LOG, user, { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
             console.log(res);
             this.saveToken(res.token);

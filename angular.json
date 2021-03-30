@@ -34,8 +34,6 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production",
-              "proxyConfig": "src/proxy.conf.json",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

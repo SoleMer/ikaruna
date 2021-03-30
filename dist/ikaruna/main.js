@@ -2695,8 +2695,7 @@ class UserControlService {
         }));
     }
     login(user) {
-        const headers = { 'Origin': 'https://ikaruna.vercel.app' };
-        return this.http.post(URL_LOG, user, { headers: headers })
+        return this.http.post(URL_LOG, user)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
             console.log(res);
             this.saveToken(res.token);

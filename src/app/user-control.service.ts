@@ -59,7 +59,8 @@ export class UserControlService {
   }
   
   public login(user: UserLogin): Observable<UserStatus>  {
-    return this.http.post<UserStatus>(URL_LOG,user)
+    const headers = { 'Origin': 'https://ikaruna.vercel.app' };
+    return this.http.post<UserStatus>(URL_LOG,user, {headers: headers})
     .pipe(
       map((res:UserStatus)=> {
         console.log(res);

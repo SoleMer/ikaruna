@@ -5,7 +5,7 @@ import { Reply } from '../app/therapy-list/therapy';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-const URL = '/api/question';
+const URL = 'https://ikaruna.000webhostapp.com/api/question';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,6 @@ export class QuestionDataService {
 
   public getAll(): Observable<Question[]> {
     let token = localStorage.getItem('token');
-    return this.http.get<Question[]>(`/api/question/${token}`);
+    return this.http.get<Question[]>(`https://ikaruna.000webhostapp.com/api/question/${token}`);
   }
 }

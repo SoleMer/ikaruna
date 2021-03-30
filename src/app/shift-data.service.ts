@@ -5,7 +5,7 @@ import { Shift } from './shift-list/shift';
 import { Reply } from './therapy-list/therapy';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-const URL = '/api/shift';
+const URL = 'https://ikaruna.000webhostapp.com/api/shift';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ShiftDataService {
   constructor(private http: HttpClient) { }
 
   public getAll(token: string): Observable<Shift[]> {
-    return this.http.get<Shift[]>(`/api/shift/${token}`)
+    return this.http.get<Shift[]>(`https://ikaruna.000webhostapp.com/api/shift/${token}`)
     .pipe(
       tap((shifts: Shift[]) => {
         console.log(shifts);

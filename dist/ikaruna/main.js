@@ -1361,7 +1361,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = '/api/question';
+const URL = 'https://ikaruna.000webhostapp.com/api/question';
 class QuestionDataService {
     constructor(http) {
         this.http = http;
@@ -1374,7 +1374,7 @@ class QuestionDataService {
     }
     getAll() {
         let token = localStorage.getItem('token');
-        return this.http.get(`/api/question/${token}`);
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/question/${token}`);
     }
 }
 QuestionDataService.ɵfac = function QuestionDataService_Factory(t) { return new (t || QuestionDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
@@ -2661,9 +2661,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = '/api/user';
-const URL_LOG = '/api/log';
-const URL_ADMIN = '/api/admin';
+const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
+const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 class UserControlService {
     constructor(http) {
         this.http = http;
@@ -2731,7 +2731,7 @@ class UserControlService {
     );
     }*/
     logout(user) {
-        return this.http.post(`/api/logout`, JSON.parse(JSON.stringify(user)))
+        return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`, JSON.parse(JSON.stringify(user)))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((r) => {
             if (r.status == 'closed') {
                 this.updateLog(r);
@@ -2758,7 +2758,7 @@ class UserControlService {
     }
     getAll() {
         let token = localStorage.getItem('token');
-        return this.http.get(`/api/users/${token}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/users/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((users) => {
             console.log(users);
             this._users = [];
@@ -2769,7 +2769,7 @@ class UserControlService {
         }));
     }
     getById(token) {
-        return this.http.get(`/api/user/${token}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/user/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((user) => {
             console.log(user);
             this._userLogged = user;
@@ -2789,14 +2789,14 @@ class UserControlService {
         )*/
     }
     delete(id) {
-        return this.http.delete(`/api/user/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/user/${id}`);
     }
     edit(user, id) {
-        return this.http.put(`/api/user/${id}`, user);
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/user/${id}`, user);
     }
     checkSession() {
         let token = localStorage.getItem('token');
-        return this.http.get(`/api/log/${token}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/log/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
             console.log(res);
             this.updateLog(res);
@@ -3167,7 +3167,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = '/api/shift';
+const URL = 'https://ikaruna.000webhostapp.com/api/shift';
 class ShiftDataService {
     constructor(http) {
         this.http = http;
@@ -3177,7 +3177,7 @@ class ShiftDataService {
         this.myShifts = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this._myShifts);
     }
     getAll(token) {
-        return this.http.get(`/api/shift/${token}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/shift/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((shifts) => {
             console.log(shifts);
             this._shifts = [];
@@ -3936,7 +3936,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = '/api/therapy';
+const URL = 'https://ikaruna.000webhostapp.com/api/therapy';
 class TherapyDataService {
     constructor(http) {
         this.http = http;
@@ -3957,10 +3957,10 @@ class TherapyDataService {
         return this.http.post(URL, JSON.parse(JSON.stringify(therapy)));
     }
     edit(therapy, id) {
-        return this.http.put(`/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
+        return this.http.put(`https://ikaruna.000webhostapp.com/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
     }
     delete(id) {
-        return this.http.delete(`/api/therapy/${id}`);
+        return this.http.delete(`https://ikaruna.000webhostapp.com/api/therapy/${id}`);
     }
     getById(id) {
         return this.http.get(URL + '/:' + id)
@@ -4005,7 +4005,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = '/api/notification';
+const URL = 'https://ikaruna.000webhostapp.com/api/notification';
 class NotificationDataService {
     constructor(http) {
         this.http = http;
@@ -4014,7 +4014,7 @@ class NotificationDataService {
     }
     getAll() {
         let token = localStorage.getItem('token');
-        return this.http.get(`/api/notification/${token}`)
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/notification/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((notifics) => {
             if (notifics != null) {
                 this._notifications = [];
@@ -4026,10 +4026,10 @@ class NotificationDataService {
         }));
     }
     delete(id, token) {
-        return this.http.get(`/api/notification/${id}/${token}`);
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/notification/${id}/${token}`);
     }
     deleteAll(token) {
-        return this.http.get(`/api/notifications/${token}`);
+        return this.http.get(`https://ikaruna.000webhostapp.com/api/notifications/${token}`);
     }
     doWorkshop(request) {
         return this.http.post(URL, request);

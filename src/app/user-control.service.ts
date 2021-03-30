@@ -8,9 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = '/api/user';
-const URL_LOG = '/api/log';
-const URL_ADMIN = '/api/admin';
+const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
+const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 
 
 @Injectable({
@@ -100,7 +100,7 @@ export class UserControlService {
   );
   }*/
   public logout(user: UserStatus): any {
-    return this.http.post(`/api/logout`,JSON.parse(JSON.stringify(user)))
+    return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`,JSON.parse(JSON.stringify(user)))
     .pipe(
       map((r: UserStatus)=> {
         if(r.status == 'closed'){
@@ -131,7 +131,7 @@ export class UserControlService {
   
   public getAll(): Observable<User[]> {
     let token = localStorage.getItem('token');
-    return this.http.get<User[]>(`/api/users/${token}`)
+    return this.http.get<User[]>(`https://ikaruna.000webhostapp.com/api/users/${token}`)
     .pipe(
       tap((users: User[]) => {
         console.log(users);
@@ -145,7 +145,7 @@ export class UserControlService {
   }
 
   public getById(token: string): Observable<User> {
-    return this.http.get<User>(`/api/user/${token}`)
+    return this.http.get<User>(`https://ikaruna.000webhostapp.com/api/user/${token}`)
     .pipe(
       tap((user: User) => {
         console.log(user);
@@ -170,16 +170,16 @@ export class UserControlService {
   }
 
   public delete(id: number): any{
-    return this.http.delete(`/api/user/${id}`);
+    return this.http.delete(`https://ikaruna.000webhostapp.com/api/user/${id}`);
   }
 
   public edit(user: User, id: number): any {
-    return this.http.put(`/api/user/${id}`,user)
+    return this.http.put(`https://ikaruna.000webhostapp.com/api/user/${id}`,user)
   }
 
   public checkSession(): Observable<UserStatus>  {
     let token = localStorage.getItem('token');
-    return this.http.get<UserStatus>(`/api/log/${token}`)
+    return this.http.get<UserStatus>(`https://ikaruna.000webhostapp.com/api/log/${token}`)
     .pipe(
       map((res:UserStatus)=> {
         console.log(res);

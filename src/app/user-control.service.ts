@@ -59,7 +59,9 @@ export class UserControlService {
   }
   
   public login(user: UserLogin): Observable<UserStatus>  {
-    const headers = { 'Access-Control-Request-Method': 'POST' };
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers.set('Access-Control-Request-Method', 'POST' );
     return this.http.post<UserStatus>(URL_LOG,user, {headers: headers})
     .pipe(
       map((res:UserStatus)=> {

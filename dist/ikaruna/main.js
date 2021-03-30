@@ -2652,10 +2652,11 @@ UserListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserControlService", function() { return UserControlService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
+
 
 
 
@@ -2674,30 +2675,32 @@ class UserControlService {
             id_user: 0,
             isAdmin: 0
         };
-        this.logged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this._logged);
+        this.logged = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this._logged);
         this._userLogged = {
             username: '',
             email: '',
             phone: ''
         };
-        this.userLogged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this._userLogged);
+        this.userLogged = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this._userLogged);
         this._admins = [];
-        this.admins = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
+        this.admins = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]([]);
         this._users = [];
-        this.users = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this._users);
+        this.users = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this._users);
     }
     add(user) {
         return this.http.post(URL, user)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
             this.saveToken(res.token);
             this.updateLog(res);
             return res;
         }));
     }
     login(user) {
-        const headers = { 'Access-Control-Request-Method': 'POST' };
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]();
+        headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers.set('Access-Control-Request-Method', 'POST');
         return this.http.post(URL_LOG, user, { headers: headers })
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
             console.log(res);
             this.saveToken(res.token);
             this.updateLog(res);
@@ -2733,7 +2736,7 @@ class UserControlService {
     }*/
     logout(user) {
         return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`, JSON.parse(JSON.stringify(user)))
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((r) => {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((r) => {
             if (r.status == 'closed') {
                 this.updateLog(r);
                 this.deleteToken();
@@ -2760,7 +2763,7 @@ class UserControlService {
     getAll() {
         let token = localStorage.getItem('token');
         return this.http.get(`https://ikaruna.000webhostapp.com/api/users/${token}`)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((users) => {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((users) => {
             console.log(users);
             this._users = [];
             users.forEach(user => {
@@ -2771,7 +2774,7 @@ class UserControlService {
     }
     getById(token) {
         return this.http.get(`https://ikaruna.000webhostapp.com/api/user/${token}`)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((user) => {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((user) => {
             console.log(user);
             this._userLogged = user;
             this.userLogged.next(this._userLogged);
@@ -2798,21 +2801,21 @@ class UserControlService {
     checkSession() {
         let token = localStorage.getItem('token');
         return this.http.get(`https://ikaruna.000webhostapp.com/api/log/${token}`)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
             console.log(res);
             this.updateLog(res);
             return res;
         }));
     }
 }
-UserControlService.ɵfac = function UserControlService_Factory(t) { return new (t || UserControlService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
-UserControlService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: UserControlService, factory: UserControlService.ɵfac, providedIn: 'root' });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](UserControlService, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+UserControlService.ɵfac = function UserControlService_Factory(t) { return new (t || UserControlService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"])); };
+UserControlService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: UserControlService, factory: UserControlService.ɵfac, providedIn: 'root' });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](UserControlService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),

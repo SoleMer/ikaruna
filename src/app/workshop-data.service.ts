@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Workshop } from './workshop-list/workshop';
@@ -27,7 +27,9 @@ export class WorkshopDataService {
   constructor(private http: HttpClient) { }
 
   public getAll(): Observable<Workshop[]> {
-    return this.http.get<Workshop[]>(`${this.baseUrl}`+URL)
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.get<Workshop[]>(URL, {headers: headers})
     .pipe(
       tap((workshops: Workshop[]) => {
         this._workshops = [];

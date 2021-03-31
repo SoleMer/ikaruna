@@ -5,6 +5,7 @@ export interface Workshop {
     contents: string;
     modality: string;
     image?: string;
+    token?: string;
     delete?: boolean;
 }
 

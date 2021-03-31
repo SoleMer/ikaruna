@@ -367,6 +367,7 @@ class AddEditWorkshopComponent {
     }
     save() {
         this.loading = true;
+        this.wsp.token = localStorage.getItem('token');
         if (this.edit != null) {
             this.wsp.id = this.edit.id;
         }

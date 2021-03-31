@@ -103,7 +103,7 @@ export class UserControlService {
   );
   }*/
   public logout(user: UserStatus): any {
-    return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`,JSON.parse(JSON.stringify(user)))
+    return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`,JSON.stringify(user))
     .pipe(
       map((r: UserStatus)=> {
         if(r.status == 'closed'){

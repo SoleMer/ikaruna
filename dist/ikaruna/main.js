@@ -2735,7 +2735,7 @@ class UserControlService {
     );
     }*/
     logout(user) {
-        return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`, JSON.parse(JSON.stringify(user)))
+        return this.http.post(`https://ikaruna.000webhostapp.com/api/logout`, JSON.stringify(user))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((r) => {
             if (r.status == 'closed') {
                 this.updateLog(r);

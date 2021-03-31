@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL = 'https://ikaruna.000webhostapp.com/api/usernew';
 const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
 const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 

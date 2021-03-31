@@ -2662,7 +2662,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL = 'https://ikaruna.000webhostapp.com/api/usernew';
 const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
 const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 class UserControlService {

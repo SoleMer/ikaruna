@@ -62,7 +62,7 @@ export class UserControlService {
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json; charset=utf-8');
     headers.set('Access-Control-Request-Method', 'POST' );
-    return this.http.post<UserStatus>(URL_LOG,user, {headers: headers})
+    return this.http.post<UserStatus>(URL_LOG,JSON.stringify(user), {headers: headers})
     .pipe(
       map((res:UserStatus)=> {
         console.log(res);

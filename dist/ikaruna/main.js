@@ -2699,7 +2699,7 @@ class UserControlService {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]();
         headers.set('Content-Type', 'application/json; charset=utf-8');
         headers.set('Access-Control-Request-Method', 'POST');
-        return this.http.post(URL_LOG, user, { headers: headers })
+        return this.http.post(URL_LOG, JSON.stringify(user), { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
             console.log(res);
             this.saveToken(res.token);

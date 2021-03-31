@@ -1367,7 +1367,7 @@ class QuestionDataService {
         this.http = http;
     }
     add(q) {
-        return this.http.post(URL, JSON.parse(JSON.stringify(q)))
+        return this.http.post(URL, JSON.stringify(q))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((res) => {
             return res;
         }));
@@ -2259,7 +2259,7 @@ class WorkshopDataService {
         }));
     }
     manageWorkshop(workshop) {
-        return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
+        return this.http.post(URL, JSON.stringify(workshop));
     }
     setChangeImg(ws) {
         this._changeImg = ws;
@@ -2688,7 +2688,7 @@ class UserControlService {
         this.users = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](this._users);
     }
     add(user) {
-        return this.http.post(URL, user)
+        return this.http.post(URL, JSON.stringify(user))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
             this.saveToken(res.token);
             this.updateLog(res);
@@ -2701,7 +2701,6 @@ class UserControlService {
         headers.set('Access-Control-Request-Method', 'POST');
         return this.http.post(URL_LOG, JSON.stringify(user), { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
-            console.log(res);
             this.saveToken(res.token);
             this.updateLog(res);
             return res;
@@ -2764,7 +2763,6 @@ class UserControlService {
         let token = localStorage.getItem('token');
         return this.http.get(`https://ikaruna.000webhostapp.com/api/users/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((users) => {
-            console.log(users);
             this._users = [];
             users.forEach(user => {
                 this._users.push(Object.assign({}, user));
@@ -2775,7 +2773,6 @@ class UserControlService {
     getById(token) {
         return this.http.get(`https://ikaruna.000webhostapp.com/api/user/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])((user) => {
-            console.log(user);
             this._userLogged = user;
             this.userLogged.next(this._userLogged);
         }));
@@ -2784,7 +2781,7 @@ class UserControlService {
         return this.http.get(URL_ADMIN);
     }
     manageUser(user) {
-        return this.http.post(URL, JSON.parse(JSON.stringify(user)));
+        return this.http.post(URL, JSON.stringify(user));
         /*.pipe(
           map((res:Reply)=> {
             return res;
@@ -2802,7 +2799,6 @@ class UserControlService {
         let token = localStorage.getItem('token');
         return this.http.get(`https://ikaruna.000webhostapp.com/api/log/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((res) => {
-            console.log(res);
             this.updateLog(res);
             return res;
         }));
@@ -3183,7 +3179,6 @@ class ShiftDataService {
     getAll(token) {
         return this.http.get(`https://ikaruna.000webhostapp.com/api/shift/${token}`)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])((shifts) => {
-            console.log(shifts);
             this._shifts = [];
             shifts.forEach(s => {
                 this._shifts.push(Object.assign({}, s));
@@ -3192,7 +3187,7 @@ class ShiftDataService {
         }));
     }
     manageShift(shift) {
-        return this.http.post(URL, JSON.parse(JSON.stringify(shift)));
+        return this.http.post(URL, JSON.stringify(shift));
     }
     updateShifts(s) {
         this._shifts.push(Object.assign({}, s));
@@ -3958,7 +3953,7 @@ class TherapyDataService {
         }));
     }
     manageTherapy(therapy) {
-        return this.http.post(URL, JSON.parse(JSON.stringify(therapy)));
+        return this.http.post(URL, JSON.stringify(therapy));
     }
     edit(therapy, id) {
         return this.http.put(`https://ikaruna.000webhostapp.com/api/therapy/${id}`, JSON.parse(JSON.stringify(therapy)));
@@ -4036,7 +4031,7 @@ class NotificationDataService {
         return this.http.get(`https://ikaruna.000webhostapp.com/api/notifications/${token}`);
     }
     doWorkshop(request) {
-        return this.http.post(URL, request);
+        return this.http.post(URL, JSON.stringify(request));
     }
 }
 NotificationDataService.ɵfac = function NotificationDataService_Factory(t) { return new (t || NotificationDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
@@ -4192,7 +4187,7 @@ class IkarunaLoginComponent {
             password: '',
             token: '',
         };
-        if (location.href == "http://localhost:4200/login") {
+        if (location.href == "https://ikaruna.vercel.app/login") {
             this.pagina = "../therapies";
         }
     }

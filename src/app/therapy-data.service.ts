@@ -34,7 +34,7 @@ export class TherapyDataService {
   }
 
   public manageTherapy(therapy:Therapy): any {
-    return this.http.post(URL,JSON.parse(JSON.stringify(therapy)) );
+    return this.http.post(URL,JSON.stringify(therapy));
     }
     
     public edit(therapy:Therapy,id:number): any {

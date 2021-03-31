@@ -47,7 +47,7 @@ export class UserControlService {
   constructor( private http: HttpClient) { }
 
   public add(user: NewUser):Observable<UserStatus> {
-    return this.http.post<UserStatus>(URL,user)
+    return this.http.post<UserStatus>(URL,JSON.stringify(user))
     .pipe(
       map((res:UserStatus)=> {
         this.saveToken(res.token);
@@ -65,7 +65,6 @@ export class UserControlService {
     return this.http.post<UserStatus>(URL_LOG,JSON.stringify(user), {headers: headers})
     .pipe(
       map((res:UserStatus)=> {
-        console.log(res);
         this.saveToken(res.token);
         this.updateLog(res);
         return res;
@@ -137,7 +136,6 @@ export class UserControlService {
     return this.http.get<User[]>(`https://ikaruna.000webhostapp.com/api/users/${token}`)
     .pipe(
       tap((users: User[]) => {
-        console.log(users);
         this._users = [];
          users.forEach(user => {
            this._users.push({...user});
@@ -151,7 +149,6 @@ export class UserControlService {
     return this.http.get<User>(`https://ikaruna.000webhostapp.com/api/user/${token}`)
     .pipe(
       tap((user: User) => {
-        console.log(user);
         this._userLogged = user;
          this.userLogged.next(this._userLogged);
        })
@@ -163,7 +160,7 @@ export class UserControlService {
   }
 
   public manageUser(user: User): any {
-    return this.http.post<UserStatus>(URL,JSON.parse(JSON.stringify(user)));
+    return this.http.post<UserStatus>(URL,JSON.stringify(user));
     /*.pipe(
       map((res:Reply)=> {
         return res;
@@ -185,7 +182,6 @@ export class UserControlService {
     return this.http.get<UserStatus>(`https://ikaruna.000webhostapp.com/api/log/${token}`)
     .pipe(
       map((res:UserStatus)=> {
-        console.log(res);
         this.updateLog(res);
         return res;
         

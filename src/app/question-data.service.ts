@@ -15,7 +15,7 @@ export class QuestionDataService {
   constructor(private http : HttpClient) { }
 
   public add(q: Question):Observable<Reply> {
-    return this.http.post<Reply>(URL,JSON.parse(JSON.stringify(q)))
+    return this.http.post<Reply>(URL,JSON.stringify(q))
     .pipe(
       map((res:Reply)=> {
         return res;

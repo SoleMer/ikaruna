@@ -41,6 +41,6 @@ export class NotificationDataService {
   }
 
   public doWorkshop(request: RequestWs):any {
-    return this.http.post(URL,request);
+    return this.http.post(URL,JSON.stringify(request));
   }
 }

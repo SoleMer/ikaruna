@@ -35,7 +35,7 @@ export class IkarunaLoginComponent implements OnInit {
       password : '',
       token: '',
     }
-    if(location.href == "http://localhost:4200/login") {
+    if(location.href == "https://ikaruna.vercel.app/login") {
       this.pagina = "../therapies";
     }
   }

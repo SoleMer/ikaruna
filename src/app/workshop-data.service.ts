@@ -59,7 +59,7 @@ export class WorkshopDataService {
   }
 
   public manageWorkshop(workshop: Workshop): any {
-    return this.http.post(URL, JSON.parse(JSON.stringify(workshop)));
+    return this.http.post(URL,JSON.stringify(workshop));
   }
 
   public setChangeImg(ws: Workshop) {

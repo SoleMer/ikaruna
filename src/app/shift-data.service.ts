@@ -24,7 +24,6 @@ export class ShiftDataService {
     return this.http.get<Shift[]>(`https://ikaruna.000webhostapp.com/api/shift/${token}`)
     .pipe(
       tap((shifts: Shift[]) => {
-        console.log(shifts);
         this._shifts = [];
          shifts.forEach(s => {
            this._shifts.push({...s});
@@ -35,7 +34,7 @@ export class ShiftDataService {
   }
 
   public manageShift(shift: Shift): any {
-    return this.http.post(URL,JSON.parse(JSON.stringify(shift)));
+    return this.http.post(URL,JSON.stringify(shift));
   }
 
   public updateShifts(s: Shift) {

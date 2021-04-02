@@ -1,15 +1,26 @@
-<div *ngIf="status.isAdmin ==1; else user">
-    <div class="row">
-        <div class="col-md-8">
-            <app-shift-list></app-shift-list>
-        </div>
-        <div class="col-md-4">
-            <app-ikaruna-section [page]="name"></app-ikaruna-section>
-        </div>
+
+<div class="row">
+    <div class="text-center">
+        <h1 class="title">Turnos</h1>
     </div>
+    <div class="col-md-12" *ngIf="status.id_user != 0; else notLogged">
+            <div class="row" >
+                <div class="col-md-8" *ngIf="status.isAdmin ==1; else user">
+                    <app-shift-list ></app-shift-list>
+                </div>
+                <ng-template #user>
+                    <div class="col-md-4 offset-md-4">
+                        <app-ikaruna-section [page]="name"></app-ikaruna-section>
+                    </div>
+                </ng-template>
+            </div>
+    </div>
+    <ng-template #notLogged>
+        <div class="text-center" *ngIf="status.id_user == 0">
+            <strong>Para solicitar un turno debe iniciar sesión</strong>
+        </div>
+        <div class="col-md-12">
+            <app-log-and-check-in></app-log-and-check-in>
+        </div>
+    </ng-template>
 </div>
-<ng-template #user>
-    <div class="col-md-12">
-        <app-ikaruna-section [page]="name"></app-ikaruna-section>
-    </div>
-</ng-template>

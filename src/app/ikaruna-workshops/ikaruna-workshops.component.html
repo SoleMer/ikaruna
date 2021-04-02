@@ -3,6 +3,12 @@
         <app-workshop-list (setEditable)="setEditable($event)"></app-workshop-list>
     </div>
     <div class="col-md-4">
-        <app-ikaruna-section [page]="name" [editWs]="editable"></app-ikaruna-section>
+        <app-ikaruna-section *ngIf="status.isAdmin == 1; else user" [page]="name" [editWs]="editable"></app-ikaruna-section>
+        <ng-template #user>
+            <!--
+                CAMBIAR BUTTON POR IMG
+            -->
+            <button type="button" class="btn btn-primary" (click)="question()">Hace tu consulta!</button>
+        </ng-template>
     </div>
 </div>

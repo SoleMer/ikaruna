@@ -31,7 +31,11 @@ export class TherapyListComponent implements OnInit {
     response: any;
 
   setSelected(trp: Therapy):void {
-    this.selected = trp;
+    if(this.selected != trp) {
+      this.selected = trp;
+    } else {
+      this.selected = null;
+    }
   }
 
   ngOnInit(): void {

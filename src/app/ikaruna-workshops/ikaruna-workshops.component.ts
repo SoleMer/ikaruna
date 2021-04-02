@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserControlService } from '../user-control.service';
+import { UserStatus } from '../user-list/user';
 import { Workshop } from '../workshop-list/workshop';
 
 @Component({
@@ -10,9 +12,11 @@ export class IkarunaWorkshopsComponent implements OnInit {
 
   name:string;
   editable: Workshop;
+  status: UserStatus;
 
-  constructor() { 
+  constructor(private userControlSvc: UserControlService) { 
     this.name = 'workshop';
+    userControlSvc.logged.subscribe(s => this.status = s);
   }
   
   ngOnInit(): void {
@@ -20,5 +24,9 @@ export class IkarunaWorkshopsComponent implements OnInit {
  
   setEditable(ws: Workshop) {
     this.editable = ws;
+  }
+
+  question() {
+    location.href = "../questions";
   }
 }

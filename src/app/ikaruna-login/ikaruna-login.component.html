@@ -1,20 +1,21 @@
-<div class="text-center">
-    <h2 class="title">Inicia sesión</h2>
-    <strong>para pedir un turno o hacer una consulta</strong>
-</div>
+<div class="box-form text-center ">
+    <div >
+        <h2 class="title">Inicia sesión</h2>
+    </div>
 
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@gmail.com" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]='user.password' [ngModelOptions]="{standalone: true}">
-    </div>
-    
-    <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button type="button" class="btn btn-primary" (click)="login()" [disabled]="loading">Ingresar</button>
-    </div>
-</form>
+    <form >
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@gmail.com" [(ngModel)]='user.email' [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]='user.password' [ngModelOptions]="{standalone: true}">
+        </div>
+        
+        <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-primary" (click)="login()" [disabled]="loading">Ingresar</button>
+        </div>
+    </form>
+</div>
 <app-fast-note class="fast-note" *ngIf="viewNote" [note]='msgNote'></app-fast-note>

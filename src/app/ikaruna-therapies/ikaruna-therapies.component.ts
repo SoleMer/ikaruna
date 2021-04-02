@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Therapy } from '../therapy-list/therapy';
+import { UserControlService } from '../user-control.service';
+import { UserStatus } from '../user-list/user';
 
 @Component({
   selector: 'app-ikaruna-therapies',
@@ -10,16 +12,23 @@ export class IkarunaTherapiesComponent implements OnInit {
 
   name: string;
   editable: Therapy;
+  status: UserStatus;
 
-  constructor() {
+  constructor(private userControlSvc: UserControlService) {
     this.name = 'therapies';
+    userControlSvc.logged.subscribe(s => this.status = s);
    }
 
   ngOnInit(): void {
+    
   }
 
   setEditable(trp: Therapy) {
     this.editable = trp;
+  }
+
+  applyShift() {
+    location.href = "../shifts";
   }
 
 }

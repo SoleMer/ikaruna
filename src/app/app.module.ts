@@ -32,6 +32,7 @@ import { ShiftUserListComponent } from './shift-user-list/shift-user-list.compon
 import { FastNoteComponent } from './fast-note/fast-note.component';
 import { ErrorNoAdminComponent } from './error-no-admin/error-no-admin.component';
 import { ChangeImgComponent } from './change-img/change-img.component';
+import { IkarunaFooterComponent } from './ikaruna-footer/ikaruna-footer.component';
 //import {NgbModule} from '@ng-bootstrap/ng-bootstrap/';
 
 @NgModule({
@@ -64,6 +65,7 @@ import { ChangeImgComponent } from './change-img/change-img.component';
     FastNoteComponent,
     ErrorNoAdminComponent,
     ChangeImgComponent,
+    IkarunaFooterComponent,
   ],
   imports: [
     BrowserModule,

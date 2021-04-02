@@ -1,34 +1,37 @@
-<div class="text-center">
-    <h2 *ngIf="status.isAdmin == 1; else user" class="title">Agregá un turno!</h2>
-    <ng-template #user>
-        <app-shift-user-list></app-shift-user-list>
-        <h2 class="title">Sacá tu turno!</h2>
-    </ng-template>
-</div>
-<form class="text-center">
-    <div *ngIf="status.isAdmin == 1">
-        <label for="inputPatient" class="form-label">Paciente: </label>
-        <input type="text" [(ngModel)]='shift.patient_name' id="inputPatient" [ngModelOptions]="{standalone: true}">
+<div class="box">
+    <div class="text-center">
+        <h1 *ngIf="status.isAdmin == 1; else user" class="title">Agregá un turno!</h1>
+        <ng-template #user>
+            <app-shift-user-list></app-shift-user-list>
+            <h1 class="title">Sacá tu turno!</h1>
+        </ng-template>
     </div>
-    <select class="form-select" aria-label="Default select example" [(ngModel)]='shift.therapy' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>
-            <option *ngFor="let ther of therapies" value={{ther.id}} >{{ther.name}}</option>
-        </select>
-    <div class="div-margin-top">
-        <label for="inputDate" class="form-label">Fecha: </label>
-        <input type="date" id="inputDate" [(ngModel)]='shift.date' [ngModelOptions]="{standalone: true}">
-    </div>
+    <div class="box-form">
+        <form class="text-center">
+            <div *ngIf="status.isAdmin == 1">
+                <label for="inputPatient" class="form-label">Paciente: </label>
+                <input type="text" [(ngModel)]='shift.patient_name' id="inputPatient" [ngModelOptions]="{standalone: true}">
+            </div>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]='shift.therapy' [ngModelOptions]="{standalone: true}" name="fieldName" ngDefaultControl>
+                    <option *ngFor="let ther of therapies" value={{ther.id}} >{{ther.name}}</option>
+                </select>
+            <div class="div-margin-top">
+                <label for="inputDate" class="form-label">Fecha: </label>
+                <input type="date" id="inputDate" [(ngModel)]='shift.date' [ngModelOptions]="{standalone: true}">
+            </div>
 
-    <div class="div-margin-top">
-        <label for="inputTime" class="form-label">Hora: </label>
-        <input type="time" id="inputTime" [(ngModel)]='shift.time' [ngModelOptions]="{standalone: true}">
+            <div class="div-margin-top">
+                <label for="inputTime" class="form-label">Hora: </label>
+                <input type="time" id="inputTime" [(ngModel)]='shift.time' [ngModelOptions]="{standalone: true}">
+            </div>
+            <div *ngIf="status.isAdmin == 0; else admin" class="div-margin-top d-grid gap-2 col-6 mx-auto">
+                <button (click)="postTurn()" class="btn btn-primary" [disabled]="loading">Solicitar turno</button>
+                <span class="badge bg-warning text-dark">Sujeto a disponibilidad.</span>
+            </div>
+            <ng-template #admin>
+                <button (click)="postTurn()" class="btn btn-primary" [disabled]="loading">Agregar turno</button>
+            </ng-template>
+        </form>
     </div>
-    <div *ngIf="status.isAdmin == 0; else admin" class="div-margin-top d-grid gap-2 col-6 mx-auto">
-        <button (click)="postTurn()" class="btn btn-primary" [disabled]="loading">Solicitar turno</button>
-        <span class="badge bg-warning text-dark">Sujeto a disponibilidad.</span>
-    </div>
-    <ng-template #admin>
-        <button (click)="postTurn()" class="btn btn-primary" [disabled]="loading">Agregar turno</button>
-    </ng-template>
-</form>
-<app-ikaruna-contact></app-ikaruna-contact>
+</div>
 <app-fast-note class="fast-note" *ngIf="viewNote" [note]='msgNote'></app-fast-note>

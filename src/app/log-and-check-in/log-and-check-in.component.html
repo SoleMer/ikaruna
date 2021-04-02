@@ -1,13 +1,13 @@
-<div *ngIf="registered; else checkIn">
+<div class="col-md-4 offset-md-4 box margin-bottom " *ngIf="registered; else checkIn">
     <app-ikaruna-login></app-ikaruna-login>
-    <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+    <div class="div-margin-top margin-bottom d-grid gap-2 col-6 mx-auto">
         <button type="submit" class="btn btn-primary" (click)="toggleRegistered()">Aún no tengo cuenta</button>
     </div>
 </div>
 <ng-template #checkIn>
-    <div>
+    <div class="col-md-4 offset-md-4 log">
         <app-ikaruna-check-in></app-ikaruna-check-in>
-        <div class="div-margin-top d-grid gap-2 col-6 mx-auto">
+        <div class="div-margin-top margin-bottom d-grid gap-2 col-6 mx-auto">
             <button *ngIf="login; else other" type="submit" [routerLink]="[ '/'] " class="btn btn-primary" (click)="toggleRegistered()">Ya tengo una cuenta</button>
             <ng-template #other>
                 <button type="submit" class="btn btn-primary" (click)="toggleRegistered()">Ya tengo una cuenta</button>
@@ -15,4 +15,3 @@
         </div>
     </div>
 </ng-template>
-<app-ikaruna-contact></app-ikaruna-contact>

@@ -34,6 +34,15 @@
         <app-therapy-list (setEditable)="setEditable($event)"></app-therapy-list>
     </div>
     <div class="col-md-4">
-        <app-ikaruna-section [page]="name" [editTrp]="editable"></app-ikaruna-section>
+        <app-ikaruna-section *ngIf="status.isAdmin == 1; else user" [page]="name" [editTrp]="editable"></app-ikaruna-section>
+        <ng-template #user>
+            <!--
+                CAMBIAR BUTTON POR IMG
+            -->
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" (click)="applyShift()">Pedi tu turno!</button>
+
+            </div>
+        </ng-template>
     </div>
 </div>

@@ -20,7 +20,10 @@ export class IkarunaTherapiesComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+    this.userControlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
   }
 
   setEditable(trp: Therapy) {

@@ -100,6 +100,10 @@ class IkarunaWorkshopsComponent {
         userControlSvc.logged.subscribe(s => this.status = s);
     }
     ngOnInit() {
+        this.userControlSvc.checkSession()
+            .subscribe(s => {
+            this.status = s;
+        });
     }
     setEditable(ws) {
         this.editable = ws;
@@ -2423,7 +2427,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_user_control_service__WEBPACK_IMPORTED_MODULE_1__["UserControlService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 31, vars: 20, consts: [[1, "navbar", "navbar-expand-lg", "navbar-light", "my-navbar-container"], [1, "container-fluid"], [1, "navbar-toggler-icon", "my-toggler", 3, "click"], ["src", "../assets/img/logoCuadrado.jpg", "width", "100", "alt", "", 1, "navbar-brand", "logo-navbar", 3, "routerLink"], [1, "navbar-collapse", "my-navbar", 3, "ngClass"], [1, "navbar-nav", "me-auto", "mb-2", "mb-lg-0"], [1, "my-nav-link"], [1, "nav-link", 3, "routerLink", "click"], ["class", "my-nav-link", 4, "ngIf"], ["class", "nav-link ", 3, "routerLink", "click", 4, "ngIf", "ngIfElse"], ["login", ""], [1, "container", "main"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 31, vars: 20, consts: [[1, "navbar", "navbar-expand-lg", "navbar-light", "my-navbar-container"], [1, "container-fluid"], [1, "navbar-toggler-icon", "my-toggler", 3, "click"], ["src", "../assets/img/logoCuadrado.jpg", "width", "100", "alt", "", 1, "navbar-brand", "logo-navbar", 3, "routerLink"], [1, "navbar-collapse", "my-navbar", 3, "ngClass"], [1, "navbar-nav", "me-auto", "mb-2", "mb-lg-0"], [1, "my-nav-link"], [1, "nav-link", 3, "routerLink", "click"], ["class", "my-nav-link", 4, "ngIf"], ["class", "nav-link ", 3, "routerLink", "click", 4, "ngIf", "ngIfElse"], ["login", ""], [1, "container", "main"], [1, "main"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 2);
@@ -2474,7 +2478,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "router-outlet");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "router-outlet", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "app-ikaruna-footer");
     } if (rf & 2) {
@@ -2919,6 +2923,10 @@ class IkarunaQuestionsComponent {
             text: '',
             user_id: this.status.id_user
         };
+        this.userControlService.checkSession()
+            .subscribe(s => {
+            this.status = s;
+        });
     }
     add() {
         this.q.user_id = this.status.id_user;
@@ -3948,6 +3956,10 @@ class IkarunaTherapiesComponent {
         userControlSvc.logged.subscribe(s => this.status = s);
     }
     ngOnInit() {
+        this.userControlSvc.checkSession()
+            .subscribe(s => {
+            this.status = s;
+        });
     }
     setEditable(trp) {
         this.editable = trp;

@@ -28,6 +28,10 @@ export class IkarunaQuestionsComponent implements OnInit {
       text : '',
       user_id : this.status.id_user
     }
+    this.userControlService.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
   }
 
   add() {

@@ -20,6 +20,10 @@ export class IkarunaWorkshopsComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.userControlSvc.checkSession()
+    .subscribe(s => {
+      this.status = s
+    });
   }
  
   setEditable(ws: Workshop) {

@@ -1,3 +1,4 @@
+<div class="row main">
 <div *ngIf="status.status == 'ok'; else login">
     <div class="text-center">
         <h2 class="title">Notificaciones</h2>
@@ -29,3 +30,4 @@
 <ng-template #login>
     <app-log-and-check-in></app-log-and-check-in>
 </ng-template>
+</div>

@@ -16,3 +16,16 @@ a {
     padding-left: 365px;
     padding-bottom: 30px;
 }
+/* --------------------------------RESPONSIVE------------------------------- */
+        
+@media only screen and (max-width: 768px) {
+    .footer {
+        height: 300px;
+    }
+    .foo {
+        margin: 0;
+        display: inline-block;
+        padding-left: 150px;
+        padding-bottom: 30px;
+    }
+}

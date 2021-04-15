@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 import { stringify } from '@angular/compiler/src/util';
 import { Reply } from './therapy-list/therapy';
 
-const URL = 'https://ikaruna.000webhostapp.com/api/usernew';
+const URL = 'https://ikaruna.000webhostapp.com/api/user';
+const URL_NEW = 'https://ikaruna.000webhostapp.com/api/usernew';
 const URL_LOG = 'https://ikaruna.000webhostapp.com/api/log';
 const URL_ADMIN = 'https://ikaruna.000webhostapp.com/api/admin';
 
@@ -47,7 +48,7 @@ export class UserControlService {
   constructor( private http: HttpClient) { }
 
   public add(user: NewUser):Observable<UserStatus> {
-    return this.http.post<UserStatus>(URL,JSON.stringify(user))
+    return this.http.post<UserStatus>(URL_NEW,JSON.stringify(user))
     .pipe(
       map((res:UserStatus)=> {
         this.saveToken(res.token);

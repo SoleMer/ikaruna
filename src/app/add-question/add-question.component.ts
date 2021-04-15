@@ -34,6 +34,7 @@ export class AddQuestionComponent implements OnInit {
   add() {
     this.loading = true;
     this.q.user_id = this.status.id_user;
+    this.q.token = this.status.token;
     this.questionDataSvc.add(this.q)
     .subscribe(res => {
       this.response =res;

@@ -4,4 +4,5 @@ export interface Question {
     user_id: number;
     username?: string;
     email?: string;
+    token?: string;
 }

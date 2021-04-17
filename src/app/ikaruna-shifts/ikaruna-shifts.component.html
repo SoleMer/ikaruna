@@ -3,9 +3,9 @@
     <div class="text-center">
         <h1 class="title">Turnos</h1>
     </div>
-    <div class="col-md-12" *ngIf="status.id_user != 0; else notLogged">
+    <div class="col-md-12 text-center" *ngIf="status.id_user != 0; else notLogged">
             <div class="row" >
-                <div class="col-md-8" *ngIf="status.isAdmin ==1; else user">
+                <div class="col-md-12" *ngIf="status.isAdmin ==1; else user">
                     <app-shift-list ></app-shift-list>
                 </div>
                 <ng-template #user>
@@ -19,7 +19,7 @@
         <div class="text-center" *ngIf="status.id_user == 0">
             <strong>Para solicitar un turno debe iniciar sesión</strong>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 min-height">
             <app-log-and-check-in></app-log-and-check-in>
         </div>
     </ng-template>
